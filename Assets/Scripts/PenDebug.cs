@@ -12,7 +12,7 @@ public static class PenDebug
     public static void LogHit(
         string plateName,
         float penMm,
-        float baseMm,
+        float plateEffArmour,
         float plateNormalDeg,
         float incomingDeg,
         float impactDeg,
@@ -25,7 +25,7 @@ public static class PenDebug
 
         string result = ricochet ? "RICOCHET" : (penetrated ? "PENETRATION" : "NO PEN");
         string line =
-            $"[HIT] Plate={plateName} | Pen={penMm:0.#}mm | Base={baseMm:0.#}mm | " +
+            $"[HIT] Plate={plateName} | Pen={penMm:0.#}mm | PlateEffArm={plateEffArmour:0.#}mm | " +
             $"PlateNormal={plateNormalDeg:0.#}° | Incoming={incomingDeg:0.#}° | " +
             $"Impact={impactDeg:0.#}° | EffArmor={effMm:0.#}mm | Result={result}";
 

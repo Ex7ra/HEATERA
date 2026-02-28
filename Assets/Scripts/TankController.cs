@@ -11,6 +11,7 @@ public class TankController : MonoBehaviour
     public float acceleration = 2.0f;     
     public float deceleration = 3.0f;     
     public float brakeDeceleration = 6.0f;
+
     [Header("Module Health (0..1)")]
     public float engineHealth = 1f;
     public float leftTrackHealth = 1f;
@@ -48,14 +49,20 @@ public class TankController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // --- NEW: Disable movement if engine or at least one track is destroyed ---
+        if (engineHealth <= 0f || leftTrackHealth <= 0f || rightTrackHealth <= 0f)
+        {
+            currentSpeed = 0f;
+            rb.linearVelocity = Vector2.zero;
+            return; // Skip all movement/rotation
+        }
+
         Vector2 forward = spriteFacesRight ? (Vector2)transform.right : (Vector2)transform.up;
 
-        
         float targetSpeed = 0f;
         if (moveInput > 0f) targetSpeed = maxForwardSpeed;
         else if (moveInput < 0f) targetSpeed = -maxReverseSpeed;
 
-       
         bool reversingDirection = Mathf.Sign(targetSpeed) != Mathf.Sign(currentSpeed) && Mathf.Abs(currentSpeed) > 0.2f && Mathf.Abs(moveInput) > 0.1f;
 
         float rate;
@@ -64,13 +71,10 @@ public class TankController : MonoBehaviour
         else
             rate = deceleration;
 
-        
         currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, rate * Time.fixedDeltaTime);
 
-        
         rb.linearVelocity = forward * currentSpeed;
 
-       
         float speedRatio = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxForwardSpeed);
         float turnRate = Mathf.Lerp(turnRateStopped, turnRateMoving, speedRatio);
 

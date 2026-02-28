@@ -53,5 +53,5 @@
         "Temp/": true
     },
     "dotnet.preferCSharpExtension": true,
-    "dotnet.defaultSolution": "HEATEra.sln"
+    "dotnet.defaultSolution": "HEATERA.slnx"
 }

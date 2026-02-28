@@ -2,10 +2,12 @@ using UnityEngine;
 
 public class TankArmor : MonoBehaviour
 {
-    public float thicknessMm = 85f;
+    [Header("Armor Settings")]
+    public float plateEffArmour = 85f;
 
     [Range(0f, 90f)]
-    public float ricochetAngleDeg = 90f; // set 90 to disable
+    [Tooltip("Set the angle above which the shell ricochets.")]
+    public float ricochetAngleDeg = 90f; 
 
     public enum NormalAxis { Up, Right }
     public NormalAxis normalAxis = NormalAxis.Up;
@@ -13,6 +15,7 @@ public class TankArmor : MonoBehaviour
     [Tooltip("Flip the normal direction if it's pointing inward.")]
     public bool flipNormal = false;
 
+   
     public float GetEffectiveArmorFromVelocity(
         Vector2 shellVelocityDir,
         out float plateNormalDeg,
@@ -20,25 +23,38 @@ public class TankArmor : MonoBehaviour
         out float impactAngleDeg,
         out bool ricochet)
     {
-        Vector2 vel = shellVelocityDir.normalized;
-        Vector2 incoming = (-vel).normalized; // direction INTO armor
+        
+        Vector2 shellDir = shellVelocityDir.normalized;
+        Vector2 incoming = -shellDir; 
 
-        Vector2 normal = (normalAxis == NormalAxis.Up)
-            ? ((Vector2)transform.up).normalized
-            : ((Vector2)transform.right).normalized;
-
+       
+        Vector2 normal = (normalAxis == NormalAxis.Up) ? transform.up : transform.right;
         if (flipNormal) normal = -normal;
+        normal.Normalize();
 
+      
+        Debug.DrawRay(transform.position, normal, Color.green, 1f);
+        Debug.DrawRay(transform.position, incoming, Color.red, 1f);
+
+       
         plateNormalDeg = Mathf.Atan2(normal.y, normal.x) * Mathf.Rad2Deg;
         shellIncomingDeg = Mathf.Atan2(incoming.y, incoming.x) * Mathf.Rad2Deg;
 
+       
         impactAngleDeg = Vector2.Angle(incoming, normal);
 
-        ricochet = false;
         
-        float cos = Mathf.Abs(Vector2.Dot(incoming, normal));
-        cos = Mathf.Max(cos, 0.01f);
+        impactAngleDeg = Mathf.Clamp(impactAngleDeg, 0.01f, 89.9f);
 
-        return thicknessMm / cos;
+        
+        ricochet = impactAngleDeg >= ricochetAngleDeg;
+
+        
+        float totalAngleRad = impactAngleDeg * Mathf.Deg2Rad;
+        float effectiveArmor = plateEffArmour / Mathf.Cos(totalAngleRad);
+
+        effectiveArmor = Mathf.Min(effectiveArmor, 500f);
+
+        return effectiveArmor;
     }
 }
