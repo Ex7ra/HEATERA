@@ -10,7 +10,7 @@ public class EngineModule : TankModule
         if (tank != null)
         {
             tank.engineHealth = 0f; // engine destroyed → tank stops
-            Debug.Log("Engine destroyed! Tank slows down.");
+            Debug.Log("Engine destroyed! Tank can't move.");
         }
     }
 }

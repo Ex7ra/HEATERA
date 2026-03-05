@@ -8,6 +8,9 @@ public class TankDamageReceiver : MonoBehaviour
     public TankModule leftTrack;
     public TankModule rightTrack;
     public TankModule ammoRack;
+    public TankModule gunBreech;
+    public TankModule cannon;
+    public TankModule turretTraverse;
 
     public TankModule[] crew;
 

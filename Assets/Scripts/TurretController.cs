@@ -17,8 +17,21 @@ public class TurretNormal : MonoBehaviour
         HEAT,
         HE
     }
-
+    [Header("Cannon")]
+    public Transform cannon;       // <-- Assign the child cannon here
     public ShellType currentShell = ShellType.AP;
+
+    [Header("Gun Modules")]
+    public CannonModule cannonModule;
+    public GunBreechModule gunBreechModule;
+
+    [Header("Damage Effects")]
+    public bool gunOperational = true;
+    public float rotationMultiplier = 1f;
+    public float reloadMultiplier = 1f;
+    public float accuracyMultiplier = 1f;
+
+    
 
     [System.Serializable]
     public class ShellData
@@ -153,50 +166,78 @@ public class TurretNormal : MonoBehaviour
    
     void RotateTurret()
     {
-        Vector3 mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);
-        mousePos.z = 0f;
+    Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
+    mouseWorld.z = 0f;
 
-        Vector2 direction = mousePos - transform.position;
-        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg - 90f;
+    // Direction from turret pivot to mouse
+    Vector3 dir = mouseWorld - transform.position;
+    float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-        float newAngle = Mathf.MoveTowardsAngle(
-            transform.eulerAngles.z,
-            targetAngle,
-            rotationSpeed * Time.deltaTime
-        );
+    // Rotate turret smoothly
+    float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);
+    transform.rotation = Quaternion.Euler(0, 0, turretZ);
 
-        transform.rotation = Quaternion.Euler(0, 0, newAngle);
-    }
+    // --- Do NOT rotate the cannon object ---
+    // Instead, rotate fire direction mathematically:
+    Vector3 fireDir = (mouseWorld - cannon.position).normalized;
+
+    // When firing, use fireDir instead of firePoint.up:
+    // rb.velocity = fireDir * shell.speed;
+   }
 
     
     void HandleShooting()
+{
+    
+    if (!gunOperational)
+        return;
+
+    if (isReloading || totalShells <= 0)
+        return;
+
+    if (Input.GetMouseButton(0))
     {
-        if (isReloading || totalShells <= 0) return;
-
-        if (Input.GetMouseButton(0))
-        {
-            Shoot();
-            totalShells--;
-            StartCoroutine(Reload());
-        }
+        Shoot();
+        totalShells--;
+        StartCoroutine(Reload());
     }
+}
+   bool IsGunOperational()
+  {
+    if (cannonModule == null || gunBreechModule == null)
+        return true; // safety fallback
 
-    void Shoot()
+    if (cannonModule.IsDestroyed || gunBreechModule.IsDestroyed)
     {
-        ShellData shell = GetCurrentShell();
-
-        GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);
-        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-
-        if (rb != null)
-            rb.linearVelocity = firePoint.up * shell.speed;
+        gunOperational = false;
+        return false;
     }
+    Debug.Log("Gun disabled — module destroyed");
+
+    gunOperational = true;
+    return true;
+  }
+
+  void Shoot()
+{
+    ShellData shell = GetCurrentShell();
+
+    GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);
+    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+
+    if (rb != null)
+    {
+        // Use firePoint’s local UP (or whatever points along barrel)
+        Vector2 fireDirection = firePoint.up;  // <-- only along turret orientation
+        rb.linearVelocity = fireDirection * shell.speed;
+    }
+}
 
     IEnumerator Reload()
     {
         isReloading = true;
 
-        float reload = GetCurrentShell().reloadTime;
+        float reload = GetCurrentShell().reloadTime * reloadMultiplier;
         yield return new WaitForSeconds(reload);
 
         isReloading = false;
