@@ -4,82 +4,98 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     [Header("Speed (m/s)")]
-    public float maxForwardSpeed = 13.9f; //in km/h = 50
-    public float maxReverseSpeed = 2.2f;  //somewhere 8 km/h
+    public float maxForwardSpeed = 13.9f;
+    public float maxReverseSpeed = 2.2f;
 
-    [Header("Acceleration (m/s^2)")]
-    public float acceleration = 2.0f;     
-    public float deceleration = 3.0f;     
-    public float brakeDeceleration = 6.0f;
+    [Header("Acceleration")]
+    public float acceleration = 3f;
+    public float deceleration = 5f;
 
-    [Header("Module Health (0..1)")]
+    [Header("Turning")]
+    public float turnBoost = 8f;
+    public float turnStrength = 6f;
+
+    [Header("Modules")]
     public float engineHealth = 1f;
     public float leftTrackHealth = 1f;
     public float rightTrackHealth = 1f;
-    
-
-    [Header("Turning (deg/sec)")]
-    public float turnRateStopped = 18f;   
-    public float turnRateMoving = 10f;    
 
     [Header("Forward Axis")]
-    [Tooltip("Most top-down tanks face UP. If your sprite faces RIGHT, tick this.")]
     public bool spriteFacesRight = false;
 
     Rigidbody2D rb;
-    float currentSpeed; 
+
+    float leftTrackSpeed;
+    float rightTrackSpeed;
+
     float moveInput;
     float turnInput;
 
-    // UI 
-    public float CurrentSpeed => Mathf.Abs(currentSpeed);
+    public float CurrentSpeed => Mathf.Abs((leftTrackSpeed + rightTrackSpeed) * 0.5f);
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-        rb.linearDamping = 1.0f;
-        rb.angularDamping = 3.0f;
+        rb.gravityScale = 0;
+        rb.linearDamping = 1f;
+        rb.angularDamping = 3f;
     }
 
     void Update()
     {
-        moveInput = Input.GetAxisRaw("Vertical");   // W/S
-        turnInput = Input.GetAxisRaw("Horizontal"); // A/D
+        moveInput = Input.GetAxisRaw("Vertical");
+        turnInput = Input.GetAxisRaw("Horizontal");
     }
 
     void FixedUpdate()
     {
-        // --- NEW: Disable movement if engine or at least one track is destroyed ---
-        if (engineHealth <= 0f || leftTrackHealth <= 0f || rightTrackHealth <= 0f)
+        if (engineHealth <= 0f)
         {
-            currentSpeed = 0f;
             rb.linearVelocity = Vector2.zero;
-            return; // Skip all movement/rotation
+            return;
         }
 
         Vector2 forward = spriteFacesRight ? (Vector2)transform.right : (Vector2)transform.up;
 
-        float targetSpeed = 0f;
-        if (moveInput > 0f) targetSpeed = maxForwardSpeed;
-        else if (moveInput < 0f) targetSpeed = -maxReverseSpeed;
+        float targetLeft = 0f;
+        float targetRight = 0f;
 
-        bool reversingDirection = Mathf.Sign(targetSpeed) != Mathf.Sign(currentSpeed) && Mathf.Abs(currentSpeed) > 0.2f && Mathf.Abs(moveInput) > 0.1f;
+        // Forward / Reverse base speed
+        if (moveInput > 0)
+        {
+            targetLeft = maxForwardSpeed;
+            targetRight = maxForwardSpeed;
+        }
+        else if (moveInput < 0)
+        {
+            targetLeft = -maxReverseSpeed;
+            targetRight = -maxReverseSpeed;
+        }
 
-        float rate;
-        if (Mathf.Abs(moveInput) > 0.01f)
-            rate = reversingDirection ? brakeDeceleration : acceleration;
-        else
-            rate = deceleration;
+        // Turning adds speed difference
+        if (turnInput < 0) // A
+            targetRight += turnBoost;
 
-        currentSpeed = Mathf.MoveTowards(currentSpeed, targetSpeed, rate * Time.fixedDeltaTime);
+        if (turnInput > 0) // D
+            targetLeft += turnBoost;
 
-        rb.linearVelocity = forward * currentSpeed;
+        // Clamp track speeds
+        targetLeft = Mathf.Clamp(targetLeft, -maxReverseSpeed, maxForwardSpeed);
+        targetRight = Mathf.Clamp(targetRight, -maxReverseSpeed, maxForwardSpeed);
 
-        float speedRatio = Mathf.Clamp01(Mathf.Abs(currentSpeed) / maxForwardSpeed);
-        float turnRate = Mathf.Lerp(turnRateStopped, turnRateMoving, speedRatio);
+        // Acceleration / deceleration
+        float leftRate = Mathf.Abs(targetLeft) > Mathf.Abs(leftTrackSpeed) ? acceleration : deceleration;
+        float rightRate = Mathf.Abs(targetRight) > Mathf.Abs(rightTrackSpeed) ? acceleration : deceleration;
 
-        float rotationDelta = -turnInput * turnRate * Time.fixedDeltaTime;
-        rb.MoveRotation(rb.rotation + rotationDelta);
+        leftTrackSpeed = Mathf.MoveTowards(leftTrackSpeed, targetLeft, leftRate * Time.fixedDeltaTime);
+        rightTrackSpeed = Mathf.MoveTowards(rightTrackSpeed, targetRight, rightRate * Time.fixedDeltaTime);
+
+        // Forward motion
+        float forwardSpeed = (leftTrackSpeed + rightTrackSpeed) * 0.5f;
+        rb.linearVelocity = forward * forwardSpeed;
+
+        // Rotation
+        float rotation = (rightTrackSpeed - leftTrackSpeed) * turnStrength;
+        rb.MoveRotation(rb.rotation + rotation * Time.fixedDeltaTime);
     }
 }
