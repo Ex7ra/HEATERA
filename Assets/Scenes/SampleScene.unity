@@ -839,6 +839,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: turnBoost
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: trackSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: deceleration
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: turnStrength
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
