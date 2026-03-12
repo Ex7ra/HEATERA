@@ -788,6 +788,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1634045507}
     - target: {fileID: 2186006384533147870, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: cannonModule
+      value: 
+      objectReference: {fileID: 1942121118}
+    - target: {fileID: 2186006384533147870, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
       propertyPath: rotationSpeed
       value: 18
       objectReference: {fileID: 0}
@@ -799,6 +803,10 @@ PrefabInstance:
       propertyPath: gunOperational
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2186006384533147870, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: gunBreechModule
+      value: 
+      objectReference: {fileID: 855206226}
     - target: {fileID: 6778075297353593618, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -860,6 +868,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+--- !u!114 &855206226 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1368192751711614188, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+  m_PrefabInstance: {fileID: 796759408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ef52b8b406c7847a8b97a56fbd85c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunBreechModule
 --- !u!1 &1047818833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1894,7 +1913,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 0.0.3
+  m_text: 0.0.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1974,6 +1993,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906057548}
   m_CullTransparentMesh: 1
+--- !u!114 &1942121118 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5929426345171394933, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+  m_PrefabInstance: {fileID: 796759408}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bd7723a56918d43b09b3429d6f2587, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CannonModule
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

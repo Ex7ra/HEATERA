@@ -12,8 +12,8 @@ public class TankController : MonoBehaviour
     public float deceleration = 5f;
 
     [Header("Turning")]
-    public float turnBoost = 8f;
-    public float turnStrength = 6f;
+    public float pivotTrackSpeed = 4f;   // speed of single track pivot
+    public float turnStrength = 5f;      // how strong track difference rotates tank
 
     [Header("Modules")]
     public float engineHealth = 1f;
@@ -36,7 +36,7 @@ public class TankController : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0;
+        rb.gravityScale = 0f;
         rb.linearDamping = 1f;
         rb.angularDamping = 3f;
     }
@@ -60,7 +60,7 @@ public class TankController : MonoBehaviour
         float targetLeft = 0f;
         float targetRight = 0f;
 
-        // Forward / Reverse base speed
+        // Forward / Reverse
         if (moveInput > 0)
         {
             targetLeft = maxForwardSpeed;
@@ -72,29 +72,39 @@ public class TankController : MonoBehaviour
             targetRight = -maxReverseSpeed;
         }
 
-        // Turning adds speed difference
+        // Pivot turning
         if (turnInput < 0) // A
-            targetRight += turnBoost;
-
-        if (turnInput > 0) // D
-            targetLeft += turnBoost;
+        {
+            targetRight += pivotTrackSpeed;
+        }
+        else if (turnInput > 0) // D
+        {
+            targetLeft += pivotTrackSpeed;
+        }
 
         // Clamp track speeds
         targetLeft = Mathf.Clamp(targetLeft, -maxReverseSpeed, maxForwardSpeed);
         targetRight = Mathf.Clamp(targetRight, -maxReverseSpeed, maxForwardSpeed);
 
-        // Acceleration / deceleration
+        // Acceleration / Deceleration
         float leftRate = Mathf.Abs(targetLeft) > Mathf.Abs(leftTrackSpeed) ? acceleration : deceleration;
         float rightRate = Mathf.Abs(targetRight) > Mathf.Abs(rightTrackSpeed) ? acceleration : deceleration;
 
         leftTrackSpeed = Mathf.MoveTowards(leftTrackSpeed, targetLeft, leftRate * Time.fixedDeltaTime);
         rightTrackSpeed = Mathf.MoveTowards(rightTrackSpeed, targetRight, rightRate * Time.fixedDeltaTime);
 
-        // Forward motion
+        // Forward movement
         float forwardSpeed = (leftTrackSpeed + rightTrackSpeed) * 0.5f;
+
+        // reduce forward motion when pivoting
+        float trackDifference = Mathf.Abs(leftTrackSpeed - rightTrackSpeed);
+        float pivotReduction = Mathf.Clamp01(1f - trackDifference / maxForwardSpeed);
+
+        forwardSpeed *= pivotReduction;
+
         rb.linearVelocity = forward * forwardSpeed;
 
-        // Rotation
+        // Rotation from track difference
         float rotation = (rightTrackSpeed - leftTrackSpeed) * turnStrength;
         rb.MoveRotation(rb.rotation + rotation * Time.fixedDeltaTime);
     }

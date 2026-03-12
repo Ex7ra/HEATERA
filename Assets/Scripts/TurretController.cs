@@ -9,6 +9,10 @@ public class TurretNormal : MonoBehaviour
 
     public Transform firePoint;
 
+    [Header("Recoil Settings")]
+    public float recoilDistance = 0.3f;   // How far the cannon moves back
+    public float recoilSpeed = 5f;        // How fast it moves
+
     
      public enum ShellType
     {
@@ -97,7 +101,28 @@ public class TurretNormal : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) SetShell(ShellType.HE);
        
     }
+   IEnumerator RecoilCannon()
+   {
+    Vector3 originalPos = cannon.localPosition;
 
+    // Move along barrel direction (firePoint.up) in local space
+    Vector3 recoilDirection = cannon.InverseTransformDirection(firePoint.up); 
+    Vector3 recoilPos = originalPos - recoilDirection * recoilDistance;
+
+    // Move cannon back
+    while (Vector3.Distance(cannon.localPosition, recoilPos) > 0.001f)
+    {
+        cannon.localPosition = Vector3.MoveTowards(cannon.localPosition, recoilPos, recoilSpeed * Time.deltaTime);
+        yield return null;
+    }
+
+    // Return cannon to original position
+    while (Vector3.Distance(cannon.localPosition, originalPos) > 0.001f)
+    {
+        cannon.localPosition = Vector3.MoveTowards(cannon.localPosition, originalPos, recoilSpeed * Time.deltaTime);
+        yield return null;
+    }
+    }
     void SetShell(ShellType type)
     {
         if (isReloading) return; 
@@ -220,17 +245,20 @@ public class TurretNormal : MonoBehaviour
 
   void Shoot()
 {
-    ShellData shell = GetCurrentShell();
+     ShellData shell = GetCurrentShell();
 
     GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);
     Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
 
     if (rb != null)
     {
-        // Use firePoint’s local UP (or whatever points along barrel)
-        Vector2 fireDirection = firePoint.up;  // <-- only along turret orientation
+        Vector2 fireDirection = firePoint.up;
         rb.linearVelocity = fireDirection * shell.speed;
     }
+
+    // Trigger recoil
+    StopCoroutine("RecoilCannon"); // ensure previous recoil is stopped
+    StartCoroutine("RecoilCannon");
 }
 
     IEnumerator Reload()

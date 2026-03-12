@@ -649,12 +649,11 @@ MonoBehaviour:
   maxReverseSpeed: 2.2
   acceleration: 0.5
   deceleration: 1
-  brakeDeceleration: 6
+  turnBoost: 8
+  turnStrength: 6
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1
-  turnRateStopped: 18
-  turnRateMoving: 10
   spriteFacesRight: 0
 --- !u!114 &6119648239968812513
 MonoBehaviour:
@@ -1089,10 +1088,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretNormal
   rotationSpeed: 18
   firePoint: {fileID: 443053594838088093}
+  recoilDistance: 0.3
+  recoilSpeed: 5
   cannon: {fileID: 270181517329148345}
   currentShell: 0
-  cannonModule: {fileID: 0}
-  gunBreechModule: {fileID: 0}
+  cannonModule: {fileID: 5929426345171394933}
+  gunBreechModule: {fileID: 1368192751711614188}
   gunOperational: 1
   rotationMultiplier: 1
   reloadMultiplier: 1
@@ -1112,11 +1113,6 @@ MonoBehaviour:
   totalShells: 30
   modeText: {fileID: 0}
   shellText: {fileID: 0}
-  cannonRecoilDistance: 0.3
-  cannonRecoilSpeed: 10
-  cannonReturnSpeed: 5
-  turretRecoilAngle: 2
-  turretRecoilSpeed: 15
 --- !u!1 &3545126960850478916
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,7 +2219,6 @@ GameObject:
   m_Component:
   - component: {fileID: 270181517329148345}
   - component: {fileID: 7962267484047215961}
-  - component: {fileID: 5295889919545197141}
   m_Layer: 7
   m_Name: T_55_Cannon_0
   m_TagString: Untagged
@@ -2308,21 +2303,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &5295889919545197141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5820164567253012286}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9ca53fe7b97f845a1cea82ead0f475, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CannonRecoil
-  recoilDistance: 0.1
-  recoilSpeed: 5
-  returnSpeed: 3
 --- !u!1 &6120534610206275098
 GameObject:
   m_ObjectHideFlags: 0
