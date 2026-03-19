@@ -10,8 +10,8 @@ public class TurretNormal : MonoBehaviour
     public Transform firePoint;
 
     [Header("Recoil Settings")]
-    public float recoilDistance = 0.3f;   // How far the cannon moves back
-    public float recoilSpeed = 5f;        // How fast it moves
+    public float recoilDistance = 0.3f;   
+    public float recoilSpeed = 5f;        
 
     
      public enum ShellType
@@ -22,7 +22,7 @@ public class TurretNormal : MonoBehaviour
         HE
     }
     [Header("Cannon")]
-    public Transform cannon;       // <-- Assign the child cannon here
+    public Transform cannon;     
     public ShellType currentShell = ShellType.AP;
 
     [Header("Gun Modules")]
@@ -105,18 +105,15 @@ public class TurretNormal : MonoBehaviour
    {
     Vector3 originalPos = cannon.localPosition;
 
-    // Move along barrel direction (firePoint.up) in local space
     Vector3 recoilDirection = cannon.InverseTransformDirection(firePoint.up); 
     Vector3 recoilPos = originalPos - recoilDirection * recoilDistance;
 
-    // Move cannon back
     while (Vector3.Distance(cannon.localPosition, recoilPos) > 0.001f)
     {
         cannon.localPosition = Vector3.MoveTowards(cannon.localPosition, recoilPos, recoilSpeed * Time.deltaTime);
         yield return null;
     }
 
-    // Return cannon to original position
     while (Vector3.Distance(cannon.localPosition, originalPos) > 0.001f)
     {
         cannon.localPosition = Vector3.MoveTowards(cannon.localPosition, originalPos, recoilSpeed * Time.deltaTime);
@@ -194,20 +191,15 @@ public class TurretNormal : MonoBehaviour
     Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);
     mouseWorld.z = 0f;
 
-    // Direction from turret pivot to mouse
     Vector3 dir = mouseWorld - transform.position;
     float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 
-    // Rotate turret smoothly
     float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);
     transform.rotation = Quaternion.Euler(0, 0, turretZ);
 
-    // --- Do NOT rotate the cannon object ---
-    // Instead, rotate fire direction mathematically:
     Vector3 fireDir = (mouseWorld - cannon.position).normalized;
 
-    // When firing, use fireDir instead of firePoint.up:
-    // rb.velocity = fireDir * shell.speed;
+  
    }
 
     
@@ -230,7 +222,7 @@ public class TurretNormal : MonoBehaviour
    bool IsGunOperational()
   {
     if (cannonModule == null || gunBreechModule == null)
-        return true; // safety fallback
+        return true; 
 
     if (cannonModule.IsDestroyed || gunBreechModule.IsDestroyed)
     {
@@ -256,8 +248,7 @@ public class TurretNormal : MonoBehaviour
         rb.linearVelocity = fireDirection * shell.speed;
     }
 
-    // Trigger recoil
-    StopCoroutine("RecoilCannon"); // ensure previous recoil is stopped
+    StopCoroutine("RecoilCannon"); 
     StartCoroutine("RecoilCannon");
 }
 

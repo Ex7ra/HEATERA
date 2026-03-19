@@ -6,7 +6,7 @@ public class AmmoRackModule : TankModule
     {
         base.OnDestroyed();
         Debug.Log("Ammo exploded! Tank destroyed.");
-        // Destroy entire tank
-        Destroy(transform.root.gameObject);
+        
+        Destroy(transform.root.gameObject);// I imaging in my imagination what tank has brutaly exploded
     }
 }

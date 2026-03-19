@@ -645,12 +645,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b639208e520b73546a0c16c80f605681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxForwardSpeed: 13.9
-  maxReverseSpeed: 2.2
-  acceleration: 0.5
-  deceleration: 1
-  turnBoost: 8
-  turnStrength: 6
+  stats:
+    tankName: T-55
+    forwardSpeedKmh: 50
+    reverseSpeedKmh: 8
+    acceleration: 0.5
+    deceleration: 3
+    pivotTurnDegPerSec: 30
+    turnAcceleration: 2
+    turnDeceleration: 6
+  leftTrack: {fileID: 9080759473780291514}
+  rightTrack: {fileID: 924508097396450116}
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1

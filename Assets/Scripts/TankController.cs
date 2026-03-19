@@ -3,21 +3,31 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class TankController : MonoBehaviour
 {
-    [Header("Speed (m/s)")]
-    public float maxForwardSpeed = 13.9f;
-    public float maxReverseSpeed = 2.2f;
+    
 
-    [Header("Acceleration")]
-    public float acceleration = 3f;
+    [Header("Speeds (km/h)")]
+    public float forwardSpeedKmh = 50f;
+    public float reverseSpeedKmh = 8f;
+
+    [Header("Acceleration / Deceleration (m/s²)")]
+     public float acceleration = 3f;
     public float deceleration = 5f;
 
     [Header("Turning")]
-    public float pivotTrackSpeed = 4f;   // speed of single track pivot
-    public float turnStrength = 5f;      // how strong track difference rotates tank
+    public float pivotTurnDegPerSec = 20f;
 
-    [Header("Modules")]
-    public float engineHealth = 1f;
-    public float leftTrackHealth = 1f;
+    [Header("Turn Acceleration / Deceleration (m/s²)")]
+     public float turnAcceleration = 2f;
+    public float turnDeceleration = 6f;
+    
+
+    [Header("Tracks")]
+    public Transform leftTrack;
+    public Transform rightTrack;
+
+    [Header("Modules Health")]
+    public float engineHealth     = 1f;
+    public float leftTrackHealth  = 1f;
     public float rightTrackHealth = 1f;
 
     [Header("Forward Axis")]
@@ -25,19 +35,23 @@ public class TankController : MonoBehaviour
 
     Rigidbody2D rb;
 
-    float leftTrackSpeed;
-    float rightTrackSpeed;
-
     float moveInput;
     float turnInput;
 
-    public float CurrentSpeed => Mathf.Abs((leftTrackSpeed + rightTrackSpeed) * 0.5f);
+    float currentLeftSpeed  = 0f;
+    float currentRightSpeed = 0f;
 
+    public float CurrentSpeed { get; private set; }
+
+    float ForwardSpeedMs => forwardSpeedKmh / 3.6f;
+    float ReverseSpeedMs => reverseSpeedKmh / 3.6f;
+    float PivotTrackSpeed(float trackWidth)
+    => pivotTurnDegPerSec * Mathf.Deg2Rad * (trackWidth * 0.5f);
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.gravityScale = 0f;
-        rb.linearDamping = 1f;
+        rb.gravityScale   = 0f;
+        rb.linearDamping  = 1f;
         rb.angularDamping = 3f;
     }
 
@@ -51,61 +65,103 @@ public class TankController : MonoBehaviour
     {
         if (engineHealth <= 0f)
         {
-            rb.linearVelocity = Vector2.zero;
+            rb.linearVelocity  = Vector2.zero;
+            rb.angularVelocity = 0f;
             return;
         }
 
-        Vector2 forward = spriteFacesRight ? (Vector2)transform.right : (Vector2)transform.up;
+        Vector2 forward = spriteFacesRight
+            ? (Vector2)transform.right
+            : (Vector2)transform.up;
 
-        float targetLeft = 0f;
+        float trackWidth = (leftTrack != null && rightTrack != null)
+            ? Vector2.Distance(leftTrack.position, rightTrack.position)
+            : 2f;
+
+        float pivotSpeed = PivotTrackSpeed(trackWidth);
+
+        float targetLeft  = 0f;
         float targetRight = 0f;
 
-        // Forward / Reverse
-        if (moveInput > 0)
+        if (moveInput == 0f && turnInput == 0f)
         {
-            targetLeft = maxForwardSpeed;
-            targetRight = maxForwardSpeed;
+            targetLeft  = 0f;
+            targetRight = 0f;
         }
-        else if (moveInput < 0)
+        else if (moveInput == 0f)
         {
-            targetLeft = -maxReverseSpeed;
-            targetRight = -maxReverseSpeed;
+            if (turnInput < 0f) 
+            {
+                targetLeft  = 0f;
+                targetRight = pivotSpeed;
+            }
+            else               
+            {
+                targetLeft  = pivotSpeed;
+                targetRight = 0f;
+            }
         }
-
-        // Pivot turning
-        if (turnInput < 0) // A
+        else
         {
-            targetRight += pivotTrackSpeed;
+            float baseSpeed = moveInput > 0f ? ForwardSpeedMs : -ReverseSpeedMs;
+
+            if (turnInput < 0f)      
+            {
+                targetLeft  = baseSpeed * (1f + turnInput); 
+                targetRight = baseSpeed;
+            }
+            else if (turnInput > 0f)  
+            {
+                targetLeft  = baseSpeed;
+                targetRight = baseSpeed * (1f - turnInput);
+            }
+            else                   
+            {
+                targetLeft  = baseSpeed;
+                targetRight = baseSpeed;
+            }
         }
-        else if (turnInput > 0) // D
-        {
-            targetLeft += pivotTrackSpeed;
-        }
 
-        // Clamp track speeds
-        targetLeft = Mathf.Clamp(targetLeft, -maxReverseSpeed, maxForwardSpeed);
-        targetRight = Mathf.Clamp(targetRight, -maxReverseSpeed, maxForwardSpeed);
+        float sharedBase = moveInput != 0f
+            ? (moveInput > 0f ? ForwardSpeedMs : -ReverseSpeedMs)
+            : 0f;
 
-        // Acceleration / Deceleration
-        float leftRate = Mathf.Abs(targetLeft) > Mathf.Abs(leftTrackSpeed) ? acceleration : deceleration;
-        float rightRate = Mathf.Abs(targetRight) > Mathf.Abs(rightTrackSpeed) ? acceleration : deceleration;
+        bool leftIsSteering  = !Mathf.Approximately(targetLeft,  sharedBase);
+        bool rightIsSteering = !Mathf.Approximately(targetRight, sharedBase);
 
-        leftTrackSpeed = Mathf.MoveTowards(leftTrackSpeed, targetLeft, leftRate * Time.fixedDeltaTime);
-        rightTrackSpeed = Mathf.MoveTowards(rightTrackSpeed, targetRight, rightRate * Time.fixedDeltaTime);
+        currentLeftSpeed = StepSpeed(
+        currentLeftSpeed, targetLeft,
+        leftIsSteering  ? turnAcceleration : acceleration,
+        leftIsSteering  ? turnDeceleration : deceleration);
 
-        // Forward movement
-        float forwardSpeed = (leftTrackSpeed + rightTrackSpeed) * 0.5f;
+        currentRightSpeed = StepSpeed(
+        currentRightSpeed, targetRight,
+        rightIsSteering ? turnAcceleration : acceleration,
+        rightIsSteering ? turnDeceleration : deceleration);
 
-        // reduce forward motion when pivoting
-        float trackDifference = Mathf.Abs(leftTrackSpeed - rightTrackSpeed);
-        float pivotReduction = Mathf.Clamp01(1f - trackDifference / maxForwardSpeed);
+        float combinedSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
+        combinedSpeed = Mathf.Clamp(combinedSpeed, -ReverseSpeedMs, ForwardSpeedMs);
+        rb.linearVelocity = forward * combinedSpeed;
 
-        forwardSpeed *= pivotReduction;
+        float maxAngularVelocityRad = pivotTurnDegPerSec * Mathf.Deg2Rad;
+        float angularVelocityRad = (currentRightSpeed - currentLeftSpeed) / trackWidth;
+        angularVelocityRad = Mathf.Clamp(angularVelocityRad, -maxAngularVelocityRad, maxAngularVelocityRad);
+        rb.angularVelocity = angularVelocityRad * Mathf.Rad2Deg;
 
-        rb.linearVelocity = forward * forwardSpeed;
+        CurrentSpeed = Mathf.Abs(combinedSpeed);
 
-        // Rotation from track difference
-        float rotation = (rightTrackSpeed - leftTrackSpeed) * turnStrength;
-        rb.MoveRotation(rb.rotation + rotation * Time.fixedDeltaTime);
+        if (leftTrack  != null) leftTrack .Rotate(Vector3.forward, currentLeftSpeed  * 50f * Time.fixedDeltaTime);
+        if (rightTrack != null) rightTrack.Rotate(Vector3.forward, currentRightSpeed * 50f * Time.fixedDeltaTime);
     }
+
+    float StepSpeed(float current, float target, float accel, float decel)
+    {
+        float diff   = target - current;
+        bool slowing = (Mathf.Abs(target) < Mathf.Abs(current))
+                    && (target == 0f || Mathf.Sign(target) == Mathf.Sign(current));
+        float rate   = slowing ? decel : accel;
+        return current + Mathf.Sign(diff) * Mathf.Min(Mathf.Abs(diff), rate * Time.fixedDeltaTime);
+    }
+
+    public float SpeedKmh => CurrentSpeed * 3.6f;
 }

@@ -3,17 +3,17 @@ using System.Collections;
 
 public class TurretMagazine : MonoBehaviour
 {
-    public float rotationSpeed = 120f; // degrees per second
+    public float rotationSpeed = 120f; 
 
     public Transform firePoint;      
     public GameObject shellPrefab;   
     public float shellSpeed = 12f;
 
-    public float fireRate = 4f;      // shots per second inside the magazine
-    public int magazineSize = 5;     // shells before reload
-    public float reloadTime = 3f;    // full-mag reload
+    public float fireRate = 4f;      
+    public int magazineSize = 5;    
+    public float reloadTime = 3f;   
 
-    public int totalShells = 30;     // total shells the tank carries
+    public int totalShells = 30;     
 
     private float fireCooldown;
     private int shellsLeft;
@@ -59,7 +59,7 @@ public class TurretMagazine : MonoBehaviour
 
             if (isReloading && fireCooldown <= 0f)
             {
-                shellsLeft = Mathf.Min(magazineSize, totalShells); // refill magazine
+                shellsLeft = Mathf.Min(magazineSize, totalShells); 
                 isReloading = false;
             }
             return;

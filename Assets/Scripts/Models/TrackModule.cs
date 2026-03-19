@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class TrackModule : TankModule
 {
-    public TankController tank; // assign in inspector
-    public bool isLeft;         // true = left, false = right
+    public TankController tank; 
+    public bool isLeft;         
 
     protected override void OnDestroyed()
     {

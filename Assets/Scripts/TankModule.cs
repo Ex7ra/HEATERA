@@ -5,7 +5,7 @@ public class TankModule : MonoBehaviour
     public float maxHealth = 100f;
     public float health;
 
-    public bool IsDestroyed { get; protected set; }  // <- must be public getter
+    public bool IsDestroyed { get; protected set; }  
 
     protected virtual void Awake()
     {

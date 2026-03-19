@@ -10,7 +10,7 @@ public class CannonModule : TankModule
 
         if (!IsDestroyed)
         {
-            turret.accuracyMultiplier = 0.5f;   // worse accuracy
+            turret.accuracyMultiplier = 0.5f;   
         }
     }
 

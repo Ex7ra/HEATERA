@@ -6,6 +6,5 @@ public class CrewModule : TankModule
     {
         base.OnDestroyed();
         Debug.Log("Crew member killed: " + name);
-        // Later: connect to turret reload speed, aiming penalties, etc.
     }
 }

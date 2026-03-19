@@ -10,7 +10,7 @@ public class TurretTraverseModule : TankModule
 
         if (!IsDestroyed)
         {
-            turret.rotationMultiplier = 0.4f; // slow traverse
+            turret.rotationMultiplier = 0.4f; 
         }
     }
 

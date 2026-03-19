@@ -857,11 +857,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
       propertyPath: deceleration
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
       propertyPath: turnStrength
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: stats.acceleration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: pivotForwardReduction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: stats.pivotTurnDegPerSec
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
