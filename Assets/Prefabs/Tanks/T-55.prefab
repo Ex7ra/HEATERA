@@ -178,6 +178,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
+  damageReceiver: {fileID: 6119648239968812513}
 --- !u!1 &242291124662945829
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
 --- !u!1 &681409670770027200
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretTraverseModule
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
   turret: {fileID: 2186006384533147870}
 --- !u!1 &823300776082273616
 GameObject:
@@ -484,6 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
   tank: {fileID: 7403868625900091503}
   isLeft: 1
 --- !u!1 &1169530390497346455
@@ -569,6 +574,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
+  damageReceiver: {fileID: 6119648239968812513}
 --- !u!1 &1279211517192875009
 GameObject:
   m_ObjectHideFlags: 0
@@ -645,15 +652,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b639208e520b73546a0c16c80f605681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats:
-    tankName: T-55
-    forwardSpeedKmh: 50
-    reverseSpeedKmh: 8
-    acceleration: 0.5
-    deceleration: 3
-    pivotTurnDegPerSec: 30
-    turnAcceleration: 2
-    turnDeceleration: 6
+  forwardSpeedKmh: 50
+  reverseSpeedKmh: 8
+  acceleration: 1
+  deceleration: 5
+  pivotTurnDegPerSec: 20
+  turnAcceleration: 2
+  turnDeceleration: 6
   leftTrack: {fileID: 9080759473780291514}
   rightTrack: {fileID: 924508097396450116}
   engineHealth: 1
@@ -794,6 +799,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 300
   health: 0
+  IsDestroyed: 0
   tank: {fileID: 7403868625900091503}
 --- !u!1 &2081386385518245381
 GameObject:
@@ -983,6 +989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
 --- !u!1 &2676931660941239140
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,6 +1218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CannonModule
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
   turret: {fileID: 2186006384533147870}
 --- !u!1 &3600910930163630614
 GameObject:
@@ -1499,6 +1507,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
+  damageReceiver: {fileID: 6119648239968812513}
 --- !u!1 &4389929977008195952
 GameObject:
   m_ObjectHideFlags: 0
@@ -1781,6 +1791,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
+  damageReceiver: {fileID: 6119648239968812513}
 --- !u!1 &4685270180775202308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2010,6 +2022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
 --- !u!1 &5430492802087926018
 GameObject:
   m_ObjectHideFlags: 0
@@ -3069,6 +3082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GunBreechModule
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
   turret: {fileID: 2186006384533147870}
 --- !u!1 &9196254624754926814
 GameObject:
@@ -3163,5 +3177,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 0
+  IsDestroyed: 0
   tank: {fileID: 7403868625900091503}
   isLeft: 0

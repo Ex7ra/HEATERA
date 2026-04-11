@@ -220,7 +220,7 @@ MonoBehaviour:
   shellSpeed: 20
   shootAngleDegrees: 0
   spawnHeight: 0
-  shootMode: 1
+  shootMode: 0
   turretLayerName: TankTurret
   hullLayerName: TankHull
 --- !u!4 &201962951
@@ -648,8 +648,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278239487
+  m_fontColor: {r: 1, g: 0.75294125, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -856,8 +856,12 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
-      propertyPath: deceleration
+      propertyPath: acceleration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+      propertyPath: deceleration
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7403868625900091503, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
       propertyPath: turnStrength
@@ -1220,7 +1224,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.03305783, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1238,8 +1242,8 @@ Transform:
   m_GameObject: {fileID: 1436133901}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.23777002, y: -0.20967999, z: 11}
-  m_LocalScale: {x: 0.06696624, y: 2.4781098, z: 1}
+  m_LocalPosition: {x: -0.2, y: -0.20497984, z: 11}
+  m_LocalScale: {x: 0.06696624, y: 2.6190007, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1680016059}
@@ -1536,7 +1540,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.7529564, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1554,8 +1558,8 @@ Transform:
   m_GameObject: {fileID: 1668770883}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.037770033, y: -0.8292075, z: 11}
-  m_LocalScale: {x: 0.06696624, y: 1.239055, z: 1}
+  m_LocalPosition: {x: -0.046597, y: -0.85973, z: 11}
+  m_LocalScale: {x: 0.06696624, y: 1.3095005, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 749046884}
@@ -1748,8 +1752,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278192383
+  m_fontColor: {r: 1, g: 0.03137255, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

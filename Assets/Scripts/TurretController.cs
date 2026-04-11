@@ -9,7 +9,7 @@ public class TurretNormal : MonoBehaviour
 
     public Transform firePoint;
 
-    [Header("Recoil Settings")]
+    [Header("recoil Settings")]
     public float recoilDistance = 0.3f;   
     public float recoilSpeed = 5f;        
 
@@ -61,6 +61,8 @@ public class TurretNormal : MonoBehaviour
     }
 
     public static FireMode ActiveMode = FireMode.HullOnly;
+    public float switchTime = 1.2f;
+    private bool isSwitchingMode = false; // this makes switching modes take some time to actualy switch
 
     [Header("UI")]
     public TextMeshProUGUI modeText;
@@ -142,15 +144,9 @@ public class TurretNormal : MonoBehaviour
 
     void HandleModeSwitch()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) && !isSwitchingMode)
         {
-            ActiveMode = (ActiveMode == FireMode.HullOnly)
-                ? FireMode.TurretOnly
-                : FireMode.HullOnly;
-
-            ApplyLayerRules();
-            UpdateModeUI();
-
+           StartCoroutine(SwitchFireMode());
             Debug.Log("Fire Mode → " + ActiveMode);
         }
     }
@@ -209,7 +205,7 @@ public class TurretNormal : MonoBehaviour
     if (!gunOperational)
         return;
 
-    if (isReloading || totalShells <= 0)
+    if (isReloading || totalShells <= 0 || isSwitchingMode)
         return;
 
     if (Input.GetMouseButton(0))
@@ -260,5 +256,26 @@ public class TurretNormal : MonoBehaviour
         yield return new WaitForSeconds(reload);
 
         isReloading = false;
+    }
+
+    IEnumerator SwitchFireMode()
+    {
+        isSwitchingMode = true;
+        float timer = switchTime;
+        while (timer > 0f)
+        {
+            timer -=Time.deltaTime;
+            if(modeText != null)
+                modeText.text = "Switching: " + timer.ToString("F1");
+            yield return null;
+        }
+        ActiveMode = (ActiveMode == FireMode.HullOnly)
+        ? FireMode.TurretOnly
+        : FireMode.HullOnly;
+
+        ApplyLayerRules();
+        UpdateModeUI();
+        isSwitchingMode = false;
+        
     }
 }

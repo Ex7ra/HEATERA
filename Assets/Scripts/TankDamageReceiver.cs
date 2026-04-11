@@ -26,5 +26,38 @@ public class TankDamageReceiver : MonoBehaviour
                 module.Damage(damage);
             }
         }
+
+        CheckCrewStatus();
+    }
+
+    public void CheckCrewStatus()
+    {
+        int aliveCrew = 0;
+
+        foreach (var member in crew)
+        {
+            if (member != null && !member.IsDestroyed) 
+            {
+                aliveCrew++;
+            }
+        }
+
+        if (aliveCrew < 2)
+        {
+            DestroyTank();
+        }
+    }
+
+    void DestroyTank()
+    {
+        Debug.Log("Tank destroyed: not enough crew!");
+
+        
+        if (tank != null)
+        {
+            tank.enabled = false;
+        }
+
+          
     }
 }
