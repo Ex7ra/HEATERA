@@ -13,12 +13,24 @@ PrefabInstance:
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: shellType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: ammo.ammoName
       value: HEAT
       objectReference: {fileID: 0}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: penetrationMm
       value: 390
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: explosionDamage
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: explosionRadius
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: nominalPenetrationMm

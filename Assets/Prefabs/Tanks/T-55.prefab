@@ -589,6 +589,7 @@ GameObject:
   - component: {fileID: 7403868625900091503}
   - component: {fileID: 6119648239968812513}
   - component: {fileID: 4400816760554863627}
+  - component: {fileID: 5563343171209865439}
   m_Layer: 0
   m_Name: T-55
   m_TagString: Player
@@ -706,6 +707,24 @@ MonoBehaviour:
   ricochetAngleDeg: 85
   normalAxis: 0
   flipNormal: 0
+--- !u!114 &5563343171209865439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279211517192875009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c82e4b3f2ad84429bd3941094b9511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
+  modeOfCursor: 0
+  highlightSprites:
+  - {fileID: 1462345727084517369}
+  - {fileID: 6940203892810378438}
+  - {fileID: 7962267484047215961}
+  hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
 --- !u!1 &1510652891911216362
 GameObject:
   m_ObjectHideFlags: 0
@@ -1122,7 +1141,9 @@ MonoBehaviour:
     prefab: {fileID: 5162275950734572207, guid: 6dd0f659df5a45545a338658021093a0, type: 3}
     speed: 12
     reloadTime: 3
+  switchShellTime: 6
   totalShells: 30
+  switchTime: 1.2
   modeText: {fileID: 0}
   shellText: {fileID: 0}
 --- !u!1 &3545126960850478916

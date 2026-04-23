@@ -3,10 +3,19 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Shell : MonoBehaviour
 {
+
     [Header("Base Stats")]
     public float penetrationMm = 300f;
     public float damage = 40f;
     public float maxDistance = 30f;
+
+    public enum ShellType { APFSDS, HEAT, HE }
+    [Header("Shell Types")]
+    public ShellType shellType;
+    [Header("Explosion Properties")]
+    public float explosionRadius = 0f;
+    public float explosionDamage = 0f;
+
 
     [Header("Angle Penetration Loss")]
     public AnimationCurve penetrationByAngle = new AnimationCurve(
@@ -29,6 +38,7 @@ public class Shell : MonoBehaviour
 
     void Awake()
     {
+        
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -37,6 +47,19 @@ public class Shell : MonoBehaviour
 
         if (hullLayer == -1 || turretLayer == -1)
             Debug.LogError("TankHull or TankTurret layer not found! Please create them in Tags & Layers.");
+        switch (shellType)
+        {
+            case ShellType.APFSDS:
+                explosionRadius = 0f;
+                break;
+            case ShellType.HEAT:
+                explosionRadius = 2f;
+                break;
+            case ShellType.HE:
+                explosionRadius = 4f;
+                break;
+
+        }
     }
 
     void Start()
@@ -49,11 +72,38 @@ public class Shell : MonoBehaviour
         if (Vector3.Distance(transform.position, startPos) > maxDistance)
             Destroy(gameObject);
     }
+    void Explode()
+    {
+        if (shellType == ShellType.APFSDS) return;
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        foreach (Collider2D hit in hits)
+        {
+            TankModule module = hit.GetComponent<TankModule>();
+            if (module == null)
+                module = hit.GetComponentInParent<TankModule>();
+            if (module != null)
+            {
+                float distance = Vector2.Distance(transform.position, hit.transform.position);
+                float damageMultiplier = 1f - (distance / explosionRadius);
+                float finalDamage = explosionDamage * damageMultiplier;
+                module.Damage(finalDamage);
+                Debug.Log($"[EXPLOSION HIT] {module.name} took {finalDamage} ");
+            }
+
+                
+            
+        }
+    }
+    
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (rb.linearVelocity.sqrMagnitude < 0.001f)
         {
+            if(shellType != ShellType.APFSDS)
+            {
+            Explode();
+            }
             Destroy(gameObject);
             return;
         }
@@ -73,8 +123,13 @@ public class Shell : MonoBehaviour
 
             if (validModule)
             {
-                module.Damage(damage);
-                Debug.Log($"[MODULE HIT] {module.name} took {damage} damage");
+                float appliedDamage = damage;
+                if (shellType == ShellType.APFSDS)
+                {
+                    appliedDamage *= 1.2f;
+                }
+                module.Damage(appliedDamage);
+                Debug.Log($"[MODULE HIT] {module.name} took {appliedDamage} damage");
 
                 
                 if (!hasPenetrated)
@@ -131,10 +186,16 @@ public class Shell : MonoBehaviour
 
             if (penetrated)
             {
+                if (shellType == ShellType.APFSDS)
+                {
+                    penetrationMm *= 0.85f;
+                }
+                else{
                 hasPenetrated = true;
                 if (spriteRenderer != null)
                     spriteRenderer.enabled = false;
-
+                Explode();
+                }
                
                 return;
             }

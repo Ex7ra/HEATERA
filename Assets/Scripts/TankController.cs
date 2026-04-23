@@ -69,6 +69,12 @@ public class TankController : MonoBehaviour
             rb.angularVelocity = 0f;
             return;
         }
+        if (leftTrackHealth <= 0f || rightTrackHealth <= 0f)
+        {
+            rb.linearVelocity  = Vector2.zero;
+            rb.angularVelocity = 0f;
+            return;
+        }
 
         Vector2 forward = spriteFacesRight
             ? (Vector2)transform.right
