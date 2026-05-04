@@ -1,9 +1,9 @@
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Shell : MonoBehaviour
 {
-
     [Header("Base Stats")]
     public float penetrationMm = 300f;
     public float damage = 40f;
@@ -12,10 +12,10 @@ public class Shell : MonoBehaviour
     public enum ShellType { APFSDS, HEAT, HE }
     [Header("Shell Types")]
     public ShellType shellType;
+
     [Header("Explosion Properties")]
     public float explosionRadius = 0f;
     public float explosionDamage = 0f;
-
 
     [Header("Angle Penetration Loss")]
     public AnimationCurve penetrationByAngle = new AnimationCurve(
@@ -31,14 +31,17 @@ public class Shell : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private bool hasPenetrated = false;
+    private string combinedMessage = "";
+    private bool isFinished = false;
 
-    
+    public GameObject hitTextPrefab;
+    public float lifeTimeText = 1.5f;
+
     private int hullLayer;
     private int turretLayer;
 
     void Awake()
     {
-        
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
@@ -47,6 +50,7 @@ public class Shell : MonoBehaviour
 
         if (hullLayer == -1 || turretLayer == -1)
             Debug.LogError("TankHull or TankTurret layer not found! Please create them in Tags & Layers.");
+
         switch (shellType)
         {
             case ShellType.APFSDS:
@@ -58,7 +62,6 @@ public class Shell : MonoBehaviour
             case ShellType.HE:
                 explosionRadius = 4f;
                 break;
-
         }
     }
 
@@ -66,91 +69,128 @@ public class Shell : MonoBehaviour
     {
         startPos = transform.position;
     }
+    void ShowCombinedText()
+    {
+        if (string.IsNullOrEmpty(combinedMessage))
+            return;
+
+        Vector3 offset = new Vector3(0f, 0.3f, 0f);
+        GameObject obj = Instantiate(hitTextPrefab, transform.position + offset, Quaternion.identity);
+
+        TMP_Text text = obj.GetComponentInChildren<TMP_Text>();
+
+        if (text != null)
+        {
+            text.text = combinedMessage.TrimEnd(); // removes last empty line
+        }
+        else
+        {
+            Debug.LogWarning("No TMP_Text found on prefab!");
+        }
+
+        Destroy(obj, lifeTimeText);
+
+        combinedMessage = ""; // reset
+    }
 
     void Update()
     {
         if (Vector3.Distance(transform.position, startPos) > maxDistance)
+        {
+            ShowCombinedText();
             Destroy(gameObject);
+        }
     }
+
     void Explode()
     {
         if (shellType == ShellType.APFSDS) return;
+
         Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+
         foreach (Collider2D hit in hits)
         {
             TankModule module = hit.GetComponent<TankModule>();
             if (module == null)
                 module = hit.GetComponentInParent<TankModule>();
+
             if (module != null)
             {
                 float distance = Vector2.Distance(transform.position, hit.transform.position);
                 float damageMultiplier = 1f - (distance / explosionRadius);
                 float finalDamage = explosionDamage * damageMultiplier;
-                module.Damage(finalDamage);
-                Debug.Log($"[EXPLOSION HIT] {module.name} took {finalDamage} ");
-            }
 
-                
-            
+                module.Damage(finalDamage);
+                combinedMessage += module.name + " Damaged\n";
+
+                Debug.Log($"[EXPLOSION HIT] {module.name} took {finalDamage}");
+            }
         }
     }
-    
+
+    void ShowHitMessage(string message, Vector3 position)
+    {
+        Debug.Log(message + " at " + position);
+    }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (rb.linearVelocity.sqrMagnitude < 0.001f)
         {
-            if(shellType != ShellType.APFSDS)
-            {
-            Explode();
-            }
+            if (shellType != ShellType.APFSDS)
+                Explode();
+
+            ShowCombinedText();
             Destroy(gameObject);
             return;
         }
 
-        
         TankModule module = other.GetComponent<TankModule>();
         if (module == null)
             module = other.GetComponentInParent<TankModule>();
 
         bool validModule = false;
+
         if (module != null)
         {
             if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer == hullLayer)
                 validModule = true;
+
             if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer == turretLayer)
                 validModule = true;
 
             if (validModule)
             {
                 float appliedDamage = damage;
+
                 if (shellType == ShellType.APFSDS)
-                {
                     appliedDamage *= 1.2f;
-                }
+
+                string msg = module.name + " Damaged";
+
+                combinedMessage += msg + "\n";//those are for prefab
                 module.Damage(appliedDamage);
+
                 Debug.Log($"[MODULE HIT] {module.name} took {appliedDamage} damage");
 
-                
                 if (!hasPenetrated)
                 {
                     hasPenetrated = true;
-                    if (spriteRenderer != null)
-                        spriteRenderer.enabled = false; 
-                }
 
-               
+                    if (spriteRenderer != null)
+                        spriteRenderer.enabled = false;
+                }
+                ShowCombinedText();
                 return;
             }
         }
 
-        
         TankArmor armor = other.GetComponent<TankArmor>();
         if (armor != null)
         {
-           
             if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer != hullLayer)
                 return;
+
             if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer != turretLayer)
                 return;
 
@@ -166,12 +206,12 @@ public class Shell : MonoBehaviour
             );
 
             impactDeg = Mathf.Clamp(impactDeg, 0f, 85f);
+
             float angleMultiplier = penetrationByAngle.Evaluate(impactDeg);
             float effectivePenetration = penetrationMm * angleMultiplier;
 
             bool penetrated = !ricochet && effectivePenetration >= effectiveArmor;
 
-           
             PenDebug.LogHit(
                 other.name,
                 effectivePenetration,
@@ -189,19 +229,27 @@ public class Shell : MonoBehaviour
                 if (shellType == ShellType.APFSDS)
                 {
                     penetrationMm *= 0.85f;
+                    combinedMessage += "Penetrated\n";
+            
                 }
-                else{
-                hasPenetrated = true;
-                if (spriteRenderer != null)
-                    spriteRenderer.enabled = false;
-                Explode();
+                else
+                {
+                    hasPenetrated = true;
+
+                    if (spriteRenderer != null)
+                    {
+                        spriteRenderer.enabled = false;
+                    }
+                    Explode();
                 }
-               
+                ShowCombinedText();
                 return;
             }
             else
             {
                
+                combinedMessage += "Ricocheted\n";
+                ShowCombinedText();
                 Destroy(gameObject);
                 return;
             }

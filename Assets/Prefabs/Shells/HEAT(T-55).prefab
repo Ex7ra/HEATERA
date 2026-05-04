@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 175117027715883137, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: speed
       value: 15
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: ammo.ammoName
       value: HEAT
       objectReference: {fileID: 0}
+    - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: hitTextPrefab
+      value: 
+      objectReference: {fileID: 4136225386138781905, guid: 86b34b6c1569f7749bd1177ef54ad973, type: 3}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: penetrationMm
       value: 390
@@ -311,6 +319,14 @@ PrefabInstance:
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: penetrationByAngle.m_Curve.Array.data[9].tangentMode
       value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447459914464094844, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2447459914464094844, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5575797990976007060, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: m_Name
