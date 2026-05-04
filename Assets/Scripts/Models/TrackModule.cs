@@ -15,7 +15,7 @@ public class TrackModule : TankModule
             else
                 tank.rightTrackHealth = 0f;
 
-            Debug.Log((isLeft ? "Left" : "Right") + " track destroyed!");
+            Debug.Log((isLeft ? "Left" : "Right") + " track destroyed! Tank can't move!");
         }
     }
 }
