@@ -159,12 +159,12 @@ public class TurretNormal : MonoBehaviour
 
     ShellData GetCurrentShell()
     {
-        switch (currentShell)
+        return currentShell switch
         {
-            case ShellType.HEAT: return HEAT;
-            case ShellType.HE:   return HE;
-            default:             return AP;
-        }
+            ShellType.HEAT => HEAT,
+            ShellType.HE => HE,
+            _ => AP
+        };
     }
 
     void HandleModeSwitch()
@@ -218,8 +218,6 @@ public class TurretNormal : MonoBehaviour
     float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);//for smooth rotation
     transform.rotation = Quaternion.Euler(0, 0, turretZ);
 
-    Vector3 fireDir = (mouseWorld - cannon.position).normalized;
-
   
    }
 
@@ -227,13 +225,13 @@ public class TurretNormal : MonoBehaviour
     void HandleShooting()
 {
     
-    if (!gunOperational)//stops everything if the gun is destroyed
+    if (!IsGunOperational())//stops everything if the gun is destroyed
         return;
 
-    if (isReloading || totalShells <= 0 || isSwitchingMode || isSwitchingShell)
+    if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0 )
         return;
 
-    if (Input.GetMouseButton(0))
+    if (Input.GetMouseButtonDown(0))
     {
         Shoot();
         totalShells--;
@@ -247,10 +245,11 @@ public class TurretNormal : MonoBehaviour
 
     if (cannonModule.IsDestroyed || gunBreechModule.IsDestroyed)
     {
+        Debug.Log("Gun disabled — module destroyed");
         gunOperational = false;
         return false;
     }
-    Debug.Log("Gun disabled — module destroyed");
+    
 
     gunOperational = true;
     return true;
@@ -270,7 +269,7 @@ public class TurretNormal : MonoBehaviour
     }
 
     StopCoroutine("RecoilCannon"); 
-    StartCoroutine("RecoilCannon");//plays recoil animation when shooting
+    StartCoroutine(RecoilCannon());//plays recoil animation when shooting
 }
 
     IEnumerator Reload()
@@ -290,7 +289,7 @@ public class TurretNormal : MonoBehaviour
         }
 
     if (reloadingText != null)
-        reloadingText.text = "6:sec"; 
+        reloadingText.text = "Ready"; 
 
     isReloading = false;
     }
