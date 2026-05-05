@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 
+
 [RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
 public class Shell : MonoBehaviour
 {
@@ -229,7 +230,7 @@ public class Shell : MonoBehaviour
                 if (shellType == ShellType.APFSDS)
                 {
                     penetrationMm *= 0.85f;
-                    combinedMessage += "Penetrated\n";
+                    //combinedMessage += "Penetrated\n";//dont need info about pen when we see what we damged 
             
                 }
                 else
@@ -247,8 +248,13 @@ public class Shell : MonoBehaviour
             }
             else
             {
-               
-                combinedMessage += "Ricocheted\n";
+               if(UnityEngine.Random.Range(0, 2) == 0)
+               {
+                combinedMessage += "Ricocheted\n" ; 
+               }
+               else{
+                combinedMessage += "Deflected\n" ;
+               }
                 ShowCombinedText();
                 Destroy(gameObject);
                 return;

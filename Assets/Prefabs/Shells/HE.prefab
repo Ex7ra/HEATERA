@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 4136225386138781905, guid: 86b34b6c1569f7749bd1177ef54ad973, type: 3}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: penetrationMm
-      value: 390
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1666066109675455188, guid: bfa1a02a9bd03d046b506ee07f105c5f, type: 3}
       propertyPath: explosionDamage
