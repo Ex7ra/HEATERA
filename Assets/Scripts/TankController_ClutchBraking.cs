@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TankController : MonoBehaviour
+public class TankController_ClutchBraking : MonoBehaviour
 {
     
 

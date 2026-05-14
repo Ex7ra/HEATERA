@@ -8,6 +8,7 @@ public class TurretNormal : MonoBehaviour
     public float rotationSpeed = 120f;//turret rotation speed(degrees per second)
 
     public Transform firePoint;//Fire point for spawning shells
+    public float defaultRotationOffset = -180f;//this is used to correct the angle of the turret so it points towards the mouse correctly, it depends on how your turret sprite is oriented
 
     [Header("recoil Settings")]// recoil settings for the cannon
     public float recoilDistance = 0.3f;   
@@ -213,7 +214,7 @@ public class TurretNormal : MonoBehaviour
     mouseWorld.z = 0f;
 
     Vector3 dir = mouseWorld - transform.position;//direction from turret to mouse position
-    float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;//converts direction to angle in degrees
+    float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - defaultRotationOffset;//converts direction to angle in degrees
 
     float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);//for smooth rotation
     transform.rotation = Quaternion.Euler(0, 0, turretZ);
