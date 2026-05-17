@@ -3,15 +3,15 @@ using TMPro;
 
 public class SpeedDisplayTMP : MonoBehaviour
 {
-    public TankController tank;
+    public MonoBehaviour tankScript; 
+    private ITankMovement tank;
+
     public TextMeshProUGUI speedText;
-    [Tooltip("Show speed converted to km/h (m/s * 3.6)")]
     public bool showKmh = true;
 
-    void Start()
+    void Awake()
     {
-        if (tank == null)
-            tank = FindObjectOfType<TankController>();
+        tank = tankScript as ITankMovement;
 
         if (speedText == null)
             speedText = GetComponent<TextMeshProUGUI>();
@@ -24,6 +24,6 @@ public class SpeedDisplayTMP : MonoBehaviour
         float speed = tank.CurrentSpeed;
         if (showKmh) speed *= 3.6f;
 
-        speedText.text = Mathf.RoundToInt(speed).ToString() + (showKmh ? " km/h" : " m/s");
+        speedText.text = Mathf.RoundToInt(speed) + (showKmh ? " km/h" : " m/s");
     }
 }

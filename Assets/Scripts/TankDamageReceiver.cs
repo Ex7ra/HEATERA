@@ -2,17 +2,14 @@ using UnityEngine;
 
 public class TankDamageReceiver : MonoBehaviour
 {
-    public TankController tank;
-
-    public TankModule engine;
-    public TankModule leftTrack;
-    public TankModule rightTrack;
-    public TankModule ammoRack;
-    public TankModule gunBreech;
-    public TankModule cannon;
-    public TankModule turretTraverse;
+    private ITankMovement tank;
 
     public TankModule[] crew;
+
+    void Awake()
+    {
+        tank = GetComponent<ITankMovement>();
+    }
 
     public void OnPenetration(Vector2 hitPoint, Vector2 direction, float damage)
     {
@@ -36,10 +33,8 @@ public class TankDamageReceiver : MonoBehaviour
 
         foreach (var member in crew)
         {
-            if (member != null && !member.IsDestroyed) 
-            {
+            if (member != null && !member.IsDestroyed)
                 aliveCrew++;
-            }
         }
 
         if (aliveCrew < 2)
@@ -52,12 +47,9 @@ public class TankDamageReceiver : MonoBehaviour
     {
         Debug.Log("Tank destroyed: not enough crew!");
 
-        
         if (tank != null)
         {
-            tank.enabled = false;
+            tank.DisableMovement();
         }
-
-          
     }
 }

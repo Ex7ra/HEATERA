@@ -1,9 +1,31 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TankController_ClutchBraking : MonoBehaviour
+public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
 {
-    
+    private bool movementEnabled = true;
+    public float CurrentSpeed { get; private set; }
+
+    public void DisableMovement()
+    {
+        movementEnabled = false;
+    }
+    public void EnableMovement()
+    {
+        movementEnabled = true;
+    }
+    public void DestroyLeftTrack()
+    {
+        leftTrackHealth = 0f;
+    }
+    public void DestroyRightTrack()
+    {
+        rightTrackHealth = 0f;
+    }
+    public void EngineDestroyed()
+    {
+        engineHealth = 0f;
+    }
 
     [Header("Speeds (km/h)")]
     public float forwardSpeedKmh = 50f;
@@ -41,7 +63,6 @@ public class TankController_ClutchBraking : MonoBehaviour
     float currentLeftSpeed  = 0f;
     float currentRightSpeed = 0f;
 
-    public float CurrentSpeed { get; private set; }
 
     float ForwardSpeedMs => forwardSpeedKmh / 3.6f;
     float ReverseSpeedMs => reverseSpeedKmh / 3.6f;
@@ -63,6 +84,12 @@ public class TankController_ClutchBraking : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!movementEnabled)
+        {
+            rb.linearVelocity  = Vector2.zero;
+            rb.angularVelocity = 0f;
+            return;
+        }
         if (engineHealth <= 0f)
         {
             rb.linearVelocity  = Vector2.zero;

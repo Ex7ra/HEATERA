@@ -2,20 +2,28 @@ using UnityEngine;
 
 public class TrackModule : TankModule
 {
-    public TankController tank; 
-    public bool isLeft;         
+    public MonoBehaviour tankScript;
+    private ITankMovement tank;
+
+    public bool isLeft;
+
+    void Awake()
+    {
+        tank = tankScript as ITankMovement;
+    }
 
     protected override void OnDestroyed()
     {
         base.OnDestroyed();
+
         if (tank != null)
         {
             if (isLeft)
-                tank.leftTrackHealth = 0f;
+                tank.DestroyLeftTrack();
             else
-                tank.rightTrackHealth = 0f;
+                tank.DestroyRightTrack();
 
-            Debug.Log((isLeft ? "Left" : "Right") + " track destroyed! Tank can't move!");
+            Debug.Log((isLeft ? "Left" : "Right") + " track destroyed!");
         }
     }
 }

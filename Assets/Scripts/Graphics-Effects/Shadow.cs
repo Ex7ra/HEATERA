@@ -3,7 +3,7 @@ using UnityEngine;
 public class Shadow2D : MonoBehaviour
 {
     public Transform target;                        
-    public Vector2 worldOffset = new Vector2(-0.06f, -0.09f);
+    public Vector3 worldOffset = new Vector3(-0.06f, -0.09f, 0f);
 
     [Header("Size")]
     public Vector3 shadowLocalScale = new Vector3(0.53f, 0.58f, 1f);
