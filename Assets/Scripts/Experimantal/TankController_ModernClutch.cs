@@ -102,6 +102,9 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
 
         transform.RotateAround(hullCenter.position, Vector3.forward, rotationDelta);
         rb.linearVelocity = forward * currentSpeed;
+
+       
+        CurrentSpeed = Mathf.Abs(currentSpeed);
     }
 
     public float SpeedKmh => CurrentSpeed * 3.6f;
