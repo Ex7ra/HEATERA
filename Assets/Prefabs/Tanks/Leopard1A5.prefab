@@ -242,13 +242,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419558434077374519}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.507, y: -0.312, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071058, w: 0.70710784}
+  m_LocalPosition: {x: -0.37872937, y: 0.19249068, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!68 &1285230071518248253
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -286,8 +286,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.18862975, y: 0.544417}
-  - {x: -0.18760699, y: 0.08837573}
+  - {x: -0.502728, y: 0.24906918}
+  - {x: 0.12367886, y: 0.24683258}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -339,7 +339,7 @@ Transform:
   m_Children:
   - {fileID: 6147203889645374606}
   - {fileID: 5380339860585729555}
-  - {fileID: 3446730487383884878}
+  - {fileID: 2491636850063779323}
   - {fileID: 6427384033289307775}
   m_Father: {fileID: 6780797082890287567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -353,10 +353,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7187800851357884310}
   - component: {fileID: 6800780242138856441}
-  - component: {fileID: 4799231177365565438}
   - component: {fileID: 5089333306760276787}
   m_Layer: 7
-  m_Name: SidesMaskOutside(Turret)
+  m_Name: SideMaskOutsideLeft(Turret)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,13 +369,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1444791454851647556}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.795, y: -0.396, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.86602443, w: 0.50000167}
+  m_LocalPosition: {x: -0.7786524, y: -0.14109847, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
 --- !u!68 &6800780242138856441
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -414,51 +413,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.000019174302, y: 0.17251174}
-  - {x: 0.16358188, y: 0.07281774}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!68 &4799231177365565438
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1444791454851647556}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.0008211981, y: 0.6276547}
-  - {x: 0.16401741, y: 0.7213612}
+  - {x: 0.08438381, y: 0.21702877}
+  - {x: 0.07962975, y: 0.026939731}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -477,7 +433,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 0
+  normalAxis: 1
   flipNormal: 0
 --- !u!1 &2612255146018054437
 GameObject:
@@ -564,101 +520,6 @@ MonoBehaviour:
   health: 0
   IsDestroyed: 0
   damageReceiver: {fileID: 6872905978666851161}
---- !u!1 &2677356708311415232
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3446730487383884878}
-  - component: {fileID: 8878490260887550533}
-  - component: {fileID: 2007553415091949808}
-  m_Layer: 6
-  m_Name: 'RightSidePlate(Hull) '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3446730487383884878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677356708311415232}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: 2.974, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 7668067877464606606}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8878490260887550533
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677356708311415232}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0.9509456, y: -0.108875275}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 2.901888, y: 0.01131474}
-  m_EdgeRadius: 0
---- !u!114 &2007553415091949808
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2677356708311415232}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
-  plateEffArmour: 40
-  ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &2864687053256310921
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,13 +655,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3241745708721898878}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -1.02, y: 2.406, z: 0}
   m_LocalScale: {x: 0.5, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7668067877464606606}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &537594278094221632
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -835,7 +696,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.034629256, y: 0.0053176284}
+  m_Offset: {x: 0.010058969, y: -0.032482594}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -845,7 +706,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6573306, y: 0.88846684}
+  m_Size: {x: 1.779993, y: 0.34792536}
   m_EdgeRadius: 0
 --- !u!114 &7276793136050880224
 MonoBehaviour:
@@ -873,10 +734,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5692913816528292603}
   - component: {fileID: 3407707567645664664}
-  - component: {fileID: 2233102599618035981}
   - component: {fileID: 7409208756740487100}
   m_Layer: 7
-  m_Name: 'SidesMaskInside(Turret) '
+  m_Name: 'SideMaskInsideLeft(Turret) '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -890,13 +750,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3541711310503767008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.684, y: -0.396, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.86602443, w: 0.50000167}
+  m_LocalPosition: {x: -0.5576566, y: -0.23788905, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -120}
 --- !u!68 &3407707567645664664
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -934,51 +794,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: 0.051105052, y: 0.07331351}
-  - {x: 0.16659424, y: 0.011785349}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
---- !u!68 &2233102599618035981
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3541711310503767008}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: 0.05238138, y: 0.72096074}
-  - {x: 0.18093829, y: 0.78352505}
+  - {x: 0.10635192, y: 0.10887254}
+  - {x: 0.11105862, y: -0.022753134}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -997,7 +814,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 0
+  normalAxis: 1
   flipNormal: 0
 --- !u!1 &3572700479591128225
 GameObject:
@@ -1121,7 +938,7 @@ MonoBehaviour:
   reloadMultiplier: 1
   accuracyMultiplier: 1
   AP:
-    prefab: {fileID: 5162275950734572207, guid: 094943595d627d343b1cc75a9334c5b6, type: 3}
+    prefab: {fileID: 6485009639510780785, guid: 9f5364740f8ff2c4aa4209377af20ac0, type: 3}
     speed: 12
     reloadTime: 5
   HEAT:
@@ -1164,13 +981,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3662766029911026151}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.6, y: 2.056, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7668067877464606606}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!61 &4991168024569876545
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1205,7 +1022,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.9509456, y: -0.09977616}
+  m_Offset: {x: -0.100053325, y: -0.98565435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -1215,7 +1032,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.901888, y: 0.011314742}
+  m_Size: {x: 0.013480149, y: 2.8538566}
   m_EdgeRadius: 0
 --- !u!114 &2487208617250513818
 MonoBehaviour:
@@ -1233,6 +1050,101 @@ MonoBehaviour:
   ricochetAngleDeg: 70
   normalAxis: 1
   flipNormal: 1
+--- !u!1 &3822519701149295624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2491636850063779323}
+  - component: {fileID: 6522252650800775814}
+  - component: {fileID: 4672080290892355929}
+  m_Layer: 6
+  m_Name: RightSidePlate(Hull)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2491636850063779323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822519701149295624}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -0.6, y: 2.966, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7668067877464606606}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!61 &6522252650800775814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822519701149295624}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.100053325, y: -0.98565435}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 0.013480149, y: 2.8538566}
+  m_EdgeRadius: 0
+--- !u!114 &4672080290892355929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3822519701149295624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 40
+  ricochetAngleDeg: 70
+  normalAxis: 1
+  flipNormal: 0
 --- !u!1 &4019636295635570014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,10 +1334,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3686541851574512774}
   - component: {fileID: 21358580827353075}
-  - component: {fileID: 7322691515695443083}
   - component: {fileID: 4599220680475195305}
   m_Layer: 7
-  m_Name: FrontSidePlates(Turret)
+  m_Name: FrontSidePlateLeft(Turret)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1493,54 +1404,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!68 &7322691515695443083
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4513396869818979386}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.50324434, y: 0.3869404}
-  - {x: -0.40585977, y: 0.4638209}
-  - {x: -0.36182606, y: 0.49419844}
-  - {x: -0.27272615, y: 0.5438993}
-  - {x: -0.2148223, y: 0.5733366}
-  - {x: -0.12519728, y: 0.6148104}
-  - {x: -0.08353204, y: 0.62656206}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &4599220680475195305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1556,7 +1419,7 @@ MonoBehaviour:
   plateEffArmour: 70
   ricochetAngleDeg: 70
   normalAxis: 0
-  flipNormal: 0
+  flipNormal: 1
 --- !u!1 &4822292790935598175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1666,6 +1529,98 @@ MonoBehaviour:
   shadowLocalScale: {x: 0.96, y: 1, z: 1}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+--- !u!1 &4875315838041814982
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7668040885633026060}
+  - component: {fileID: 6143111551219126692}
+  - component: {fileID: 6207123600056325033}
+  m_Layer: 7
+  m_Name: SideMaskOutsideRight(Turret)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7668040885633026060
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875315838041814982}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.86602443, w: 0.50000167}
+  m_LocalPosition: {x: -0.08722558, y: 0.54436, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 120}
+--- !u!68 &6143111551219126692
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875315838041814982}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.082176924, y: 0.5812051}
+  - {x: 0.082675055, y: 0.7686226}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &6207123600056325033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4875315838041814982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 10
+  ricochetAngleDeg: 70
+  normalAxis: 1
+  flipNormal: 0
 --- !u!1 &5274337613667693764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,10 +1631,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5936748273854743299}
   - component: {fileID: 638602679346102987}
-  - component: {fileID: 1273440530874154183}
   - component: {fileID: 2002559668329005824}
   m_Layer: 7
-  m_Name: SidePlates(Turret)
+  m_Name: SidePlateLeft(Turret)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1748,53 +1702,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!68 &1273440530874154183
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5274337613667693764}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -0.48682097, y: 1.2925788}
-  - {x: -0.34518594, y: 1.3011918}
-  - {x: -0.15076031, y: 1.3013622}
-  - {x: -0.037763443, y: 1.2815671}
-  - {x: 0.09740522, y: 1.2221144}
-  - {x: 0.25870684, y: 1.1111095}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &2002559668329005824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,7 +1717,7 @@ MonoBehaviour:
   plateEffArmour: 60
   ricochetAngleDeg: 70
   normalAxis: 0
-  flipNormal: 0
+  flipNormal: 1
 --- !u!1 &5617278828331726650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1932,7 +1839,7 @@ GameObject:
   - component: {fileID: 5511270154859653747}
   - component: {fileID: 6803990321929598758}
   m_Layer: 7
-  m_Name: BasketPlate(Turret)
+  m_Name: BasketPlateBack(Turret)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1946,13 +1853,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5640806545693474048}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.763, y: -0.093, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  m_LocalPosition: {x: 1.0407844, y: -0.19364208, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!68 &5511270154859653747
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -1990,16 +1897,12 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.09790648, y: -0.3592754}
-  - {x: -0.070295244, y: -0.33995178}
-  - {x: 0.14943443, y: -0.32654983}
-  - {x: 0.21948412, y: -0.16432405}
-  - {x: 0.25710088, y: -0.027458884}
-  - {x: 0.25664493, y: 0.19193213}
-  - {x: 0.20780356, y: 0.37895182}
-  - {x: 0.1265328, y: 0.5011589}
-  - {x: -0.074191555, y: 0.5145258}
-  - {x: -0.10132872, y: 0.53854316}
+  - {x: -0.22626437, y: 0.13064168}
+  - {x: -0.06753315, y: 0.062485784}
+  - {x: 0.07088296, y: 0.020653695}
+  - {x: 0.28975838, y: 0.021860206}
+  - {x: 0.4694781, y: 0.066428274}
+  - {x: 0.6033759, y: 0.15106918}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -2019,7 +1922,7 @@ MonoBehaviour:
   plateEffArmour: 10
   ricochetAngleDeg: 70
   normalAxis: 0
-  flipNormal: 0
+  flipNormal: 1
 --- !u!1 &5754490014061780888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2051,6 +1954,99 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6523871284579092925}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5758916953526460740
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5707249483935021649}
+  - component: {fileID: 5171162114612531318}
+  - component: {fileID: 8891115683951067988}
+  m_Layer: 7
+  m_Name: 'BasketPlateRight(Turret) '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5707249483935021649
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758916953526460740}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  m_LocalPosition: {x: 0.941, y: 0.22, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!68 &5171162114612531318
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758916953526460740}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.22505414, y: 0.27916524}
+  - {x: 0.20378654, y: 0.2605924}
+  - {x: 0.18983814, y: 0.05133994}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &8891115683951067988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5758916953526460740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 10
+  ricochetAngleDeg: 70
+  normalAxis: 1
+  flipNormal: 0
 --- !u!1 &5880760466711901014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2540,6 +2536,98 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!1 &6524237321874631104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772506441886364463}
+  - component: {fileID: 2790986041669997559}
+  - component: {fileID: 6241272229021742520}
+  m_Layer: 7
+  m_Name: 'SideMaskInsideRight(Turret)  '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &772506441886364463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524237321874631104}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.9238787, w: 0.38268542}
+  m_LocalPosition: {x: 0.047078528, y: 0.8056928, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 135}
+--- !u!68 &2790986041669997559
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524237321874631104}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.09304642, y: 0.6852506}
+  - {x: 0.13997993, y: 0.8198889}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &6241272229021742520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6524237321874631104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 45
+  ricochetAngleDeg: 70
+  normalAxis: 1
+  flipNormal: 0
 --- !u!1 &6584587922092380107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2757,6 +2845,103 @@ MonoBehaviour:
   IsDestroyed: 0
   tankScript: {fileID: 6872905978666851161}
   isLeft: 1
+--- !u!1 &7422054446318746692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7026328407558051115}
+  - component: {fileID: 3573886846363727539}
+  - component: {fileID: 4133247449787728963}
+  m_Layer: 7
+  m_Name: FrontSidePlateRight(Turret)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7026328407558051115
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422054446318746692}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &3573886846363727539
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422054446318746692}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.50324434, y: 0.3869404}
+  - {x: -0.40585977, y: 0.4638209}
+  - {x: -0.36182606, y: 0.49419844}
+  - {x: -0.27272615, y: 0.5438993}
+  - {x: -0.2148223, y: 0.5733366}
+  - {x: -0.12519728, y: 0.6148104}
+  - {x: -0.08353204, y: 0.62656206}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &4133247449787728963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422054446318746692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 70
+  ricochetAngleDeg: 70
+  normalAxis: 0
+  flipNormal: 0
 --- !u!1 &7523412089318926394
 GameObject:
   m_ObjectHideFlags: 0
@@ -2978,12 +3163,18 @@ Transform:
   m_Children:
   - {fileID: 7103819090989715883}
   - {fileID: 7187800851357884310}
+  - {fileID: 7668040885633026060}
   - {fileID: 26955854708522046}
   - {fileID: 5692913816528292603}
+  - {fileID: 772506441886364463}
   - {fileID: 3686541851574512774}
+  - {fileID: 7026328407558051115}
   - {fileID: 5936748273854743299}
+  - {fileID: 7020082004436132513}
   - {fileID: 8619844578045580617}
   - {fileID: 5679672248078799292}
+  - {fileID: 7285111028023620800}
+  - {fileID: 5707249483935021649}
   m_Father: {fileID: 4357569810127795396}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8236303321608049005
@@ -3012,13 +3203,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8236303321608049005}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6060002, y: -0.3120001, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  m_LocalPosition: {x: -0.47775578, y: 0.19250277, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!68 &4617284804523695942
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3056,8 +3247,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.18862975, y: 0.544417}
-  - {x: -0.18760699, y: 0.08837573}
+  - {x: 0.03914907, y: 0.3164453}
+  - {x: -0.41602322, y: 0.3173701}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -3103,7 +3294,7 @@ Transform:
   m_GameObject: {fileID: 8299233997998304419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.7860073, y: 0.0049985466, z: 0}
+  m_LocalPosition: {x: -0.833, y: 0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3204,6 +3395,195 @@ MonoBehaviour:
   health: 0
   IsDestroyed: 0
   turret: {fileID: 2643635324928508430}
+--- !u!1 &8617103318863559936
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7285111028023620800}
+  - component: {fileID: 8736739588402367431}
+  - component: {fileID: 7470457471024466876}
+  m_Layer: 7
+  m_Name: 'BasketPlateLeft(Turret) '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7285111028023620800
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617103318863559936}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.70710576, w: 0.7071079}
+  m_LocalPosition: {x: 0.942, y: -0.577, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!68 &8736739588402367431
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617103318863559936}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.12478551, y: 0.2765086}
+  - {x: 0.13940912, y: 0.26519236}
+  - {x: 0.15702717, y: 0.031887446}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &7470457471024466876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8617103318863559936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 10
+  ricochetAngleDeg: 70
+  normalAxis: 1
+  flipNormal: 1
+--- !u!1 &8656892746145219630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7020082004436132513}
+  - component: {fileID: 8837273064952036056}
+  - component: {fileID: 1982526838607185952}
+  m_Layer: 7
+  m_Name: 'SidePlateRight(Turret) '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7020082004436132513
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656892746145219630}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.403, y: -0.666, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7829391826614890570}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &8837273064952036056
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656892746145219630}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.48682097, y: 1.2925788}
+  - {x: -0.34518594, y: 1.3011918}
+  - {x: -0.15076031, y: 1.3013622}
+  - {x: -0.037763443, y: 1.2815671}
+  - {x: 0.09740522, y: 1.2221144}
+  - {x: 0.25870684, y: 1.1111095}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &1982526838607185952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8656892746145219630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8536d1e8469c73b4bb551ef6adf05c85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankArmor
+  plateEffArmour: 60
+  ricochetAngleDeg: 70
+  normalAxis: 0
+  flipNormal: 0
 --- !u!1 &8665451360083371346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3230,13 +3610,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8665451360083371346}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.723, y: 0.047, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7071058, w: 0.70710784}
+  m_LocalPosition: {x: 0.2241062, y: -0.31172633, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7829391826614890570}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!68 &4304451584727716537
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -3274,14 +3654,15 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -0.117380925, y: -0.46050668}
-  - {x: -0.02281025, y: -0.39716133}
-  - {x: 0.03061268, y: -0.29975536}
-  - {x: 0.07906, y: -0.15002161}
-  - {x: 0.0789968, y: 0.061835077}
-  - {x: 0.020102538, y: 0.21840084}
-  - {x: -0.03419022, y: 0.2998468}
-  - {x: -0.120397955, y: 0.35914636}
+  - {x: -0.10274544, y: -0.39013088}
+  - {x: -0.030011397, y: -0.47609642}
+  - {x: 0.035917755, y: -0.51230335}
+  - {x: 0.121304594, y: -0.5529068}
+  - {x: 0.21739025, y: -0.5793375}
+  - {x: 0.4081733, y: -0.5806394}
+  - {x: 0.5273299, y: -0.5466103}
+  - {x: 0.64301896, y: -0.47786602}
+  - {x: 0.70700186, y: -0.38900137}
   m_AdjacentStartPoint: {x: 0, y: 0}
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
@@ -3301,4 +3682,4 @@ MonoBehaviour:
   plateEffArmour: 60
   ricochetAngleDeg: 70
   normalAxis: 0
-  flipNormal: 0
+  flipNormal: 1
