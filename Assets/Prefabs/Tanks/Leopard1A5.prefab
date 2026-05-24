@@ -938,16 +938,16 @@ MonoBehaviour:
   reloadMultiplier: 1
   accuracyMultiplier: 1
   AP:
-    prefab: {fileID: 6485009639510780785, guid: 9f5364740f8ff2c4aa4209377af20ac0, type: 3}
-    speed: 12
+    prefab: {fileID: 6485009639510780785, guid: c928f9b58195ebc4b93eb2c0f878ee0c, type: 3}
+    speed: 80
     reloadTime: 5
   HEAT:
-    prefab: {fileID: 0}
-    speed: 12
+    prefab: {fileID: 4347720091298249981, guid: 527efe3754958bd499808292d24b2aa4, type: 3}
+    speed: 65
     reloadTime: 5
   HE:
-    prefab: {fileID: 0}
-    speed: 12
+    prefab: {fileID: 2187057313416492218, guid: 6a8e2fc20c4dcef498dc88298fe5f7b8, type: 3}
+    speed: 40
     reloadTime: 5
   switchShellTime: 6
   totalShells: 50
@@ -3294,7 +3294,7 @@ Transform:
   m_GameObject: {fileID: 8299233997998304419}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.833, y: 0.005, z: 0}
+  m_LocalPosition: {x: -0.967, y: 0.005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

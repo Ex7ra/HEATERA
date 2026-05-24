@@ -465,6 +465,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &276608014 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7201753425952145902, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+  m_PrefabInstance: {fileID: 2064986642}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a58905e430e78d34f9bb49f1beabcc38, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankController_ModernClutch
+--- !u!4 &276608016 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+  m_PrefabInstance: {fileID: 2064986642}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &330504213
 GameObject:
   m_ObjectHideFlags: 0
@@ -709,7 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7faed820853c3b845ac01e9ea552efb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1137376395}
+  target: {fileID: 276608016}
   followSmoothTime: 0
   zoomSpeed: 5
   minZoom: 2
@@ -1182,22 +1198,6 @@ Transform:
   - {fileID: 1511614679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1137376395 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
-  m_PrefabInstance: {fileID: 5387236484931235011}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1137376396 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7201753425952145902, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
-  m_PrefabInstance: {fileID: 5387236484931235011}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a58905e430e78d34f9bb49f1beabcc38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TankController_ModernClutch
 --- !u!212 &1215090535 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1462345727084517369, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
@@ -2012,7 +2012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981160da629a6e34da2d3fc2ce2d403d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tankScript: {fileID: 1137376396}
+  tankScript: {fileID: 276608014}
   speedText: {fileID: 1251204715}
   showKmh: 1
 --- !u!1 &1680016058
@@ -2264,6 +2264,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Leopard1A5 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7276793136050880224, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: plateEffArmour
+      value: 400
+      objectReference: {fileID: 0}
     - target: {fileID: 7410213195510213801, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: tankScript
       value: 
@@ -2416,7 +2420,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1906057548}
   m_CullTransparentMesh: 1
---- !u!1001 &5387236484931235011
+--- !u!1001 &2064986642
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -2426,11 +2430,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.065
+      value: 0.006421566
       objectReference: {fileID: 0}
     - target: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.228
+      value: 0.22319883
       objectReference: {fileID: 0}
     - target: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2465,10 +2469,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
-      propertyPath: AP.speed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: modeText
       value: 
       objectReference: {fileID: 330504214}
@@ -2476,10 +2476,6 @@ PrefabInstance:
       propertyPath: shellText
       value: 
       objectReference: {fileID: 1634045507}
-    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
-      propertyPath: HEAT.prefab
-      value: 
-      objectReference: {fileID: 5162275950734572207, guid: 95d0c3b4d56a83347ab333040aa3ac64, type: 3}
     - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: reloadingText
       value: 
@@ -2501,7 +2497,7 @@ SceneRoots:
   - {fileID: 77828015}
   - {fileID: 201962951}
   - {fileID: 1129036785}
-  - {fileID: 1443895309}
   - {fileID: 195275487}
-  - {fileID: 5387236484931235011}
+  - {fileID: 1443895309}
   - {fileID: 1824536105}
+  - {fileID: 2064986642}

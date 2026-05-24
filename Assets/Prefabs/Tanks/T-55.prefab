@@ -489,7 +489,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   IsDestroyed: 0
-  tank: {fileID: 7403868625900091503}
+  tankScript: {fileID: 0}
   isLeft: 1
 --- !u!1 &1169530390497346455
 GameObject:
@@ -678,14 +678,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38251d36519957e4580baf47c89ff861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tank: {fileID: 7403868625900091503}
-  engine: {fileID: 1966152019133146799}
-  leftTrack: {fileID: 9219426283240886584}
-  rightTrack: {fileID: 5466856979947451593}
-  ammoRack: {fileID: 2687020844147151745}
-  gunBreech: {fileID: 1368192751711614188}
-  cannon: {fileID: 5929426345171394933}
-  turretTraverse: {fileID: 2353938411839868433}
   crew:
   - {fileID: 5400657835070282573}
   - {fileID: 9089451588502181040}
@@ -819,7 +811,7 @@ MonoBehaviour:
   maxHealth: 300
   health: 0
   IsDestroyed: 0
-  tank: {fileID: 7403868625900091503}
+  tankScript: {fileID: 0}
 --- !u!1 &2081386385518245381
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TurretNormal
   rotationSpeed: 18
   firePoint: {fileID: 443053594838088093}
+  defaultRotationOffset: -180
   recoilDistance: 0.3
   recoilSpeed: 5
   cannon: {fileID: 270181517329148345}
@@ -1130,22 +1123,23 @@ MonoBehaviour:
   reloadMultiplier: 1
   accuracyMultiplier: 1
   AP:
-    prefab: {fileID: 5162275950734572207, guid: 094943595d627d343b1cc75a9334c5b6, type: 3}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 6485009639510780785, guid: 85a66b9621469a64faf40fffe9dff686, type: 3}
+    speed: 75
+    reloadTime: 6
   HEAT:
-    prefab: {fileID: 5162275950734572207, guid: 95d0c3b4d56a83347ab333040aa3ac64, type: 3}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 4347720091298249981, guid: 9a48618db6d73694186883f091a7f56a, type: 3}
+    speed: 55
+    reloadTime: 6
   HE:
-    prefab: {fileID: 5162275950734572207, guid: 6dd0f659df5a45545a338658021093a0, type: 3}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 2187057313416492218, guid: c89945c384193474a944f1d4ebcc05ab, type: 3}
+    speed: 50
+    reloadTime: 6
   switchShellTime: 6
   totalShells: 30
   switchTime: 1.2
   modeText: {fileID: 0}
   shellText: {fileID: 0}
+  reloadingText: {fileID: 0}
 --- !u!1 &3545126960850478916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1346,7 +1340,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 7864759052882430070}
-  worldOffset: {x: -0.06, y: -0.09}
+  worldOffset: {x: -0.06, y: -0.09, z: 0}
   shadowLocalScale: {x: 1.06, y: 1.16, z: 1}
   rotateWithTarget: 1
   extraRotationDegrees: 0
@@ -2149,7 +2143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 6490708653751086142}
-  worldOffset: {x: -0.06, y: -0.09}
+  worldOffset: {x: -0.06, y: -0.09, z: 0}
   shadowLocalScale: {x: 1.06, y: 1.16, z: 1}
   rotateWithTarget: 1
   extraRotationDegrees: 0
@@ -2447,7 +2441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 270181517329148345}
-  worldOffset: {x: -0.06, y: -0.09}
+  worldOffset: {x: -0.06, y: -0.09, z: 0}
   shadowLocalScale: {x: 1.06, y: 1.16, z: 1}
   rotateWithTarget: 1
   extraRotationDegrees: 0
@@ -3199,5 +3193,5 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   IsDestroyed: 0
-  tank: {fileID: 7403868625900091503}
+  tankScript: {fileID: 0}
   isLeft: 0

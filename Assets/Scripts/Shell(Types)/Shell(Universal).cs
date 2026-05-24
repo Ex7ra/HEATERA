@@ -147,6 +147,85 @@ public class Shell : MonoBehaviour
             return;
         }
 
+        // Check armour first
+        TankArmor armor = other.GetComponent<TankArmor>();
+        if (armor == null)
+            armor = other.GetComponentInParent<TankArmor>();
+
+        if (armor != null)
+        {
+            if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer != hullLayer)
+                return;
+
+            if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer != turretLayer)
+                return;
+
+            float plateNormalDeg, incomingDeg, impactDeg;
+            bool ricochet;
+
+            float effectiveArmor = armor.GetEffectiveArmorFromVelocity(
+                rb.linearVelocity,
+                out plateNormalDeg,
+                out incomingDeg,
+                out impactDeg,
+                out ricochet
+            );
+
+            impactDeg = Mathf.Clamp(impactDeg, 0f, 85f);
+
+            float angleMultiplier = penetrationByAngle.Evaluate(impactDeg);
+            float effectivePenetration = penetrationMm * angleMultiplier;
+
+            bool penetrated = !ricochet && effectivePenetration >= effectiveArmor;
+
+            PenDebug.LogHit(
+                other.name,
+                effectivePenetration,
+                armor.plateEffArmour,
+                plateNormalDeg,
+                incomingDeg,
+                impactDeg,
+                effectiveArmor,
+                ricochet,
+                penetrated
+            );
+
+            if (penetrated)
+            {
+                if (shellType == ShellType.APFSDS)
+                {
+                    penetrationMm *= 0.85f;
+                    // APFSDS continues to interact with modules behind armour
+                }
+                else
+                {
+                    hasPenetrated = true;
+
+                    if (spriteRenderer != null)
+                    {
+                        spriteRenderer.enabled = false;
+                    }
+                    Explode();
+                    ShowCombinedText();
+                    return;
+                }
+            }
+            else
+            {
+               if(UnityEngine.Random.Range(0, 2) == 0)
+               {
+                combinedMessage += "Ricocheted\n" ; 
+               }
+               else{
+                combinedMessage += "Deflected\n" ;
+               }
+                ShowCombinedText();
+                Destroy(gameObject);
+                return;
+            }
+        }
+
+        // If we got here: either there was no armour, or APFSDS penetrated and continues
         TankModule module = other.GetComponent<TankModule>();
         if (module == null)
             module = other.GetComponentInParent<TankModule>();
@@ -183,82 +262,6 @@ public class Shell : MonoBehaviour
                         spriteRenderer.enabled = false;
                 }
                 ShowCombinedText();
-                return;
-            }
-        }
-
-        TankArmor armor = other.GetComponent<TankArmor>();
-        if (armor != null)
-        {
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer != hullLayer)
-                return;
-
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer != turretLayer)
-                return;
-
-            float plateNormalDeg, incomingDeg, impactDeg;
-            bool ricochet;
-
-            float effectiveArmor = armor.GetEffectiveArmorFromVelocity(
-                rb.linearVelocity,
-                out plateNormalDeg,
-                out incomingDeg,
-                out impactDeg,
-                out ricochet
-            );
-
-            impactDeg = Mathf.Clamp(impactDeg, 0f, 85f);
-
-            float angleMultiplier = penetrationByAngle.Evaluate(impactDeg);
-            float effectivePenetration = penetrationMm * angleMultiplier;
-
-            bool penetrated = !ricochet && effectivePenetration >= effectiveArmor;
-
-            
-            PenDebug.LogHit(
-                other.name,
-                effectivePenetration,
-                armor.plateEffArmour,
-                plateNormalDeg,
-                incomingDeg,
-                impactDeg,
-                effectiveArmor,
-                ricochet,
-                penetrated
-            );
-
-            if (penetrated)
-            {
-                if (shellType == ShellType.APFSDS)
-                {
-                    penetrationMm *= 0.85f;
-                    //combinedMessage += "Penetrated\n";//dont need info about pen when we see what we damged 
-            
-                }
-                else
-                {
-                    hasPenetrated = true;
-
-                    if (spriteRenderer != null)
-                    {
-                        spriteRenderer.enabled = false;
-                    }
-                    Explode();
-                }
-                ShowCombinedText();
-                return;
-            }
-            else
-            {
-               if(UnityEngine.Random.Range(0, 2) == 0)
-               {
-                combinedMessage += "Ricocheted\n" ; 
-               }
-               else{
-                combinedMessage += "Deflected\n" ;
-               }
-                ShowCombinedText();
-                Destroy(gameObject);
                 return;
             }
         }
