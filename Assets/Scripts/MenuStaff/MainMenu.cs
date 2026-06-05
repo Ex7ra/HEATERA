@@ -4,11 +4,13 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public GameObject FSPanel;
+    public GameObject NatoPanel;
     void Start()
     {
         FSPanel.SetActive(false);
+        NatoPanel.SetActive(false);
     }
-    public void OnPoinetrDown()
+    public void OpenFSPanel()
     {
         FSPanel.SetActive(!FSPanel.activeSelf);
     }
@@ -20,6 +22,14 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit the game");
+    }
+    public void OpenNatoPanel()
+    {
+       NatoPanel.SetActive(!NatoPanel.activeSelf); 
+    }
+    public void GoBack()
+    {
+        NatoPanel.SetActive(false);
     }
 
 }
