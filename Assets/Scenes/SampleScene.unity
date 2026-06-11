@@ -1590,6 +1590,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8029068945860617517, guid: f10085f3bb989314a9909a3cc337a8ba, type: 3}
+      propertyPath: PauseMenu
+      value: 
+      objectReference: {fileID: 8938553587104389674}
+    - target: {fileID: 8029068945860617517, guid: f10085f3bb989314a9909a3cc337a8ba, type: 3}
+      propertyPath: MenuCursor
+      value: 
+      objectReference: {fileID: -8328923581568760697, guid: 0319849e17a8c8e4aa0ba6ee222eb827, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1660,6 +1668,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+--- !u!1 &8938553587104389674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5108851763431379355, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
