@@ -6,6 +6,7 @@ public class CursorControllerComplex : MonoBehaviour
 
     [SerializeField] private Texture2D cursorTextureDefault;
     [SerializeField] private Texture2D cursorTextureTarget;
+    
 
     private void Awake()
     {
@@ -19,12 +20,12 @@ public class CursorControllerComplex : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     void Start()
     {
         SetToMode(ModeOfCursor.Default);
     }
-
+    
     public void SetToMode(ModeOfCursor modeOfCursor)
     {
         Texture2D tex = cursorTextureDefault;

@@ -31,5 +31,11 @@ public class MainMenu : MonoBehaviour
     {
         NatoPanel.SetActive(false);
     }
+    
+    public void PlayLevel(string sceneName)
+    {
+        SceneManager.LoadSceneAsync(sceneName);
+    }
+    
 
 }
