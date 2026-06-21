@@ -547,7 +547,7 @@ Transform:
   m_GameObject: {fileID: 2864687053256310921}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.09, z: 1}
+  m_LocalPosition: {x: -0.06, y: -0.09, z: -0.1}
   m_LocalScale: {x: 1.06, y: 1.16, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -600,7 +600,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7129904516085171691, guid: 4e5284983c546e94c8564e448736e1e7, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
@@ -625,8 +625,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 4357569810127795396}
-  worldOffset: {x: -0.06, y: -0.09, z: 1}
-  shadowLocalScale: {x: 1.06, y: 1.16, z: 1}
+  worldOffset: {x: -0.06, y: -0.09, z: 0}
+  shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
 --- !u!1 &3241745708721898878
@@ -900,7 +900,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: -7129904516085171691, guid: 4e5284983c546e94c8564e448736e1e7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1447,8 +1447,8 @@ Transform:
   m_GameObject: {fileID: 4822292790935598175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06286665, y: -0.05760001, z: 1}
-  m_LocalScale: {x: 1.0666664, y: 1.1111108, z: 1}
+  m_LocalPosition: {x: -0.06286665, y: -0.05760001, z: 0}
+  m_LocalScale: {x: 1.0666664, y: 1.1111108, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6780797082890287567}
@@ -1525,8 +1525,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 6780797082890287567}
-  worldOffset: {x: -0.05, y: 0.03, z: 0}
-  shadowLocalScale: {x: 0.96, y: 1, z: 1}
+  worldOffset: {x: -0.06286665, y: -0.05760001, z: 0}
+  shadowLocalScale: {x: 1.066666, y: 1.111111, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
 --- !u!1 &4875315838041814982
@@ -1745,7 +1745,7 @@ Transform:
   m_GameObject: {fileID: 5617278828331726650}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16360962, y: -0.08970887, z: 0}
+  m_LocalPosition: {x: -0.16360962, y: -0.08970887, z: -0.2}
   m_LocalScale: {x: 1.06, y: 1.16, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1798,7 +1798,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6105866753743248120, guid: e435259b9e97e6b47a345eaf7e1b6adc, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
@@ -1824,7 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Shadow2D
   target: {fileID: 5396712693393835689}
   worldOffset: {x: -0.06, y: -0.09, z: 0}
-  shadowLocalScale: {x: 1.06, y: 1.16, z: 1}
+  shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
 --- !u!1 &5640806545693474048
@@ -2373,7 +2373,7 @@ Transform:
   m_GameObject: {fileID: 6050517426568270250}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.0018400028, y: -0.026580006, z: 2}
+  m_LocalPosition: {x: 0.0018400028, y: -0.026580006, z: 0}
   m_LocalScale: {x: 0.9000002, y: 0.9000002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2429,7 +2429,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -4078488139671872253, guid: 9de67814016bc0e47a4d1797ae8bd737, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -2524,7 +2524,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_MaskInteraction: 0
   m_Sprite: {fileID: 6105866753743248120, guid: e435259b9e97e6b47a345eaf7e1b6adc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

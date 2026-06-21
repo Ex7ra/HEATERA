@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CursorControllerComplex : MonoBehaviour
 {
@@ -6,6 +7,8 @@ public class CursorControllerComplex : MonoBehaviour
 
     [SerializeField] private Texture2D cursorTextureDefault;
     [SerializeField] private Texture2D cursorTextureTarget;
+  
+    [SerializeField] private GameObject PauseMenu;
 
     private void Awake()
     {
@@ -19,12 +22,20 @@ public class CursorControllerComplex : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    
     void Start()
     {
         SetToMode(ModeOfCursor.Default);
     }
-
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+        
+    }
+    
     public void SetToMode(ModeOfCursor modeOfCursor)
     {
         Texture2D tex = cursorTextureDefault;
