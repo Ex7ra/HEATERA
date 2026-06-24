@@ -1,30 +1,30 @@
 using UnityEngine;
 using UnityEngine.Video;
-using System.Collections.Generic;
+
 
 public class TV_Manager : MonoBehaviour
 {
-    public VideoPlayer TV;
-    public VideoClip[] videos;
-    private int currentIndex = 0;
+    public VideoPlayer TV;//for TVplayer object
+    public VideoClip[] videos; // an array of video clips
+    private int currentIndex = 0;// 0 is index, so by defualt video with index 0 will play 
     void Start()
     {
-       if(videos.Length > 0)
+       if(videos.Length > 0)//only plays if there is at least one video in the array
         {
-            TV.clip = videos[currentIndex];
-            TV.Play();
+            TV.clip = videos[currentIndex];//sets the clip/video currently will play
+            TV.Play();//tells the VideoPlayer to start playback
         }
     }
     public void next_forw()
     {
-        if (videos.Length == 0) return;
-        currentIndex++;
+        if (videos.Length == 0) return;//tells: if there are no video, stop this method immediatly
+        currentIndex++;//increases index by 1
 
-        if(currentIndex >= videos.Length)
-            currentIndex = 0;
+        if(currentIndex >= videos.Length)//this means if we moved past the last video, go back to the first one
+            currentIndex = 0;//
         
-        TV.clip = videos[currentIndex];
-        TV.Play();
+        TV.clip = videos[currentIndex];//sets the current clip 
+        TV.Play();//plays it 
     }    
     public void next_back()
     {
@@ -32,7 +32,7 @@ public class TV_Manager : MonoBehaviour
         currentIndex--;
 
         if(currentIndex < 0)
-            currentIndex = videos.Length - 1;
+            currentIndex = videos.Length - 1;//this line means: jump to the last video in the list
         
         TV.clip = videos[currentIndex];
         TV.Play();
