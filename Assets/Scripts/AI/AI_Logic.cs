@@ -3,13 +3,18 @@ using UnityEngine;
 public class AI_Logic : MonoBehaviour
 {
     
-    public Transform target;
+    private AI_Movement_ClutchBraking movementLogic;
+    public GameObject PointA;
     
+    void Start()
+    {
+        movementLogic = GetComponent<AI_Movement_ClutchBraking>();
+    }
 
     
     void Update()
     {
-            //target.transform.position = Vector2.MoveTowards(target.transform.position, target.transform.position, 5f * Time.deltaTime);
+        
             
     }
 }
