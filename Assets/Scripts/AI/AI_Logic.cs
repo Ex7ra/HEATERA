@@ -4,7 +4,7 @@ public class AI_Logic : MonoBehaviour
 {
     
     private AI_Movement_ClutchBraking movementLogic;
-    public GameObject PointA;
+    public Transform PointA;
     
     void Start()
     {
@@ -14,7 +14,7 @@ public class AI_Logic : MonoBehaviour
     
     void Update()
     {
-        
+        transform.position = Vector2.MoveTowards(transform.position, PointA.position, movementLogic.CurrentSpeed * Time.deltaTime);
             
     }
 }

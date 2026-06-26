@@ -3,6 +3,7 @@ using UnityEngine;
 public class CannonModule : TankModule
 {
     public TurretNormal turret;
+    public  AI_TurretController aiTurret;
 
     public override void Damage(float dmg)
     {
@@ -10,7 +11,16 @@ public class CannonModule : TankModule
 
         if (!IsDestroyed)
         {
-            turret.accuracyMultiplier = 0.5f;   
+            if(turret != null)
+            {
+                turret.accuracyMultiplier = 0.5f;
+            }
+            if(aiTurret != null)
+            {
+                aiTurret.accuracyMultiplier = 0.5f;  
+            }
+            
+     
         }
     }
 
@@ -18,8 +28,12 @@ public class CannonModule : TankModule
     {
         base.OnDestroyed();
 
+        if(turret != null){
         turret.gunOperational = false;
-
+        }
+        if(aiTurret != null){
+        aiTurret.gunOperational = false;
+        }
         Debug.Log("Cannon Ruptured → Firing Locked");
     }
 }
