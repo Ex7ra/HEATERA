@@ -2347,6 +2347,7 @@ MonoBehaviour:
   health: 0
   IsDestroyed: 0
   turret: {fileID: 2643635324928508430}
+  aiTurret: {fileID: 0}
 --- !u!1 &6050517426568270250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3132,6 +3133,7 @@ MonoBehaviour:
   health: 0
   IsDestroyed: 0
   turret: {fileID: 2643635324928508430}
+  aiTurret: {fileID: 0}
 --- !u!1 &8231746743915583926
 GameObject:
   m_ObjectHideFlags: 0
@@ -3395,6 +3397,7 @@ MonoBehaviour:
   health: 0
   IsDestroyed: 0
   turret: {fileID: 2643635324928508430}
+  aiTurret: {fileID: 0}
 --- !u!1 &8617103318863559936
 GameObject:
   m_ObjectHideFlags: 0

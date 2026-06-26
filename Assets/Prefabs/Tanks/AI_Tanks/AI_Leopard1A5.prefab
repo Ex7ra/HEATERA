@@ -2154,7 +2154,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2455730249517436563}
   - component: {fileID: 7981811001042300975}
-  - component: {fileID: 3617000985507951459}
+  - component: {fileID: 4896147627276437742}
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
   m_Layer: 0
@@ -2208,7 +2208,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3617000985507951459
+--- !u!114 &4896147627276437742
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2217,22 +2217,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 6004404656569007100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dc11c57a729504aab2c0da08ca637e, type: 3}
+  m_Script: {fileID: 11500000, guid: cf47281c535f6864687644db1c6320fc, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ClutchBraking
+  m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ModernClutch
+  acceleration: 10
+  deceleration: 15
+  hullCenter: {fileID: 6780797082890287567}
   forwardSpeedKmh: 50
   reverseSpeedKmh: 8
-  acceleration: 3
-  deceleration: 5
-  pivotTurnDegPerSec: 20
-  turnAcceleration: 2
-  turnDeceleration: 6
-  leftTrack: {fileID: 1698787914195767555}
-  rightTrack: {fileID: 1082999402855200263}
+  turnSpeed: 35
+  turnAcceleration: 200
+  turnDeceleration: 300
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1
-  spriteFacesRight: 0
   moveInput: 0
   turnInput: 0
 --- !u!114 &6872905978666851161
@@ -3042,7 +3040,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   IsDestroyed: 0
-  tankScript: {fileID: 3617000985507951459}
+  tankScript: {fileID: 0}
 --- !u!1 &8051844752291588048
 GameObject:
   m_ObjectHideFlags: 0
