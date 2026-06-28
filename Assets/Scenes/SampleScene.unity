@@ -569,6 +569,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4136091547857896094, guid: 215dfb58b683f07459cc34d40cef3c7c, type: 3}
+      propertyPath: AP.prefab
+      value: 
+      objectReference: {fileID: 6485009639510780785, guid: c928f9b58195ebc4b93eb2c0f878ee0c, type: 3}
+    - target: {fileID: 4136091547857896094, guid: 215dfb58b683f07459cc34d40cef3c7c, type: 3}
+      propertyPath: HE.prefab
+      value: 
+      objectReference: {fileID: 2187057313416492218, guid: 6a8e2fc20c4dcef498dc88298fe5f7b8, type: 3}
+    - target: {fileID: 4136091547857896094, guid: 215dfb58b683f07459cc34d40cef3c7c, type: 3}
+      propertyPath: HEAT.prefab
+      value: 
+      objectReference: {fileID: 4347720091298249981, guid: 527efe3754958bd499808292d24b2aa4, type: 3}
     - target: {fileID: 6004404656569007100, guid: 215dfb58b683f07459cc34d40cef3c7c, type: 3}
       propertyPath: m_Name
       value: AI_Leopard1A5
