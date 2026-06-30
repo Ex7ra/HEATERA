@@ -1,10 +1,13 @@
 using UnityEngine;
+using UnityEngine.Assertions.Must;
+using UnityEngine.Timeline;
 
 public class AI_Logic : MonoBehaviour
 {
     private AI_Movement_ModernClutch movementLogic;//this creates a variable that will store a reference to another script
     private AI_TurretController turretLogic;
     public Transform PointA;//to know the position, rotation and scale of PointA
+    public float aimDistance = 7f;
 
     void Start()
     {
@@ -40,8 +43,15 @@ public class AI_Logic : MonoBehaviour
         movementLogic.turnInput = turnInput;//for it to move
         //
         
+        if(distance < aimDistance){
         turretLogic.SetAimWorldPosition(PointA.position);
-
+        Debug.Log("Aiming!");
+        }
+        else
+        {
+            Debug.Log("No target around!");
+            return;
+        }
         
     }
 }

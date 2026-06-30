@@ -924,11 +924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721ba596d45635944b0be1ce92e9414b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_TurretController
-  rotationSpeed: 120
+  rotationSpeed: 36
   firePoint: {fileID: 5180316516541415154}
   defaultRotationOffset: -180
-  recoilDistance: 0.3
-  recoilSpeed: 5
+  recoilDistance: 0.1
+  recoilSpeed: 2
   cannon: {fileID: 6523871284579092925}
   currentShell: 0
   cannonModule: {fileID: 2830023169156915447}
@@ -938,21 +938,21 @@ MonoBehaviour:
   reloadMultiplier: 1
   accuracyMultiplier: 1
   AP:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 6485009639510780785, guid: c928f9b58195ebc4b93eb2c0f878ee0c, type: 3}
+    speed: 80
+    reloadTime: 5
   HEAT:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 4347720091298249981, guid: 527efe3754958bd499808292d24b2aa4, type: 3}
+    speed: 65
+    reloadTime: 5
   HE:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 2187057313416492218, guid: 6a8e2fc20c4dcef498dc88298fe5f7b8, type: 3}
+    speed: 40
+    reloadTime: 5
   switchShellTime: 6
-  totalShells: 30
+  totalShells: 50
   activeMode: 0
-  switchTime: 1.2
+  switchTime: 0.5
   modeText: {fileID: 0}
   shellText: {fileID: 0}
   reloadingText: {fileID: 0}
@@ -2220,14 +2220,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf47281c535f6864687644db1c6320fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ModernClutch
-  acceleration: 10
-  deceleration: 15
+  acceleration: 1.3
+  deceleration: 5
   hullCenter: {fileID: 6780797082890287567}
-  forwardSpeedKmh: 50
-  reverseSpeedKmh: 8
+  forwardSpeedKmh: 65
+  reverseSpeedKmh: 25
   turnSpeed: 35
-  turnAcceleration: 200
-  turnDeceleration: 300
+  turnAcceleration: 15
+  turnDeceleration: 50
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1
