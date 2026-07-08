@@ -185,9 +185,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         rb.angularVelocity = angularVelocityRad * Mathf.Rad2Deg;
 
         CurrentSpeed = Mathf.Abs(combinedSpeed);//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
-        //Rotates the left and right track visuals based on their current speeds to visually match the tank’s movement
-        if (leftTrack  != null) leftTrack .Rotate(Vector3.forward, currentLeftSpeed  * 50f * Time.fixedDeltaTime);
-        if (rightTrack != null) rightTrack.Rotate(Vector3.forward, currentRightSpeed * 50f * Time.fixedDeltaTime);
+        
     }
     //Gradually adjusts current speed toward target speed using acceleration or deceleration while preventing overshooting
     float StepSpeed(float current, float target, float accel, float decel)

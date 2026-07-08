@@ -78,6 +78,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
 
     void Update()
     {
+        
         //moveInput = Input.GetAxisRaw("Vertical");
         //turnInput = Input.GetAxisRaw("Horizontal");
     }
@@ -183,8 +184,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
 
         CurrentSpeed = Mathf.Abs(combinedSpeed);
 
-        if (leftTrack  != null) leftTrack .Rotate(Vector3.forward, currentLeftSpeed  * 50f * Time.fixedDeltaTime);
-        if (rightTrack != null) rightTrack.Rotate(Vector3.forward, currentRightSpeed * 50f * Time.fixedDeltaTime);
+   
     }
 
     float StepSpeed(float current, float target, float accel, float decel)
