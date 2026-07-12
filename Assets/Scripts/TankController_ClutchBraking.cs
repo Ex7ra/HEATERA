@@ -28,6 +28,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         engineHealth = 0f;
     }
     //These are tunable settings exposed to the Unity Inspector that control movement, turning, and health behaviour of the tank
+    
     [Header("Speeds (km/h)")]
     public float forwardSpeedKmh = 50f;
     public float reverseSpeedKmh = 8f;
@@ -35,6 +36,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
     [Header("Acceleration / Deceleration (m/s²)")]
      public float acceleration = 3f;
     public float deceleration = 5f;
+    
 
     [Header("Turning")]
     public float pivotTurnDegPerSec = 20f;
@@ -60,7 +62,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
     float moveInput;
     //These variables store the player’s keyboard input values, which are updated every frame and used to control the tank’s movement
     float turnInput;
-
+    float previousTurnInput = 0f;
     float currentLeftSpeed  = 0f;
     //These store the actual current speeds of each track and are used to smoothly transition toward target movement values instead of changing instantly
     float currentRightSpeed = 0f;
@@ -87,6 +89,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
 
     void FixedUpdate()//runs at a fixed rate for physics calculations like Rigidbody movement
     {
+        
         if (!movementEnabled)//These conditions stop the tank immediately if movement is disabled, engine is destroyed, or a track is broken, by zeroing velocity and exiting the physics update early
         {
             rb.linearVelocity  = Vector2.zero;//Vector2.zero stops all linear movement
@@ -105,7 +108,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
             rb.angularVelocity = 0f;
             return;
         }
-
+        
         Vector2 forward = spriteFacesRight//Chooses the tanks forward movement direction based on whether the sprite is oriented right or up
             ? (Vector2)transform.right //NOTE: "?" means if
             : (Vector2)transform.up;// ":" means else
@@ -161,10 +164,18 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         float sharedBase = moveInput != 0f//Calculates the base movement speed depending on whether the player is moving forward, backward, or not moving at all
             ? (moveInput > 0f ? ForwardSpeedMs : -ReverseSpeedMs)
             : 0f;
+       
         //Checks whether each track’s target speed differs from normal movement speed, meaning the tank is currently steering
         bool leftIsSteering  = !Mathf.Approximately(targetLeft,  sharedBase);
         bool rightIsSteering = !Mathf.Approximately(targetRight, sharedBase);
+       if (previousTurnInput != 0f && turnInput == 0f && moveInput != 0f)
+        {
+           float averageSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
 
+            currentLeftSpeed = averageSpeed;
+            currentRightSpeed = averageSpeed;
+        }
+        else{
         currentLeftSpeed = StepSpeed(
         currentLeftSpeed, targetLeft,
         leftIsSteering  ? turnAcceleration : acceleration,
@@ -174,6 +185,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         currentRightSpeed, targetRight,
         rightIsSteering ? turnAcceleration : acceleration,
         rightIsSteering ? turnDeceleration : deceleration);
+        }
         //Combines left and right track speeds into a single clamped movement speed and applies it to move the tank forward in its facing direction
         float combinedSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
         combinedSpeed = Mathf.Clamp(combinedSpeed, -ReverseSpeedMs, ForwardSpeedMs);
@@ -185,9 +197,10 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         rb.angularVelocity = angularVelocityRad * Mathf.Rad2Deg;
 
         CurrentSpeed = Mathf.Abs(combinedSpeed);//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
-        
+        previousTurnInput = turnInput;
     }
     //Gradually adjusts current speed toward target speed using acceleration or deceleration while preventing overshooting
+    
     float StepSpeed(float current, float target, float accel, float decel)
     {
         float diff   = target - current;
@@ -196,6 +209,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         float rate   = slowing ? decel : accel;
         return current + Mathf.Sign(diff) * Mathf.Min(Mathf.Abs(diff), rate * Time.fixedDeltaTime);
     }
-
+    
+    
     public float SpeedKmh => CurrentSpeed * 3.6f;//Converts the tank’s current speed from meters per second into kilometers per hour for display or UI purposes
 }
