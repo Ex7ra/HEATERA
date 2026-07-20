@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2426713972293901255}
   m_Layer: 7
   m_Name: 'Commander Crew '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 4201664083892482033}
   m_Layer: 6
   m_Name: BackPlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -178,8 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 30
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &188880575542290291
 GameObject:
   m_ObjectHideFlags: 0
@@ -191,7 +189,7 @@ GameObject:
   - component: {fileID: 4716830673261553038}
   m_Layer: 7
   m_Name: Moduls(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,7 +227,7 @@ GameObject:
   - component: {fileID: 3854718491856636374}
   m_Layer: 7
   m_Name: 'FrontMaskInside(Turret) '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -306,8 +304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 80
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &1407461990482130620
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +315,7 @@ GameObject:
   - component: {fileID: 7668067877464606606}
   m_Layer: 6
   m_Name: Armour(Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +352,7 @@ GameObject:
   - component: {fileID: 5089333306760276787}
   m_Layer: 7
   m_Name: SideMaskOutsideLeft(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -433,8 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &2612255146018054437
 GameObject:
   m_ObjectHideFlags: 0
@@ -448,7 +442,7 @@ GameObject:
   - component: {fileID: 2713030991854696133}
   m_Layer: 6
   m_Name: Driver Crew
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -533,7 +527,7 @@ GameObject:
   - component: {fileID: 4505078359579469659}
   m_Layer: 7
   m_Name: Leopard_1A5_Turret-Shadow
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -642,7 +636,7 @@ GameObject:
   - component: {fileID: 7276793136050880224}
   m_Layer: 6
   m_Name: FrontPlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -722,8 +716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 140
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &3541711310503767008
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,7 +729,7 @@ GameObject:
   - component: {fileID: 7409208756740487100}
   m_Layer: 7
   m_Name: 'SideMaskInsideLeft(Turret) '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -814,8 +806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &3572700479591128225
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,7 +819,7 @@ GameObject:
   - component: {fileID: 2643635324928508430}
   m_Layer: 7
   m_Name: Leopard_1A5_Turret
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -968,7 +958,7 @@ GameObject:
   - component: {fileID: 2487208617250513818}
   m_Layer: 6
   m_Name: LeftSidePlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1048,8 +1038,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 40
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &3822519701149295624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1063,7 +1051,7 @@ GameObject:
   - component: {fileID: 4672080290892355929}
   m_Layer: 6
   m_Name: RightSidePlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1143,8 +1131,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 40
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &4019636295635570014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,7 +1144,7 @@ GameObject:
   - component: {fileID: 8105637155299554319}
   m_Layer: 6
   m_Name: Ammo Mod (Hull)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1252,7 +1238,7 @@ GameObject:
   - component: {fileID: 2660747216873154131}
   m_Layer: 7
   m_Name: 'Louder Crew  '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1337,7 +1323,7 @@ GameObject:
   - component: {fileID: 4599220680475195305}
   m_Layer: 7
   m_Name: FrontSidePlateLeft(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1418,8 +1404,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &4822292790935598175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1433,7 +1417,7 @@ GameObject:
   - component: {fileID: 4637997420993741497}
   m_Layer: 6
   m_Name: Leopard_1A5_Hull_Shadow
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1447,11 +1431,11 @@ Transform:
   m_GameObject: {fileID: 4822292790935598175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06286665, y: -0.05760001, z: 0}
+  m_LocalPosition: {x: 0.26888865, y: 2.3500004, z: 0}
   m_LocalScale: {x: 1.0666664, y: 1.1111108, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6780797082890287567}
+  m_Father: {fileID: 764870889278007936}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1153242361500300243
 SpriteRenderer:
@@ -1542,7 +1526,7 @@ GameObject:
   - component: {fileID: 6207123600056325033}
   m_Layer: 7
   m_Name: SideMaskOutsideRight(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1619,8 +1603,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &5274337613667693764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,7 +1616,7 @@ GameObject:
   - component: {fileID: 2002559668329005824}
   m_Layer: 7
   m_Name: SidePlateLeft(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1716,8 +1698,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &5617278828331726650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1731,7 +1711,7 @@ GameObject:
   - component: {fileID: 2252680446954083072}
   m_Layer: 7
   m_Name: Leopard_1A5_Cannon_Shadow
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1840,7 +1820,7 @@ GameObject:
   - component: {fileID: 6803990321929598758}
   m_Layer: 7
   m_Name: BasketPlateBack(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1921,8 +1901,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &5754490014061780888
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1912,7 @@ GameObject:
   - component: {fileID: 5396712693393835689}
   m_Layer: 7
   m_Name: Shadow_Place_Holder
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1967,7 +1945,7 @@ GameObject:
   - component: {fileID: 8891115683951067988}
   m_Layer: 7
   m_Name: 'BasketPlateRight(Turret) '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2045,8 +2023,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &5880760466711901014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2060,7 +2036,7 @@ GameObject:
   - component: {fileID: 25277489607710588}
   m_Layer: 6
   m_Name: 'Right Track Mod '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2158,7 +2134,7 @@ GameObject:
   - component: {fileID: 2603146018879313176}
   m_Layer: 0
   m_Name: Leopard1A5
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2275,7 +2251,7 @@ GameObject:
   - component: {fileID: 4216224979425689279}
   m_Layer: 7
   m_Name: TurretRotationMechanism
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2361,7 +2337,7 @@ GameObject:
   - component: {fileID: 5955646272114104681}
   m_Layer: 6
   m_Name: Leopard_1A5_Hull
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2381,7 +2357,6 @@ Transform:
   m_Children:
   - {fileID: 7668067877464606606}
   - {fileID: 764870889278007936}
-  - {fileID: 5693046023235247162}
   m_Father: {fileID: 2455730249517436563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &79617723958908454
@@ -2501,7 +2476,7 @@ GameObject:
   - component: {fileID: 399011390708131412}
   m_Layer: 7
   m_Name: Leopard_1A5_Cannon
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2597,7 +2572,7 @@ GameObject:
   - component: {fileID: 6241272229021742520}
   m_Layer: 7
   m_Name: 'SideMaskInsideRight(Turret)  '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2674,8 +2649,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &6584587922092380107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2689,7 +2662,7 @@ GameObject:
   - component: {fileID: 4344260465684676580}
   m_Layer: 7
   m_Name: Gunner Crew
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2772,7 +2745,7 @@ GameObject:
   - component: {fileID: 764870889278007936}
   m_Layer: 6
   m_Name: Modules
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2795,6 +2768,7 @@ Transform:
   - {fileID: 8377230695323129197}
   - {fileID: 2580401285436634296}
   - {fileID: 1288785309780199254}
+  - {fileID: 5693046023235247162}
   m_Father: {fileID: 6780797082890287567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7086376567846099723
@@ -2810,7 +2784,7 @@ GameObject:
   - component: {fileID: 3031159774094269961}
   m_Layer: 6
   m_Name: Left Track Mod
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2906,7 +2880,7 @@ GameObject:
   - component: {fileID: 4133247449787728963}
   m_Layer: 7
   m_Name: FrontSidePlateRight(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2988,8 +2962,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &7523412089318926394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3003,7 +2975,7 @@ GameObject:
   - component: {fileID: 7410213195510213801}
   m_Layer: 6
   m_Name: Engine
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3098,7 +3070,7 @@ GameObject:
   - component: {fileID: 4169454775835844566}
   m_Layer: 7
   m_Name: GunBreech Mod
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3192,7 +3164,7 @@ GameObject:
   - component: {fileID: 7829391826614890570}
   m_Layer: 7
   m_Name: Armor(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3239,7 +3211,7 @@ GameObject:
   - component: {fileID: 3748955140080578612}
   m_Layer: 7
   m_Name: FrontMaskOutside(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3316,8 +3288,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8299233997998304419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,7 +3299,7 @@ GameObject:
   - component: {fileID: 5180316516541415154}
   m_Layer: 7
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3362,7 +3332,7 @@ GameObject:
   - component: {fileID: 2830023169156915447}
   m_Layer: 7
   m_Name: CannonModule
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3458,7 +3428,7 @@ GameObject:
   - component: {fileID: 7470457471024466876}
   m_Layer: 7
   m_Name: 'BasketPlateLeft(Turret) '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3536,8 +3506,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &8656892746145219630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3519,7 @@ GameObject:
   - component: {fileID: 1982526838607185952}
   m_Layer: 7
   m_Name: 'SidePlateRight(Turret) '
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3632,8 +3600,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8665451360083371346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3647,7 +3613,7 @@ GameObject:
   - component: {fileID: 410150601703516590}
   m_Layer: 7
   m_Name: BackPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3731,5 +3697,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
