@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
-using UnityEngine.UIElements;
+
 
 public class TurretNormal : MonoBehaviour
 {
@@ -267,6 +267,7 @@ public class TurretNormal : MonoBehaviour
     {
         Vector2 fireDirection = firePoint.up;
         rb.linearVelocity = fireDirection * shell.speed;
+        obj.GetComponent<Shell>().Initialize(fireDirection);
     }
 
     StopCoroutine("RecoilCannon"); 

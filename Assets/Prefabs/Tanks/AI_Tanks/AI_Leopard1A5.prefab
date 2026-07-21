@@ -924,11 +924,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721ba596d45635944b0be1ce92e9414b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_TurretController
-  rotationSpeed: 120
+  rotationSpeed: 36
   firePoint: {fileID: 5180316516541415154}
   defaultRotationOffset: -180
-  recoilDistance: 0.3
-  recoilSpeed: 5
+  recoilDistance: 0.1
+  recoilSpeed: 2
   cannon: {fileID: 6523871284579092925}
   currentShell: 0
   cannonModule: {fileID: 2830023169156915447}
@@ -938,21 +938,21 @@ MonoBehaviour:
   reloadMultiplier: 1
   accuracyMultiplier: 1
   AP:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 6485009639510780785, guid: c928f9b58195ebc4b93eb2c0f878ee0c, type: 3}
+    speed: 80
+    reloadTime: 5
   HEAT:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 4347720091298249981, guid: 527efe3754958bd499808292d24b2aa4, type: 3}
+    speed: 65
+    reloadTime: 5
   HE:
-    prefab: {fileID: 0}
-    speed: 12
-    reloadTime: 3
+    prefab: {fileID: 2187057313416492218, guid: 6a8e2fc20c4dcef498dc88298fe5f7b8, type: 3}
+    speed: 40
+    reloadTime: 5
   switchShellTime: 6
-  totalShells: 30
+  totalShells: 50
   activeMode: 0
-  switchTime: 1.2
+  switchTime: 0.5
   modeText: {fileID: 0}
   shellText: {fileID: 0}
   reloadingText: {fileID: 0}
@@ -2220,14 +2220,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf47281c535f6864687644db1c6320fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ModernClutch
-  acceleration: 10
-  deceleration: 15
+  acceleration: 1.3
+  deceleration: 5
   hullCenter: {fileID: 6780797082890287567}
-  forwardSpeedKmh: 50
-  reverseSpeedKmh: 8
+  forwardSpeedKmh: 65
+  reverseSpeedKmh: 25
   turnSpeed: 35
-  turnAcceleration: 200
-  turnDeceleration: 300
+  turnAcceleration: 15
+  turnDeceleration: 50
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1
@@ -2361,6 +2361,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6780797082890287567}
   - component: {fileID: 79617723958908454}
+  - component: {fileID: 8068140215034182646}
   m_Layer: 6
   m_Name: Leopard_1A5_Hull
   m_TagString: Untagged
@@ -2445,6 +2446,52 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!61 &8068140215034182646
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6050517426568270250}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.2, y: 1.5}
+    newSize: {x: 3.2, y: 1.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 3.2, y: 1.5}
+  m_EdgeRadius: 0
 --- !u!1 &6297308613890466264
 GameObject:
   m_ObjectHideFlags: 0

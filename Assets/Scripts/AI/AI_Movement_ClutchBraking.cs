@@ -59,7 +59,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
 
     public float moveInput;
     public float turnInput;
-
+    float previousTurnInput = 0f;
     float currentLeftSpeed  = 0f;
     float currentRightSpeed = 0f;
 
@@ -162,15 +162,24 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
         bool leftIsSteering  = !Mathf.Approximately(targetLeft,  sharedBase);
         bool rightIsSteering = !Mathf.Approximately(targetRight, sharedBase);
 
+        if (previousTurnInput != 0f && turnInput == 0f && moveInput != 0f)
+        {
+           float averageSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
+
+            currentLeftSpeed = averageSpeed;
+            currentRightSpeed = averageSpeed;
+        }
+        else{
         currentLeftSpeed = StepSpeed(
         currentLeftSpeed, targetLeft,
         leftIsSteering  ? turnAcceleration : acceleration,
         leftIsSteering  ? turnDeceleration : deceleration);
-
+        
         currentRightSpeed = StepSpeed(
         currentRightSpeed, targetRight,
         rightIsSteering ? turnAcceleration : acceleration,
         rightIsSteering ? turnDeceleration : deceleration);
+        }
 
         float combinedSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
         combinedSpeed = Mathf.Clamp(combinedSpeed, -ReverseSpeedMs, ForwardSpeedMs);
@@ -183,8 +192,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
 
         CurrentSpeed = Mathf.Abs(combinedSpeed);
 
-        if (leftTrack  != null) leftTrack .Rotate(Vector3.forward, currentLeftSpeed  * 50f * Time.fixedDeltaTime);
-        if (rightTrack != null) rightTrack.Rotate(Vector3.forward, currentRightSpeed * 50f * Time.fixedDeltaTime);
+        previousTurnInput = turnInput;
     }
 
     float StepSpeed(float current, float target, float accel, float decel)

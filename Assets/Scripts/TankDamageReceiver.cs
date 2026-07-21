@@ -1,4 +1,5 @@
 using UnityEngine;
+using Pathfinding;
 
 public class TankDamageReceiver : MonoBehaviour
 {
@@ -26,7 +27,6 @@ public class TankDamageReceiver : MonoBehaviour
 
         CheckCrewStatus();
     }
-
     public void CheckCrewStatus()
     {
         int aliveCrew = 0;
@@ -51,5 +51,16 @@ public class TankDamageReceiver : MonoBehaviour
         {
             tank.DisableMovement();
         }
+
+        int obstacleLayer = LayerMask.NameToLayer("Obstacle");
+
+        foreach (Transform child in GetComponentsInChildren<Transform>(true))
+        {
+            child.gameObject.layer = obstacleLayer;
+            child.gameObject.tag = "Destroyed Vechicle";
+        }
+
+        AstarPath.active.Scan();
+        
     }
 }

@@ -1,9 +1,9 @@
 using UnityEngine;
 using TMPro;
-using System.Threading;
+using System.Linq;// Gives access to LINQ functions like OrderBy() for sorting arrays
 
 
-[RequireComponent(typeof(Rigidbody2D), typeof(Collider2D))]
+[RequireComponent(typeof(Rigidbody2D))]// Makes sure this GameObject always has a Rigidbody2D component
 public class Shell : MonoBehaviour
 {
     [Header("Base Stats")]
@@ -11,259 +11,261 @@ public class Shell : MonoBehaviour
     public float damage = 40f;
     public float maxDistance = 30f;
 
-    public enum ShellType { APFSDS, HEAT, HE }
-    [Header("Shell Types")]
+    public enum ShellType
+    {
+        APFSDS,
+        HEAT,
+        HE
+    }
+
+    [Header("Shell Type")]
     public ShellType shellType;
 
-    [Header("Explosion Properties")]
-    public float explosionRadius = 0f;
-    public float explosionDamage = 0f;
+    [Header("Explosion")]
+    public float explosionRadius;
+    public float explosionDamage;
 
     [Header("Angle Penetration Loss")]
-    public AnimationCurve penetrationByAngle = new AnimationCurve(
-        new Keyframe(0f, 1.0f),
-        new Keyframe(30f, 0.9f),
-        new Keyframe(45f, 0.75f),
-        new Keyframe(60f, 0.55f),
-        new Keyframe(75f, 0.35f),
-        new Keyframe(85f, 0.2f)
-    );
+    public AnimationCurve penetrationByAngle = new AnimationCurve(new Keyframe(0f, 1f),new Keyframe(30f, 0.9f),new Keyframe(45f, 0.75f),new Keyframe(60f, 0.55f),new Keyframe(75f, 0.35f),new Keyframe(85f, 0.2f));
 
-    private Vector3 startPos;
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private bool hasPenetrated = false;
-    private string combinedMessage = "";
-    private bool isFinished = false;
+    private Rigidbody2D rb;// Cached reference to the shell's Rigidbody2D so we don't search for it repeatedly
 
-    public GameObject hitTextPrefab;
-    public float lifeTimeText = 1.5f;
+    private Vector2 lastPosition;// Stores the shell's previous position so we can raycast along the distance travelled each frame
+    private Vector2 shellDirection;// Stores the shell's travel direction for armour angle and penetration calculations
+
+    private Vector3 startPos;// Remembers where the shell was fired so we can destroy it after travelling its maximum range
+
+    private float remainingPenetration;// Current penetration left after passing through armour or internal components
+    private float remainingDamage;// Current damage remaining after penetrating multiple objects
+
+    private bool shellDead;// Prevents the shell from processing more hits after it has been destroyed
 
     private int hullLayer;
     private int turretLayer;
 
+    private string combinedMessage = "";
+
+    public GameObject hitTextPrefab;
+    public float lifeTimeText = 1.5f;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         hullLayer = LayerMask.NameToLayer("TankHull");
         turretLayer = LayerMask.NameToLayer("TankTurret");
 
-        if (hullLayer == -1 || turretLayer == -1)
-            Debug.LogError("TankHull or TankTurret layer not found! Please create them in Tags & Layers.");
-
-        switch (shellType)
+        switch(shellType)
         {
             case ShellType.APFSDS:
-                explosionRadius = 0f;
-                break;
+            explosionRadius = 0;
+            break;
+
             case ShellType.HEAT:
-                explosionRadius = 2f;
-                break;
+            explosionRadius = 2f;
+            break;
+
             case ShellType.HE:
-                explosionRadius = 4f;
-                break;
+            explosionRadius = 4f;
+            break;
         }
     }
-
     void Start()
     {
         startPos = transform.position;
+        lastPosition = transform.position;
+        shellDirection = rb.linearVelocity.normalized;
+        remainingPenetration = penetrationMm;
+        remainingDamage = damage;
     }
-    void ShowCombinedText()
+    public void Initialize(Vector2 direction)
     {
-        if (string.IsNullOrEmpty(combinedMessage))
-            return;
-
-        Vector3 offset = new Vector3(0f, 0.3f, 0f);
-        GameObject obj = Instantiate(hitTextPrefab, transform.position + offset, Quaternion.identity);
-
-        TMP_Text text = obj.GetComponentInChildren<TMP_Text>();
-
-        if (text != null)
-        {
-            text.text = combinedMessage.TrimEnd(); // removes last empty line
-        }
-        else
-        {
-            Debug.LogWarning("No TMP_Text found on prefab!");
-        }
-
-        Destroy(obj, lifeTimeText);
-
-        combinedMessage = ""; // reset
+        shellDirection = direction.normalized;
     }
-
     void Update()
     {
-        if (Vector3.Distance(transform.position, startPos) > maxDistance)
+        if(shellDead)
+            return;
+
+        CheckHits();
+
+        if(Vector3.Distance(transform.position,startPos) > maxDistance)
         {
-            ShowCombinedText();
+            Destroy(gameObject);
+        }
+    }
+
+    void CheckHits()
+    {
+        Vector2 currentPosition = transform.position;// Store the shell's current position this frame
+        Vector2 travel = currentPosition - lastPosition;// Calculate how far and in what direction the shell moved since the previous frame
+
+        if(travel.magnitude <= 0)// If the shell didn't move this frame, there is nothing to raycast
+            return;
+
+        // Cast a ray along the distance travelled this frame and collect every object it passes through
+        RaycastHit2D[] hits = Physics2D.RaycastAll(lastPosition,travel.normalized,travel.magnitude);
+
+        hits = hits.OrderBy(h => h.distance).ToArray();// Sort all raycast hits from closest to furthest so the shell interacts with objects in the correct order
+
+        foreach(RaycastHit2D hit in hits)// Go through every object that the ray passed through, starting with the closest
+        {
+
+            if(hit.collider.gameObject == gameObject)// Ignore the shell's own collider if the ray detects it
+                continue;
+
+            ProcessHit(hit);// Send this hit to the penetration and damage system
+
+            if(shellDead)// Stop checking more hits if the shell has already been destroyed
+            break;
+        }
+
+        lastPosition = currentPosition;// Save the current position so it becomes the previous position on the next frame
+    }
+
+    void ProcessHit(RaycastHit2D hit)// Processes what happens after the shell hits an object (armour, module, etc)
+    {
+        if(!IsValidTarget(hit.collider.gameObject))// Ignore objects that are not part of the current firing mode
+        return;
+
+        TankArmor armor = hit.collider.GetComponent<TankArmor>();// Check if the object hit has an armour component
+
+        if(armor != null)// If armour was hit, perform penetration calculations
+
+        {   // Ignore armour that belongs to the wrong fire mode (hull or turret)
+            if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && hit.collider.gameObject.layer != hullLayer)
+            {
+                return;
+            }
+            // Ignore armour that belongs to the wrong fire mode (hull or turret)
+            if(TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && hit.collider.gameObject.layer != turretLayer)
+            {
+                return;
+            }
+
+            float plateNormal;// Stores the direction angle of the armour surface
+            float incoming;// Stores the direction from which the shell approaches the armour
+            float impact;// Stores the angle at which the shell hits the armour
+            bool ricochet;// Stores whether the shell ricocheted from the armour
+
+            // Calculate effective armour thickness and get information about the impact angle and ricochet
+            float effectiveArmor = armor.GetEffectiveArmorFromRay(shellDirection,hit.normal,out plateNormal,out incoming,out impact,out ricochet);
+            // Calculate the shell's effective penetration after applying the armour impact angle penalty
+            float currentPenetration = remainingPenetration * penetrationByAngle.Evaluate(impact);
+
+            Debug.Log($"ARMOUR {armor.name} | Pen {currentPenetration} | Armor {effectiveArmor}");// Display penetration and armour values for testing
+
+            if(ricochet || currentPenetration < effectiveArmor)// If the shell ricochets or lacks penetration, stop the projectile
+            {
+                combinedMessage += "Ricochet\n";
+                ShowCombinedText();
+                shellDead = true;
+                Destroy(gameObject);
+                return;
+            }
+
+            remainingPenetration -= effectiveArmor;// Remove the armour thickness from the shell's remaining penetration power
+            Debug.Log("ARMOUR PENETRATED Remaining: " + remainingPenetration);
+
+            if(shellType == ShellType.HEAT)// HEAT creates its damage effect after penetration and does not continue like APFSDS.
+            {
+                Explode();
+                ShowCombinedText();
+                shellDead = true;
+                Destroy(gameObject);
+                return;
+            }
+
+            return;
+        }
+
+        TankModule module = hit.collider.GetComponent<TankModule>();
+
+        if(module != null)
+        {
+            float appliedDamage = remainingDamage;
+
+            if(shellType == ShellType.APFSDS)
+            {
+                appliedDamage *= 1.2f;
+
+                remainingDamage *= 0.7f;
+
+                remainingPenetration *= 0.85f;
+            }
+
+            module.Damage(appliedDamage);
+            combinedMessage += module.name + " Damaged\n";
+            Debug.Log(module.name + " damaged " + appliedDamage);
+
+            return;
+        }
+
+        if(shellType == ShellType.HE)
+        {
+            Explode();
+
+            shellDead = true;
             Destroy(gameObject);
         }
     }
 
     void Explode()
     {
-        if (shellType == ShellType.APFSDS) return;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, explosionRadius);
+        if(shellType == ShellType.APFSDS)
+            return;
 
-        foreach (Collider2D hit in hits)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position,explosionRadius);
+
+        foreach(Collider2D hit in hits)
         {
             TankModule module = hit.GetComponent<TankModule>();
-            if (module == null)
+
+            if(module == null)
                 module = hit.GetComponentInParent<TankModule>();
 
-            if (module != null)
+            if(module != null)
             {
-                float distance = Vector2.Distance(transform.position, hit.transform.position);
-                float damageMultiplier = 1f - (distance / explosionRadius);
-                float finalDamage = explosionDamage * damageMultiplier;
+                float distance = Vector2.Distance(transform.position,hit.transform.position);
+                float multiplier = Mathf.Clamp01(1f - distance / explosionRadius);
+                float finalDamage = explosionDamage *multiplier;
 
                 module.Damage(finalDamage);
                 combinedMessage += module.name + " Damaged\n";
-
-                Debug.Log($"[EXPLOSION HIT] {module.name} took {finalDamage}");
+                Debug.Log("[Explosion] " + module.name + " " +finalDamage);
             }
         }
     }
 
-    void ShowHitMessage(string message, Vector3 position)
+    void ShowCombinedText()
     {
-        Debug.Log(message + " at " + position);
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (rb.linearVelocity.sqrMagnitude < 0.001f)
-        {
-            if (shellType != ShellType.APFSDS)
-                Explode();
-
-            ShowCombinedText();
-            Destroy(gameObject);
+        if(string.IsNullOrEmpty(combinedMessage))
             return;
-        }
+        Vector3 offset = new Vector3(0f,0.3f,0f);
+        GameObject obj = Instantiate(hitTextPrefab,transform.position + offset,Quaternion.identity);
+        TMP_Text text = obj.GetComponentInChildren<TMP_Text>();
 
-        // Check armour first
-        TankArmor armor = other.GetComponent<TankArmor>();
-        if (armor == null)
-            armor = other.GetComponentInParent<TankArmor>();
-
-        if (armor != null)
+        if(text != null)
         {
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer != hullLayer)
-                return;
-
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer != turretLayer)
-                return;
-
-            float plateNormalDeg, incomingDeg, impactDeg;
-            bool ricochet;
-
-            float effectiveArmor = armor.GetEffectiveArmorFromVelocity(
-                rb.linearVelocity,
-                out plateNormalDeg,
-                out incomingDeg,
-                out impactDeg,
-                out ricochet
-            );
-
-            impactDeg = Mathf.Clamp(impactDeg, 0f, 85f);
-
-            float angleMultiplier = penetrationByAngle.Evaluate(impactDeg);
-            float effectivePenetration = penetrationMm * angleMultiplier;
-
-            bool penetrated = !ricochet && effectivePenetration >= effectiveArmor;
-
-            PenDebug.LogHit(
-                other.name,
-                effectivePenetration,
-                armor.plateEffArmour,
-                plateNormalDeg,
-                incomingDeg,
-                impactDeg,
-                effectiveArmor,
-                ricochet,
-                penetrated
-            );
-
-            if (penetrated)
-            {
-                if (shellType == ShellType.APFSDS)
-                {
-                    penetrationMm *= 0.85f;
-                    // APFSDS continues to interact with modules behind armour
-                }
-                else
-                {
-                    hasPenetrated = true;
-
-                    if (spriteRenderer != null)
-                    {
-                        spriteRenderer.enabled = false;
-                    }
-                    Explode();
-                    ShowCombinedText();
-                    return;
-                }
-            }
-            else
-            {
-               if(UnityEngine.Random.Range(0, 2) == 0)
-               {
-                combinedMessage += "Ricocheted\n" ; 
-               }
-               else{
-                combinedMessage += "Deflected\n" ;
-               }
-                ShowCombinedText();
-                Destroy(gameObject);
-                return;
-            }
+            text.text = combinedMessage.TrimEnd();
         }
-
-        // If we got here: either there was no armour, or APFSDS penetrated and continues
-        TankModule module = other.GetComponent<TankModule>();
-        if (module == null)
-            module = other.GetComponentInParent<TankModule>();
-
-        bool validModule = false;
-
-        if (module != null)
+        Destroy(obj,lifeTimeText);
+        combinedMessage = "";
+    }
+    bool IsValidTarget(GameObject obj)
+    {
+        if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly)
         {
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && other.gameObject.layer == hullLayer)
-                validModule = true;
-
-            if (TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && other.gameObject.layer == turretLayer)
-                validModule = true;
-
-            if (validModule)
-            {
-                float appliedDamage = damage;
-
-                if (shellType == ShellType.APFSDS)
-                    appliedDamage *= 1.2f;
-
-                string msg = module.name + " Damaged";
-
-                combinedMessage += msg + "\n";//those are for prefab
-                module.Damage(appliedDamage);
-
-                Debug.Log($"[MODULE HIT] {module.name} took {appliedDamage} damage");
-
-                if (!hasPenetrated)
-                {
-                    hasPenetrated = true;
-
-                    if (spriteRenderer != null)
-                        spriteRenderer.enabled = false;
-                }
-                ShowCombinedText();
-                return;
-            }
+            return obj.layer == hullLayer;
         }
+
+
+        if(TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly)
+        {
+            return obj.layer == turretLayer;
+        }
+
+        return true;
     }
 }

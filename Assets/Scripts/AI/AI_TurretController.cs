@@ -211,7 +211,7 @@ public class AI_TurretController : MonoBehaviour
     }
 
    
-    void RotateTurret()
+    public void RotateTurret()
     {
         if (!hasAimTarget)
             return;
@@ -219,11 +219,7 @@ public class AI_TurretController : MonoBehaviour
         Vector3 dir = aimWorldPosition - transform.position;
         float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - defaultRotationOffset;
 
-        float turretZ = Mathf.MoveTowardsAngle(
-            transform.eulerAngles.z,
-            targetAngle,
-            rotationSpeed * rotationMultiplier * Time.deltaTime
-        );
+        float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z,targetAngle,rotationSpeed * rotationMultiplier * Time.deltaTime);
 
         transform.rotation = Quaternion.Euler(0, 0, turretZ);
     }   
@@ -259,7 +255,7 @@ public class AI_TurretController : MonoBehaviour
     return true;
   }
 
-  void Shoot()
+    public void Shoot()
 {
      ShellData shell = GetCurrentShell();
 
