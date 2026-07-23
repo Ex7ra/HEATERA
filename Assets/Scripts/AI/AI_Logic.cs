@@ -1,6 +1,7 @@
 using UnityEngine;
 using Pathfinding;
 using UnityEditor;
+using JetBrains.Annotations;
 //Gives "Seeker" and "Path" these calculate a safe route around obstacles
 
 public class AI_Logic : MonoBehaviour
@@ -27,7 +28,10 @@ public class AI_Logic : MonoBehaviour
 
     public float waypointDistance = 3f;//Tells the AI/bot "When I'm this close to the current waypoint, start heading toward the next one."
     public float pathUpdateRate = 2f;//"How often should I calculate a brand new path?"
+    public float retreatDistance = 4f;
     private TankModule currentAimTarget;
+    private bool retreating = false;
+    private Vector2 retreatPoint;
     void Start()
     {
         modernMovementLogic = GetComponent<AI_Movement_ModernClutch>();//finds the movement script 
@@ -45,7 +49,7 @@ public class AI_Logic : MonoBehaviour
         {
             Debug.Log("I am on " + tag + " team");
         }
-        
+        retreatPoint = (Vector2)transform.position - (Vector2)transform.up * retreatDistance;
     }
     void FindEnemy()
     {
@@ -75,15 +79,25 @@ public class AI_Logic : MonoBehaviour
             }
         }
     }
+   
+    
+    
     void UpdatePath()//This creates a route
     {
         if(Point == null)//checks if Points exists if not then stop "return"
             return;
 
-        if(seeker.IsDone())//checks if seeker is free (a path cannot be calculated while another running)
+        if(!seeker.IsDone())//checks if seeker is not free (a path cannot be calculated while another running)
+        return;
+
+        if(retreating)
         {
-            seeker.StartPath(transform.position, Point.position, OnPathComplete);//Creates a path from Start "transf.pos" to End "Pointa.pos" when finished call "OnPathComplete"
+            seeker.StartPath(transform.position, retreatPoint, OnPathComplete);
+            return;
         }
+        seeker.StartPath(transform.position, Point.position, OnPathComplete);//Creates a path from Start "transf.pos" to End "Pointa.pos" when finished call "OnPathComplete"
+        
+        
     }
     void OnPathComplete(Path p)//Receving the path
     {
@@ -116,11 +130,42 @@ public class AI_Logic : MonoBehaviour
         float distance = direction.magnitude;//gets the length/distance 
         
        
-
         float targetDistance = Vector2.Distance(transform.position,Point.position);//I want the distance between these two positions.
-
+        
+        
         AimingTheTurret(targetDistance);
         ShootTheTarget(targetDistance);
+
+        if(targetDistance < stoppingDistance && !retreating)
+        {
+            retreating = true;
+            Vector2 tankForward;
+
+            if(oldMovementLogic != null)
+            {
+                tankForward = oldMovementLogic.spriteFacesRight ? (Vector2)transform.right : (Vector2)transform.up;
+            }
+            else
+            {
+                tankForward = transform.up;
+            }
+
+            retreatPoint = (Vector2)transform.position - tankForward * retreatDistance;
+            driveForward = false;
+            seeker.StartPath(transform.position, retreatPoint, OnPathComplete);
+            return;
+        }
+        if(retreating)
+        {
+            float retreatDistanceLeft = Vector2.Distance(transform.position, retreatPoint);
+
+            if(retreatDistanceLeft < stoppingDistance)
+            {
+                retreating = false;
+                driveForward = true;
+                seeker.StartPath(transform.position, Point.position, OnPathComplete);
+            }
+        }                   
         if(distance < waypointDistance)//Moving to next waypoint, if yes "currentWaypoint++;" go to next point
         {
             currentWaypoint++;
@@ -137,12 +182,6 @@ public class AI_Logic : MonoBehaviour
             distance = direction.magnitude;//Calculates how far away the new waypoint is.
         }
 
-        if(targetDistance < stoppingDistance)//Stops at the destination
-        {
-            Debug.Log("Arrived at target");
-            Stop();
-            return;
-        }
 
         if(currentWaypoint >= path.vectorPath.Count)//checks whether the AI has reached the end of the path.
         {
@@ -150,6 +189,7 @@ public class AI_Logic : MonoBehaviour
             Stop();
             return;
         }
+
 
         
         direction /= distance;//this called "NORMALIZED VECTOR" It keeps only the direction not the distance
@@ -220,7 +260,7 @@ public class AI_Logic : MonoBehaviour
 
         if(distance > 0.5f)
         {
-            float speedAmount = Mathf.Clamp01(0.5f - angleError / 45f);//This slows the tank when turning
+            float speedAmount = Mathf.Clamp01(0.3f - angleError / 60f);//This slows the tank when turning
 
             if(driveForward)
             {
@@ -266,6 +306,7 @@ public class AI_Logic : MonoBehaviour
                 
         }
     }
+    
 
     void AimingTheTurret(float distance)
     {

@@ -178,8 +178,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 30
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &188880575542290291
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,8 +304,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 80
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &1407461990482130620
 GameObject:
   m_ObjectHideFlags: 0
@@ -433,8 +429,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &2612255146018054437
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +716,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 140
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &3541711310503767008
 GameObject:
   m_ObjectHideFlags: 0
@@ -814,8 +806,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &3572700479591128225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1049,8 +1039,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 40
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &3822519701149295624
 GameObject:
   m_ObjectHideFlags: 0
@@ -1144,8 +1132,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 40
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &4019636295635570014
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,8 +1405,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &4822292790935598175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,8 +1604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &5274337613667693764
 GameObject:
   m_ObjectHideFlags: 0
@@ -1717,8 +1699,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &5617278828331726650
 GameObject:
   m_ObjectHideFlags: 0
@@ -1922,8 +1902,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &5754490014061780888
 GameObject:
   m_ObjectHideFlags: 0
@@ -2046,8 +2024,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &5880760466711901014
 GameObject:
   m_ObjectHideFlags: 0
@@ -2154,12 +2130,14 @@ GameObject:
   m_Component:
   - component: {fileID: 2455730249517436563}
   - component: {fileID: 7981811001042300975}
+  - component: {fileID: 4593532638812460723}
   - component: {fileID: 4896147627276437742}
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
+  - component: {fileID: 4364576118424481591}
   m_Layer: 0
   m_Name: AI_Leopard1A5
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2208,6 +2186,28 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &4593532638812460723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004404656569007100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
+  Point: {fileID: 0}
+  aimDistance: 15
+  stoppingDistance: 15
+  obstacleDistance: 5
+  turret: {fileID: 4357569810127795396}
+  firePoint: {fileID: 5180316516541415154}
+  targetUpdateRate: 1
+  Enemy: {fileID: 0}
+  waypointDistance: 2
+  pathUpdateRate: 2
 --- !u!114 &4896147627276437742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2265,6 +2265,34 @@ MonoBehaviour:
   modeOfCursor: 0
   highlightSprites: []
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &4364576118424481591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004404656569007100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: AstarPathfindingProject::Pathfinding.Seeker
+  version: 1
+  drawGizmos: 1
+  detailedGizmos: 0
+  startEndModifier:
+    addPoints: 0
+    exactStartPoint: 3
+    exactEndPoint: 3
+    useRaycasting: 0
+    mask:
+      serializedVersion: 2
+      m_Bits: 4294967295
+    useGraphRaycasting: 0
+  traversableTags: -1
+  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  graphMask:
+    value: -1
 --- !u!1 &6035141549219697847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2677,8 +2705,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &6584587922092380107
 GameObject:
   m_ObjectHideFlags: 0
@@ -2991,8 +3017,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &7523412089318926394
 GameObject:
   m_ObjectHideFlags: 0
@@ -3319,8 +3343,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 45
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8299233997998304419
 GameObject:
   m_ObjectHideFlags: 0
@@ -3539,8 +3561,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 10
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &8656892746145219630
 GameObject:
   m_ObjectHideFlags: 0
@@ -3635,8 +3655,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8665451360083371346
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,5 +3752,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
