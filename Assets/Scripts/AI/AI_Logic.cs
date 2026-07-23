@@ -13,6 +13,7 @@ public class AI_Logic : MonoBehaviour
     public Transform Point;//to know the position, rotation and scale of PointA
     public float aimDistance = 7f;//distance on which turret will start aiming 
     public float stoppingDistance = 1.5f;//how close/far will Bot stop near the something(Target, Point)
+    public float combatDistance = 7f;// distance AI wants to stay from enemy
     private bool driveForward = true;// "True" then bot drives forward if "False" uses revurse
     public float obstacleDistance = 8f;//how far AI/bot should react to an obstacle
     public Transform turret;
@@ -80,7 +81,11 @@ public class AI_Logic : MonoBehaviour
         }
     }
    
-    
+    Vector2 GetCombatPosition()
+    {
+        Vector2 awayDirection = (Enemy.position - transform.position).normalized;
+        return (Vector2)Enemy.position - awayDirection * combatDistance;
+    }
     
     void UpdatePath()//This creates a route
     {
@@ -95,7 +100,11 @@ public class AI_Logic : MonoBehaviour
             seeker.StartPath(transform.position, retreatPoint, OnPathComplete);
             return;
         }
-        seeker.StartPath(transform.position, Point.position, OnPathComplete);//Creates a path from Start "transf.pos" to End "Pointa.pos" when finished call "OnPathComplete"
+        if(!retreating)
+        {
+            Vector2 combatPosition = GetCombatPosition();
+            seeker.StartPath(transform.position, combatPosition, OnPathComplete);
+        }//Creates a path from Start "transf.pos" to End "Pointa.pos" when finished call "OnPathComplete"
         
         
     }
@@ -136,7 +145,7 @@ public class AI_Logic : MonoBehaviour
         AimingTheTurret(targetDistance);
         ShootTheTarget(targetDistance);
 
-        if(targetDistance < stoppingDistance && !retreating)
+        if(targetDistance < combatDistance && !retreating)
         {
             retreating = true;
             Vector2 tankForward;
@@ -150,22 +159,23 @@ public class AI_Logic : MonoBehaviour
                 tankForward = transform.up;
             }
 
-            retreatPoint = (Vector2)transform.position - tankForward * retreatDistance;
+            Vector2 awayFromEnemy = (transform.position - Enemy.position).normalized;
+            retreatPoint = (Vector2)transform.position + awayFromEnemy * retreatDistance;
             driveForward = false;
             seeker.StartPath(transform.position, retreatPoint, OnPathComplete);
             return;
         }
+        
+
         if(retreating)
         {
-            float retreatDistanceLeft = Vector2.Distance(transform.position, retreatPoint);
-
-            if(retreatDistanceLeft < stoppingDistance)
+            if(targetDistance >= combatDistance)
             {
                 retreating = false;
                 driveForward = true;
-                seeker.StartPath(transform.position, Point.position, OnPathComplete);
             }
-        }                   
+        }
+                         
         if(distance < waypointDistance)//Moving to next waypoint, if yes "currentWaypoint++;" go to next point
         {
             currentWaypoint++;
@@ -211,22 +221,29 @@ public class AI_Logic : MonoBehaviour
         float forwardAngle = Mathf.Abs(angleToTargetForward);//They are used because the AI only cares about how big the turn is, not whether it is left or right.
         float backwardAngle = Mathf.Abs(angleToTargetBackwards);
         //Debug.Log($"Forward: {forwardAngle}  Backward: {backwardAngle}  DriveForward: {driveForward}");
-     
-        if(driveForward)//chooses forawrd or reverse 
+        if (retreating)
         {
-            if(backwardAngle + 30f < forwardAngle)
-            {
-                driveForward = false;
-            }
+            driveForward = false;
         }
         else
         {
-            if(forwardAngle + 30f < backwardAngle)
+            if(driveForward)//chooses forawrd or reverse 
             {
-                driveForward = true;
+                if(backwardAngle + 30f < forwardAngle)
+                {
+                    driveForward = false;
+                }
             }
+            else
+            {
+                if(forwardAngle + 30f < backwardAngle)
+                {
+                    driveForward = true;
+                }
+            }
+  
         }
-
+        
         float chosenAngle = driveForward ? angleToTargetForward : angleToTargetBackwards;//"Which direction should I use for steering?"
         float turnInput;//"How much should I turn the tank?"
 
