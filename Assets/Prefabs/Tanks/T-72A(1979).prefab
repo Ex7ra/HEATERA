@@ -93,8 +93,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 40
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &863727458055406384
 GameObject:
   m_ObjectHideFlags: 0
@@ -188,8 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 1
 --- !u!1 &901242648115391366
 GameObject:
   m_ObjectHideFlags: 0
@@ -422,8 +418,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 80
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &1574627893474361983
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,7 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoRackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
 --- !u!1 &1747554651849383148
 GameObject:
@@ -600,7 +594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunBreechModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 8310156144776247570}
   aiTurret: {fileID: 0}
@@ -686,7 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretTraverseModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 8310156144776247570}
   aiTurret: {fileID: 0}
@@ -821,8 +815,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 200
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &2930245501886353357
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,8 +908,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 450
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &3408018224589186776
 GameObject:
   m_ObjectHideFlags: 0
@@ -1011,8 +1001,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &3544219821594881980
 GameObject:
   m_ObjectHideFlags: 0
@@ -1106,8 +1094,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 70
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &3628600857169346548
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1176,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
@@ -1275,7 +1261,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
@@ -1360,7 +1346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
@@ -1519,8 +1505,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 100
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &7227457040745521561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1613,7 +1597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   tankScript: {fileID: 3451913827272088109}
   isLeft: 1
@@ -1709,7 +1693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   tankScript: {fileID: 3451913827272088109}
   isLeft: 0
@@ -1806,8 +1790,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 500
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8284906505418368239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,8 +1881,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3b713e55eff9b409638bf6df72c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineModule
-  maxHealth: 300
-  health: 0
+  maxHealth: 200
+  health: 200
   IsDestroyed: 0
   tankScript: {fileID: 3451913827272088109}
 --- !u!1 &8355417439279647005
@@ -1996,8 +1978,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 80
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 0
 --- !u!1 &8443333361347767608
 GameObject:
   m_ObjectHideFlags: 0
@@ -2091,8 +2071,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 200
   ricochetAngleDeg: 70
-  normalAxis: 1
-  flipNormal: 1
 --- !u!1 &8563623889546226353
 GameObject:
   m_ObjectHideFlags: 0
@@ -2186,8 +2164,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 500
   ricochetAngleDeg: 70
-  normalAxis: 0
-  flipNormal: 0
 --- !u!1 &8604976020121605049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2316,7 +2292,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CannonModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 8310156144776247570}
   aiTurret: {fileID: 0}

@@ -18,8 +18,8 @@ TagManager:
   - TankTurret
   - Shell
   - 'TankInternalOnly '
-  - Obstacle
-  - 
+  - HighObstacle
+  - LowObstacle
   - 
   - 
   - 

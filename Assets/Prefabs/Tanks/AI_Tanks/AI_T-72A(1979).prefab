@@ -266,6 +266,7 @@ MonoBehaviour:
   Point: {fileID: 0}
   aimDistance: 15
   stoppingDistance: 15
+  combatDistance: 7
   obstacleDistance: 5
   turret: {fileID: 2347736625338921677}
   firePoint: {fileID: 2782012161826022414}
@@ -273,6 +274,7 @@ MonoBehaviour:
   Enemy: {fileID: 0}
   waypointDistance: 2
   pathUpdateRate: 2
+  retreatDistance: 4
 --- !u!114 &7090756563302975470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +556,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoRackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
 --- !u!1 &1747554651849383148
 GameObject:
@@ -648,7 +650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunBreechModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
   aiTurret: {fileID: 0}
@@ -734,7 +736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretTraverseModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
   aiTurret: {fileID: 0}
@@ -1230,7 +1232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
@@ -1315,7 +1317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
@@ -1400,7 +1402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrewModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
@@ -1651,7 +1653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   tankScript: {fileID: 0}
   isLeft: 1
@@ -1747,7 +1749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TrackModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   tankScript: {fileID: 0}
   isLeft: 0
@@ -1935,8 +1937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3b713e55eff9b409638bf6df72c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineModule
-  maxHealth: 300
-  health: 0
+  maxHealth: 200
+  health: 200
   IsDestroyed: 0
   tankScript: {fileID: 0}
 --- !u!1 &8355417439279647005
@@ -2346,7 +2348,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CannonModule
   maxHealth: 100
-  health: 0
+  health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
   aiTurret: {fileID: 0}

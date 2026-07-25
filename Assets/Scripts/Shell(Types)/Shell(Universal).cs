@@ -42,6 +42,8 @@ public class Shell : MonoBehaviour
 
     private int hullLayer;
     private int turretLayer;
+    private int upperObstacle;
+    private int lowerObstacle;
 
     private string combinedMessage = "";
 
@@ -54,6 +56,8 @@ public class Shell : MonoBehaviour
 
         hullLayer = LayerMask.NameToLayer("TankHull");
         turretLayer = LayerMask.NameToLayer("TankTurret");
+        upperObstacle = LayerMask.NameToLayer("HighObstacle");
+        lowerObstacle = LayerMask.NameToLayer("LowObstacle");
 
         switch(shellType)
         {
@@ -125,11 +129,33 @@ public class Shell : MonoBehaviour
 
     void ProcessHit(RaycastHit2D hit)// Processes what happens after the shell hits an object (armour, module, etc)
     {
-        if(!IsValidTarget(hit.collider.gameObject))// Ignore objects that are not part of the current firing mode
-        return;
-
+        int layer = hit.collider.gameObject.layer;
         TankArmor armor = hit.collider.GetComponent<TankArmor>();// Check if the object hit has an armour component
 
+        if(layer == upperObstacle)
+        {
+            shellDead = true;
+            Destroy(gameObject);
+            print("High Obstacle was hit!");
+            return;
+        }
+
+        if(layer == lowerObstacle)
+        {
+            if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly)
+            {
+                shellDead = true;
+                Destroy(gameObject);
+                print("Low Obstacle was hit!");
+                return;
+            }
+
+            return;
+            
+        }
+        if(!IsValidTarget(hit.collider.gameObject))// Ignore objects that are not part of the current firing mode
+        return;
+        
         if(armor != null)// If armour was hit, perform penetration calculations
 
         {   // Ignore armour that belongs to the wrong fire mode (hull or turret)
@@ -142,6 +168,7 @@ public class Shell : MonoBehaviour
             {
                 return;
             }
+            
 
             float plateNormal;// Stores the direction angle of the armour surface
             float incoming;// Stores the direction from which the shell approaches the armour
@@ -265,6 +292,7 @@ public class Shell : MonoBehaviour
         {
             return obj.layer == turretLayer;
         }
+        
 
         return true;
     }
