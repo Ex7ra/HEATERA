@@ -240,21 +240,21 @@ public class TurretNormal : MonoBehaviour
     }
 }
    bool IsGunOperational()
-  {
-    if (cannonModule == null || gunBreechModule == null)
-        return true; 
-
-    if (cannonModule.IsDestroyed || gunBreechModule.IsDestroyed)
     {
-        Debug.Log("Gun disabled — module destroyed");
-        gunOperational = false;
-        return false;
-    }
-    
+        if (cannonModule == null || gunBreechModule == null)
+            return true; 
 
-    gunOperational = true;
-    return true;
-  }
+        if (cannonModule.IsDestroyed || gunBreechModule.IsDestroyed)
+        {
+            Debug.Log("Gun disabled — module destroyed");
+            gunOperational = false;
+            return false;
+        }
+        
+
+        gunOperational = true;
+        return true;
+    }
 
   void Shoot()
 {

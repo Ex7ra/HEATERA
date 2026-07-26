@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class UIModule : MonoBehaviour
 {
     public TankModule module;
-
+    public GameObject tank;
     private Image panelImage;
 
     void Start()
@@ -14,6 +14,11 @@ public class UIModule : MonoBehaviour
 
     void Update()
     {
+        if(tank == null)
+        {
+            panelImage.color = Color.darkRed;
+            return;
+        }
         if (module == null)
             return;
 
@@ -21,24 +26,25 @@ public class UIModule : MonoBehaviour
         //Debug.Log("Health: " + module.health + " Max: " + module.maxHealth + " Percent: " + healthPercent);
         if (healthPercent > 0.80f)
         {
-            panelImage.color = Color.green;
+            panelImage.color = new Color32(118, 255, 95, 255);
         }
         else if (healthPercent > 0.55f)
         {
-            panelImage.color = Color.yellow;
+            panelImage.color = new Color32(255, 239, 95, 255);
         }
         else if (healthPercent > 0.15f)
         {
-            panelImage.color = Color.orange;
+            panelImage.color = new Color32(255, 162, 52, 255);
         }
         else if (healthPercent > 0.01f)
         {
-            panelImage.color = Color.red;
+            panelImage.color = new Color32(255, 61, 52, 255);
         }
         else if(healthPercent == 0.00000000f)
         {
             panelImage.color = Color.darkRed;
         }
+        
         
     }
 }
