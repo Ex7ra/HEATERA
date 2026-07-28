@@ -16,7 +16,7 @@ public class UIModule : MonoBehaviour
     {
         if(tank == null)
         {
-            panelImage.color = Color.darkRed;
+            panelImage.color = new Color32(255, 61, 52, 255);
             return;
         }
         if (module == null)
@@ -36,14 +36,11 @@ public class UIModule : MonoBehaviour
         {
             panelImage.color = new Color32(255, 162, 52, 255);
         }
-        else if (healthPercent > 0.01f)
+        else if (healthPercent == 0.00)
         {
             panelImage.color = new Color32(255, 61, 52, 255);
         }
-        else if(healthPercent == 0.00000000f)
-        {
-            panelImage.color = Color.darkRed;
-        }
+        
         
         
     }
