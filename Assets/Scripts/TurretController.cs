@@ -13,8 +13,9 @@ public class TurretNormal : MonoBehaviour
     [Header("recoil Settings")]// recoil settings for the cannon
     public float recoilDistance = 0.3f;   
     public float recoilSpeed = 5f;        
-
     
+    [Header("Firing Effects")]
+    public GameObject muzzleFlashPrefab;
      public enum ShellType//Note: enum is the list(in this case the list of shell types) and the values are the options in that list
     {
         [Header(" SHELL TYPES")]
@@ -25,6 +26,7 @@ public class TurretNormal : MonoBehaviour
     [Header("Cannon")]
     public Transform cannon;     
     public ShellType currentShell = ShellType.AP;
+    
 
     [Header("Gun Modules")]
     public CannonModule cannonModule;
@@ -62,7 +64,8 @@ public class TurretNormal : MonoBehaviour
         HullOnly,
         TurretOnly
     }
-
+    [Header("Smoke Prefabs")]
+    public GameObject smokePrefab;
     public static FireMode ActiveMode = FireMode.HullOnly;
     public float switchTime = 1.2f;
     private bool isSwitchingMode = false; // this makes switching modes take some time to actualy switch
@@ -87,6 +90,7 @@ public class TurretNormal : MonoBehaviour
         ApplyLayerRules();//sets collision logic
         UpdateModeUI();
         UpdateShellUI();//UI texts
+        
     }
 
     void Update()
@@ -258,8 +262,13 @@ public class TurretNormal : MonoBehaviour
 
   void Shoot()
 {
-     ShellData shell = GetCurrentShell();
-
+    ShellData shell = GetCurrentShell();
+    if (muzzleFlashPrefab != null)
+    {
+        Instantiate(muzzleFlashPrefab,firePoint.position,firePoint.rotation);
+    }
+    
+    Instantiate(smokePrefab, firePoint.position, firePoint.rotation);
     GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);//spawns shell prefab at fire point position and rotation
     Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();//moves shell forward
 
@@ -273,6 +282,7 @@ public class TurretNormal : MonoBehaviour
     StopCoroutine("RecoilCannon"); 
     StartCoroutine(RecoilCannon());//plays recoil animation when shooting
 }
+
 
     IEnumerator Reload()
     {

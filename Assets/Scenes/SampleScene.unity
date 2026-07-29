@@ -626,9 +626,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 798906826}
     - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: muzzleFlash
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: smokePrefab
+      value: 
+      objectReference: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
+    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 192139621}
+    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: muzzleFlashPrefab
+      value: 
+      objectReference: {fileID: 7150051762728916891, guid: 3d9755be8b6c1814495bf3d1ff9c5812, type: 3}
     - target: {fileID: 6004404656569007100, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_Name
       value: Leopard1A5
