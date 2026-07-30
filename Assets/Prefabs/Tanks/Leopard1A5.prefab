@@ -84,6 +84,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &39136584352574786
 GameObject:
@@ -513,6 +514,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 7201753425952145902}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &2864687053256310921
 GameObject:
@@ -919,7 +921,12 @@ MonoBehaviour:
   defaultRotationOffset: -180
   recoilDistance: 0.1
   recoilSpeed: 2
-  muzzleFlashPrefab: {fileID: 0}
+  muzzleFlashPrefab: {fileID: 7150051762728916891, guid: 3d9755be8b6c1814495bf3d1ff9c5812, type: 3}
+  smokePrefab: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
+  smokeSpawn: {fileID: 5180316516541415154}
+  smokeCount: 8
+  forwardSpread: 0.8
+  sideSpread: 0.5
   cannon: {fileID: 6523871284579092925}
   currentShell: 0
   cannonModule: {fileID: 2830023169156915447}
@@ -1310,6 +1317,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &4513396869818979386
 GameObject:
@@ -2118,7 +2126,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 6872905978666851161}
+  tankScript: {fileID: 7201753425952145902}
   isLeft: 0
 --- !u!1 &6004404656569007100
 GameObject:
@@ -2207,6 +2215,7 @@ MonoBehaviour:
   engineHealth: 1
   leftTrackHealth: 1
   rightTrackHealth: 1
+  driverhealth: 1
 --- !u!114 &6872905978666851161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2734,6 +2743,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &6735477625196377846
 GameObject:
@@ -2866,7 +2876,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 6872905978666851161}
+  tankScript: {fileID: 7201753425952145902}
   isLeft: 1
 --- !u!1 &7422054446318746692
 GameObject:

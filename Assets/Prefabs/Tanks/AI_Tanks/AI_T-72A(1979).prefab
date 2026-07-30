@@ -1465,7 +1465,7 @@ Transform:
   m_GameObject: {fileID: 6074294045680157868}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.091, y: 0, z: 0}
+  m_LocalPosition: {x: -0.963, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2673,6 +2673,12 @@ MonoBehaviour:
   defaultRotationOffset: -180
   recoilDistance: 0.3
   recoilSpeed: 5
+  muzzleFlashPrefab: {fileID: 7150051762728916891, guid: 3d9755be8b6c1814495bf3d1ff9c5812, type: 3}
+  smokePrefab: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
+  smokeSpawn: {fileID: 2782012161826022414}
+  smokeCount: 8
+  forwardSpread: 0.8
+  sideSpread: 0.5
   cannon: {fileID: 6815009689082699795}
   currentShell: 0
   cannonModule: {fileID: 7642594949559301448}

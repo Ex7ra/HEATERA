@@ -14,7 +14,10 @@ public class SmokeEffect : MonoBehaviour
 
     private SpriteRenderer sr;
     private Color startColor;
+    [Header("Random Movement")]
+    public float directionVariation = 15f;
 
+    private Vector3 moveDirection;
     private bool mediumShown = false;
     private bool largeShown = false;
 
@@ -27,6 +30,8 @@ public class SmokeEffect : MonoBehaviour
         startColor = sr.color;
 
         StartCoroutine(SmokeRoutine());
+        float angle = Random.Range(-directionVariation, directionVariation);
+        moveDirection = Quaternion.Euler(0, 0, angle) * transform.up;
     }
 
     IEnumerator SmokeRoutine()
@@ -39,7 +44,7 @@ public class SmokeEffect : MonoBehaviour
             float progress = timer / lifeTime;
             // Move away from the barrel
             float currentSpeed = Mathf.Lerp(moveSpeed, 0.2f, progress);
-                transform.position += transform.up * currentSpeed * Time.deltaTime;
+                transform.position += moveDirection * currentSpeed * Time.deltaTime;
 
             
 

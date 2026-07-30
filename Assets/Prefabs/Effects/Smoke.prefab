@@ -112,4 +112,5 @@ MonoBehaviour:
   mediumSmoke: {fileID: -918547845581609495, guid: c66ff7b9f7c6b974bacbecda90ff41ab, type: 3}
   largeSmoke: {fileID: 3156328901275247787, guid: 823ea13ad42b3014f8b755ca2b7e327c, type: 3}
   moveSpeed: 2
-  lifeTime: 0.45
+  lifeTime: 0.75
+  directionVariation: 60

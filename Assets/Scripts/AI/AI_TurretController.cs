@@ -12,9 +12,17 @@ public class AI_TurretController : MonoBehaviour
 
     [Header("recoil Settings")]// recoil settings for the cannon
     public float recoilDistance = 0.3f;   
-    public float recoilSpeed = 5f;        
+    public float recoilSpeed = 5f;       
+    [Header("Firing Effects")]
+    public GameObject muzzleFlashPrefab; 
 
-    
+    [Header("Smoke Effect")]
+    public GameObject smokePrefab;
+    public Transform smokeSpawn;
+    public int smokeCount = 8;
+
+    public float forwardSpread = 0.8f;
+    public float sideSpread = 0.5f;   
      public enum ShellType//Note: enum is the list(in this case the list of shell types) and the values are the options in that list
     {
         [Header(" SHELL TYPES")]
@@ -256,21 +264,25 @@ public class AI_TurretController : MonoBehaviour
   }
 
     public void Shoot()
-{
-     ShellData shell = GetCurrentShell();
-
-    GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);//spawns shell prefab at fire point position and rotation
-    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();//moves shell forward
-
-    if (rb != null)
     {
-        Vector2 fireDirection = firePoint.up;
-        rb.linearVelocity = fireDirection * shell.speed;
-    }
+        ShellData shell = GetCurrentShell();
+        if (muzzleFlashPrefab != null)
+        {
+            Instantiate(muzzleFlashPrefab,firePoint.position,firePoint.rotation);
+        }
+        SpawnSmoke();
+        GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);//spawns shell prefab at fire point position and rotation
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();//moves shell forward
 
-    StopCoroutine("RecoilCannon"); 
-    StartCoroutine(RecoilCannon());//plays recoil animation when shooting
-}
+        if (rb != null)
+        {
+            Vector2 fireDirection = firePoint.up;
+            rb.linearVelocity = fireDirection * shell.speed;
+        }
+
+        StopCoroutine("RecoilCannon"); 
+        StartCoroutine(RecoilCannon());//plays recoil animation when shooting
+    }
 
     IEnumerator Reload()
     {
@@ -314,5 +326,17 @@ public class AI_TurretController : MonoBehaviour
         UpdateModeUI();
 
         isSwitchingMode = false;
+    }
+     void SpawnSmoke()
+    {
+        for (int i = 0; i < smokeCount; i++)
+        {
+            Vector2 offset = Random.insideUnitCircle * 0.25f;
+            Vector3 pos = smokeSpawn.position + smokeSpawn.right * offset.x + smokeSpawn.up * offset.y;
+            Quaternion rot = smokeSpawn.rotation;
+            rot *= Quaternion.Euler(0, 0, Random.Range(-20f, 20f));
+
+            Instantiate(smokePrefab, pos, rot);
+        }
     }
 }

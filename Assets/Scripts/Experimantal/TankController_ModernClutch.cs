@@ -36,6 +36,7 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
     public float engineHealth = 1f;
     public float leftTrackHealth = 1f;
     public float rightTrackHealth = 1f;
+    public float driverhealth = 1f;
 
     Rigidbody2D rb;
 
@@ -61,11 +62,10 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
 
     void FixedUpdate()
     {
-            Vector2 centerOffset = hullCenter != null
-        ? (Vector2)(hullCenter.position - transform.position)
-        : Vector2.zero;
-        if (!movementEnabled || engineHealth <= 0f)
+        Vector2 centerOffset = hullCenter != null ? (Vector2)(hullCenter.position - transform.position) : Vector2.zero;
+        if (!movementEnabled || engineHealth <= 0f || leftTrackHealth <= 0f || rightTrackHealth <= 0f || driverhealth <= 0f)
         {
+            
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;
@@ -90,7 +90,7 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
         float speedRate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed)
             ? acceleration
             : deceleration;
-         currentSpeed = Mathf.MoveTowards(currentSpeed,targetSpeed,speedRate * Time.fixedDeltaTime);
+        currentSpeed = Mathf.MoveTowards(currentSpeed,targetSpeed,speedRate * Time.fixedDeltaTime);
         
         float targetTurn = -turnInput * turnSpeed;
         float turnRate = Mathf.Abs(targetTurn) > Mathf.Abs(currentTurn)

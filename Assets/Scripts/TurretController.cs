@@ -16,7 +16,14 @@ public class TurretNormal : MonoBehaviour
     
     [Header("Firing Effects")]
     public GameObject muzzleFlashPrefab;
-     public enum ShellType//Note: enum is the list(in this case the list of shell types) and the values are the options in that list
+    [Header("Smoke Effect")]
+    public GameObject smokePrefab;
+    public Transform smokeSpawn;
+    public int smokeCount = 8;
+
+    public float forwardSpread = 0.8f;
+    public float sideSpread = 0.5f;     
+    public enum ShellType//Note: enum is the list(in this case the list of shell types) and the values are the options in that list
     {
         [Header(" SHELL TYPES")]
         AP,
@@ -64,8 +71,7 @@ public class TurretNormal : MonoBehaviour
         HullOnly,
         TurretOnly
     }
-    [Header("Smoke Prefabs")]
-    public GameObject smokePrefab;
+   
     public static FireMode ActiveMode = FireMode.HullOnly;
     public float switchTime = 1.2f;
     private bool isSwitchingMode = false; // this makes switching modes take some time to actualy switch
@@ -268,7 +274,7 @@ public class TurretNormal : MonoBehaviour
         Instantiate(muzzleFlashPrefab,firePoint.position,firePoint.rotation);
     }
     
-    Instantiate(smokePrefab, firePoint.position, firePoint.rotation);
+    SpawnSmoke();
     GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);//spawns shell prefab at fire point position and rotation
     Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();//moves shell forward
 
@@ -325,5 +331,17 @@ public class TurretNormal : MonoBehaviour
         UpdateModeUI();
         isSwitchingMode = false;
         
+    }
+    void SpawnSmoke()
+    {
+        for (int i = 0; i < smokeCount; i++)
+        {
+            Vector2 offset = Random.insideUnitCircle * 0.25f;
+            Vector3 pos = smokeSpawn.position + smokeSpawn.right * offset.x + smokeSpawn.up * offset.y;
+            Quaternion rot = smokeSpawn.rotation;
+            rot *= Quaternion.Euler(0, 0, Random.Range(-20f, 20f));
+
+            Instantiate(smokePrefab, pos, rot);
+        }
     }
 }

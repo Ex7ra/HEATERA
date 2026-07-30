@@ -1,8 +1,10 @@
 using UnityEngine;
 
 public class CrewModule : TankModule
-{
+{   [Header("tank script turret/movement controller")]
+    public TankController_ModernClutch TankScript;
     public TankDamageReceiver damageReceiver;
+    
     protected override void OnDestroyed()
     {
         base.OnDestroyed();
