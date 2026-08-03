@@ -23,8 +23,6 @@ public class MainMenu : MonoBehaviour
 
     public void SetVolume(float volume)
     {
-        if (loadingVolume)
-            return;
         volume = Mathf.Clamp01(volume);
         videoPlayer.SetDirectAudioVolume(0, volume);
     }

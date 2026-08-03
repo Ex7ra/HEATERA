@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8fedbbd9e889c3d4b81908c85469a0f8
+guid: 2c0dc74d3ce8e954ab6499b79431aa4a
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,19 +127,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Slider Background
+  - name: Campaign Buttom
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.50537634, y: -0.3125}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 40
-      height: 3
-    spriteID: e4296734c49bf794287d0271b2e9fe58
+      width: 93
+      height: 64
+    spriteID: 2cc9ac770f2073841b38e15bf772328b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 422399339
+      value0: 2983876275
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Slider Background
+    name: Campaign Buttom
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Slider Background
+    - name: Campaign Buttom
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
-        y: 4
-        width: 40
-        height: 3
-      spriteId: e4296734c49bf794287d0271b2e9fe58
+        x: 3
+        y: 20
+        width: 93
+        height: 64
+      spriteId: 2cc9ac770f2073841b38e15bf772328b
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 40, y: 10}
-  previousTextureSize: {x: 64, y: 16}
+  canvasSize: {x: 100, y: 100}
+  previousTextureSize: {x: 128, y: 128}

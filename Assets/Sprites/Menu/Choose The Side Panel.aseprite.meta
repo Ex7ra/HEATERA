@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8fedbbd9e889c3d4b81908c85469a0f8
+guid: d76918171fe64a944b5f18daa563bc3d
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,19 +127,19 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Slider Background
+  - name: Choose The Side Panel
     originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
     rect:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 40
-      height: 3
-    spriteID: e4296734c49bf794287d0271b2e9fe58
+      width: 600
+      height: 400
+    spriteID: 2faedc6679c125047aa4e468212a69c2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 422399339
+      value0: 2349687397
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Slider Background
+    name: Choose The Side Panel
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Slider Background
+    - name: Choose The Side Panel
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
-        y: 4
-        width: 40
-        height: 3
-      spriteId: e4296734c49bf794287d0271b2e9fe58
+        y: 0
+        width: 600
+        height: 400
+      spriteId: 2faedc6679c125047aa4e468212a69c2
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 40, y: 10}
-  previousTextureSize: {x: 64, y: 16}
+  canvasSize: {x: 600, y: 400}
+  previousTextureSize: {x: 1024, y: 512}
