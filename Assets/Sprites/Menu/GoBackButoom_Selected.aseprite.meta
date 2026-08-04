@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d76918171fe64a944b5f18daa563bc3d
+guid: ba96034bcdd23724cb2e9531cde8e1f1
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Choose The Side Panel
+  - name: GoBackButoom_Selected
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 600
-      height: 400
-    spriteID: 2faedc6679c125047aa4e468212a69c2
+      width: 60
+      height: 40
+    spriteID: 34e434328498b044cac9e70381949e28
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2349687397
+      value0: 2236991387
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Choose The Side Panel
+    name: GoBackButoom_Selected
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Choose The Side Panel
+    - name: GoBackButoom_Selected
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 600
-        height: 400
-      spriteId: 2faedc6679c125047aa4e468212a69c2
+        width: 60
+        height: 40
+      spriteId: 34e434328498b044cac9e70381949e28
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 600, y: 400}
-  previousTextureSize: {x: 1024, y: 512}
+  canvasSize: {x: 60, y: 40}
+  previousTextureSize: {x: 128, y: 64}

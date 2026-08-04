@@ -36,6 +36,10 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(1);
     }
+    public void CloseTheFSPanel()
+    {
+        FSPanel.SetActive(false);
+    }
 
     public void QuitTheGame()
     {

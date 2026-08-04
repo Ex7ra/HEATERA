@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d76918171fe64a944b5f18daa563bc3d
+guid: cbdaeda8d89d05c4595fc74639e49eca
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Choose The Side Panel
+  - name: WarshawPact_FLAG(Green)
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 600
-      height: 400
-    spriteID: 2faedc6679c125047aa4e468212a69c2
+      width: 140
+      height: 100
+    spriteID: 77e20b8bcbab31e4491ded983f4ab0f4
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 2349687397
+      value0: 2001799724
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Choose The Side Panel
+    name: WarshawPact_FLAG(Green)
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Choose The Side Panel
+    - name: WarshawPact_FLAG(Green)
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
         x: 0
         y: 0
-        width: 600
-        height: 400
-      spriteId: 2faedc6679c125047aa4e468212a69c2
+        width: 140
+        height: 100
+      spriteId: 77e20b8bcbab31e4491ded983f4ab0f4
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -181,5 +181,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 600, y: 400}
-  previousTextureSize: {x: 1024, y: 512}
+  canvasSize: {x: 140, y: 100}
+  previousTextureSize: {x: 256, y: 128}
