@@ -10,17 +10,32 @@ public class MenuButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        blinkCoroutine = StartCoroutine(BlinkArrow());
+        if(blinkCoroutine == null)
+            blinkCoroutine = StartCoroutine(BlinkArrow());
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (blinkCoroutine != null)
-            StopCoroutine(blinkCoroutine);
-
-        arrow.SetActive(false);
+        StopBlink();
     }
+       private void OnDisable()
+    {
+        StopBlink();
+    }
+    void StopBlink()
+    {
+        if (blinkCoroutine != null)
+        {
+            StopCoroutine(blinkCoroutine);
+            blinkCoroutine = null;
+        }
 
+        if (arrow != null)
+            arrow.SetActive(false);
+    }
+    
+
+    
     IEnumerator BlinkArrow()
     {
         while (true)
@@ -32,4 +47,5 @@ public class MenuButtonHighlight : MonoBehaviour, IPointerEnterHandler, IPointer
             yield return new WaitForSeconds(0.5f);
         }
     }
+
 }

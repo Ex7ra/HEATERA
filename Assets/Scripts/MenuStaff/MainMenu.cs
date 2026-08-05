@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 using UnityEngine.UI;
+using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class MainMenu : MonoBehaviour
     public GameObject NatoPanel;
     public VideoPlayer videoPlayer;
     public Slider volumeSlider;
+
 
     private bool loadingVolume = true;
 
@@ -41,6 +43,7 @@ public class MainMenu : MonoBehaviour
         FSPanel.SetActive(false);
     }
 
+    
     public void QuitTheGame()
     {
         Application.Quit();
@@ -61,4 +64,5 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadSceneAsync(sceneName);
     }
+    
 }
