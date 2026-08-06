@@ -6,18 +6,22 @@ using System.Collections;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Panels")]
     public GameObject FSPanel;
     public GameObject NatoPanel;
+    public GameObject Level_1_Panel_NATO;
+    public GameObject Level_1_Panel_WarsawPart;
+
+    [Header("Video")]
     public VideoPlayer videoPlayer;
     public Slider volumeSlider;
-
-
-    private bool loadingVolume = true;
 
     void Start()
     {
         FSPanel.SetActive(false);
         NatoPanel.SetActive(false);
+        Level_1_Panel_NATO.SetActive(false);
+        Level_1_Panel_WarsawPart.SetActive(false);
         float volume = 0.3f; 
         videoPlayer.SetDirectAudioVolume(0, volume);
         volumeSlider.value = volume;
@@ -29,18 +33,9 @@ public class MainMenu : MonoBehaviour
         videoPlayer.SetDirectAudioVolume(0, volume);
     }
 
-    public void OpenFSPanel()
-    {
-        FSPanel.SetActive(!FSPanel.activeSelf);
-    }
-
     public void GoToPoygonScene()
     {
         SceneManager.LoadSceneAsync(1);
-    }
-    public void CloseTheFSPanel()
-    {
-        FSPanel.SetActive(false);
     }
 
     
@@ -49,15 +44,14 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
         Debug.Log("Quit the game");
     }
-
-    public void OpenNatoPanel()
+    public void SetPanelActive(GameObject panel)
     {
-        NatoPanel.SetActive(!NatoPanel.activeSelf);
+        panel.SetActive(true);
     }
 
-    public void GoBack()
+    public void GoBack(GameObject panel)
     {
-        NatoPanel.SetActive(false);
+        panel.SetActive(false);
     }
 
     public void PlayLevel(string sceneName)
