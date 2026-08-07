@@ -317,12 +317,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6d58224a537aa94dae3ed493e124b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MainMenu
-  FSPanel: {fileID: 1444146295}
-  NatoPanel: {fileID: 1083380790}
-  Level_1_Panel_NATO: {fileID: 0}
-  Level_1_Panel_WarsawPart: {fileID: 0}
+  panels:
+  - id: Faction Selection Panel
+    rectTransform: {fileID: 1444146296}
+    direction: 2
+    closeOthersOnOpen: 0
+  - id: Nato_Panel
+    rectTransform: {fileID: 1083380793}
+    direction: 3
+    closeOthersOnOpen: 0
+  - id: Level_1_Panel(NATO)
+    rectTransform: {fileID: 1700606015}
+    direction: 1
+    closeOthersOnOpen: 0
   videoPlayer: {fileID: 1938596269}
   volumeSlider: {fileID: 227042462}
+  panelAnimationDuration: 0.4
+  panelStartOffset: 1000
 --- !u!81 &158323298
 AudioListener:
   m_ObjectHideFlags: 0
@@ -748,14 +759,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: GoBack
-        m_Mode: 2
+        m_MethodName: ClosePanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1444146295}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Faction Selection Panel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &240624152
@@ -965,14 +976,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetPanelActive
-        m_Mode: 2
+        m_MethodName: OpenPanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1083380790}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Nato_Panel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &267757470
@@ -1030,7 +1041,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &365707718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1045,9 +1056,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1083380793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1633.9, y: 954.9}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -283.8, y: -126.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365707719
@@ -1194,7 +1205,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 801.0001, y: 138}
+  m_AnchoredPosition: {x: 821.6, y: 138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &562432348
@@ -1413,7 +1424,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1759.3999, y: 138}
+  m_AnchoredPosition: {x: 1780, y: 138}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &667693094
@@ -1536,14 +1547,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: GoBack
-        m_Mode: 2
+        m_MethodName: ClosePanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1700606014}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Level_1_Panel(NATO)
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &725924717
@@ -1892,14 +1903,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetPanelActive
-        m_Mode: 2
+        m_MethodName: OpenPanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1444146295}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Faction Selection Panel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &969464778
@@ -2102,7 +2113,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1083380791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2826,7 +2837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1444146296
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3139,15 +3150,15 @@ RectTransform:
   m_GameObject: {fileID: 1659881234}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2.7, y: 2.7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1083380793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1760.3, y: 957.3}
-  m_SizeDelta: {x: 60, y: 40}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -159, y: -124.4}
+  m_SizeDelta: {x: 61, y: 38}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1659881236
 MonoBehaviour:
@@ -3195,14 +3206,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: GoBack
-        m_Mode: 2
+        m_MethodName: ClosePanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1083380790}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Nato_Panel
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1659881237
@@ -3292,10 +3303,10 @@ RectTransform:
   - {fileID: 667693093}
   m_Father: {fileID: 1083380793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1538, y: 540}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_AnchorMin: {x: 0.603167, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -1, y: 0.00012207031}
+  m_SizeDelta: {x: 1158, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700606016
 MonoBehaviour:
@@ -4050,9 +4061,9 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1083380793}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 922.1, y: 415.9}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -40.397644, y: -124.100006}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1915835120
@@ -4101,14 +4112,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 158323297}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: SetPanelActive
-        m_Mode: 2
+        m_MethodName: OpenPanel
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 1700606014}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Level_1_Panel(NATO)
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1915835121
