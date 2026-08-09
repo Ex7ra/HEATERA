@@ -84,7 +84,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  TankScript: {fileID: 7201753425952145902}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &39136584352574786
 GameObject:
@@ -1317,7 +1317,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  TankScript: {fileID: 7201753425952145902}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &4513396869818979386
 GameObject:
@@ -2743,7 +2743,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  TankScript: {fileID: 7201753425952145902}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &6735477625196377846
 GameObject:

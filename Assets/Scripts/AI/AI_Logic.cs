@@ -6,6 +6,11 @@ using JetBrains.Annotations;
 
 public class AI_Logic : MonoBehaviour
 {
+    [Header("AI Behaviour")]
+    public bool defensiveAI = false;
+
+    public float defensiveFireDistance = 7f;
+    public float defensiveRetreatDistance = 3f;
     private LayerMask TankHull;
     private AI_Movement_ModernClutch modernMovementLogic;//this creates a variable that will store a reference to another script
     private AI_Movement_ClutchBraking oldMovementLogic;
@@ -33,12 +38,14 @@ public class AI_Logic : MonoBehaviour
     private TankModule currentAimTarget;
     private bool retreating = false;
     private Vector2 retreatPoint;
+    private TankDamageReceiver health;
     void Start()
     {
         modernMovementLogic = GetComponent<AI_Movement_ModernClutch>();//finds the movement script 
         oldMovementLogic = GetComponent<AI_Movement_ClutchBraking>();
         turretLogic = GetComponentInChildren<AI_TurretController>();//InChildren because its in children gameObject
         seeker = GetComponent<Seeker>();
+        health = GetComponent<TankDamageReceiver>();
 
         InvokeRepeating(nameof(UpdatePath),0f,pathUpdateRate);//updates the path my every number which is set in "pathUpdateRate" because targets move
         if(gameObject.tag != "Blue")
@@ -83,6 +90,11 @@ public class AI_Logic : MonoBehaviour
    
     Vector2 GetCombatPosition()
     {
+        if (defensiveAI)
+        {
+            return transform.position;
+        }
+
         Vector2 awayDirection = (Enemy.position - transform.position).normalized;
         return (Vector2)Enemy.position - awayDirection * combatDistance;
     }
@@ -116,10 +128,31 @@ public class AI_Logic : MonoBehaviour
             currentWaypoint = 0;// start from the begining
         }
     }
-    
-    
+    private void DisableAI()
+    {
+        CancelInvoke(nameof(UpdatePath));
+
+        Stop();
+
+        if (turretLogic != null)
+            turretLogic.enabled = false;
+
+        if (oldMovementLogic != null)
+            oldMovementLogic.enabled = false;
+
+        if (modernMovementLogic != null)
+            modernMovementLogic.enabled = false;
+
+        enabled = false;
+    }
+        
     void Update()
     {
+        if (health != null && health.IsDestroyed)
+        {
+            DisableAI();
+            return;
+        }
         targetTimer -= Time.deltaTime;
         if(targetTimer <= 0)
         {
@@ -145,7 +178,8 @@ public class AI_Logic : MonoBehaviour
         AimingTheTurret(targetDistance);
         ShootTheTarget(targetDistance);
 
-        if(targetDistance < combatDistance && !retreating)
+        float retreatThreshold = defensiveAI ? defensiveRetreatDistance : combatDistance;
+        if(targetDistance < retreatThreshold && !retreating)
         {
             retreating = true;
             Vector2 tankForward;
@@ -169,7 +203,7 @@ public class AI_Logic : MonoBehaviour
 
         if(retreating)
         {
-            if(targetDistance >= combatDistance)
+            if(targetDistance >= retreatThreshold)
             {
                 retreating = false;
                 driveForward = true;
@@ -277,7 +311,7 @@ public class AI_Logic : MonoBehaviour
 
         if(distance > 0.5f)
         {
-            float speedAmount = Mathf.Clamp01(0.3f - angleError / 60f);//This slows the tank when turning
+            float speedAmount = Mathf.Clamp01(0.1f - angleError / 60f);//This slows the tank when turning
 
             if(driveForward)
             {

@@ -5,7 +5,10 @@ public class TankDamageReceiver : MonoBehaviour
 {
     private ITankMovement tank;
 
+    [Header("Crew")]
     public TankModule[] crew;
+
+    public bool IsDestroyed { get; private set; }
 
     void Awake()
     {
@@ -14,11 +17,15 @@ public class TankDamageReceiver : MonoBehaviour
 
     public void OnPenetration(Vector2 hitPoint, Vector2 direction, float damage)
     {
+        if (IsDestroyed)
+            return;
+
         RaycastHit2D[] hits = Physics2D.RaycastAll(hitPoint, direction, 3f);
 
         foreach (var hit in hits)
         {
             TankModule module = hit.collider.GetComponent<TankModule>();
+
             if (module != null)
             {
                 module.Damage(damage);
@@ -27,15 +34,23 @@ public class TankDamageReceiver : MonoBehaviour
 
         CheckCrewStatus();
     }
+
     public void CheckCrewStatus()
     {
+        if (IsDestroyed)
+            return;
+
         int aliveCrew = 0;
 
         foreach (var member in crew)
         {
             if (member != null && !member.IsDestroyed)
+            {
                 aliveCrew++;
+            }
         }
+
+        Debug.Log(gameObject.name + " - Alive crew: " + aliveCrew);
 
         if (aliveCrew < 2)
         {
@@ -43,8 +58,13 @@ public class TankDamageReceiver : MonoBehaviour
         }
     }
 
-    void DestroyTank()
+    private void DestroyTank()
     {
+        if (IsDestroyed)
+            return;
+
+        IsDestroyed = true;
+
         Debug.Log("Tank destroyed: not enough crew!");
 
         if (tank != null)
@@ -60,7 +80,9 @@ public class TankDamageReceiver : MonoBehaviour
             child.gameObject.tag = "Destroyed Vechicle";
         }
 
-        AstarPath.active.Scan();
-        
+        if (AstarPath.active != null)
+        {
+            AstarPath.active.Scan();
+        }
     }
 }

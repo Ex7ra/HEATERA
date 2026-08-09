@@ -200,6 +200,7 @@ GameObject:
   - component: {fileID: 7090756563302975470}
   - component: {fileID: 7766124567063853377}
   - component: {fileID: 8021507164029201199}
+  - component: {fileID: -4610701469438896278}
   m_Layer: 0
   m_Name: AI_T-72A(1979)
   m_TagString: Red
@@ -346,6 +347,24 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &-4610701469438896278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901242648115391366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1c82e4b3f2ad84429bd3941094b9511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ChangeCursor
+  modeOfCursor: 1
+  highlightSprites:
+  - {fileID: 5002424084966731537}
+  - {fileID: 9193033097523453220}
+  - {fileID: 113478210512343034}
+  hoverColor: {r: 1, g: 0.43762684, b: 0.3726415, a: 1}
 --- !u!1 &1079134925591382475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1234,6 +1253,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
 GameObject:
@@ -1319,6 +1339,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
 GameObject:
@@ -1404,6 +1425,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  TankScript: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
 GameObject:
@@ -2434,6 +2456,11 @@ PrefabInstance:
       addedObject: {fileID: 2897349758971322845}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: -8435245712485981826, guid: a8894a6377be4164994d449c82b6752c, type: 3}
+--- !u!212 &113478210512343034 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: a8894a6377be4164994d449c82b6752c, type: 3}
+  m_PrefabInstance: {fileID: 3730742920650088222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6815009689082699795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: a8894a6377be4164994d449c82b6752c, type: 3}
@@ -2706,6 +2733,11 @@ MonoBehaviour:
   modeText: {fileID: 0}
   shellText: {fileID: 0}
   reloadingText: {fileID: 0}
+--- !u!212 &9193033097523453220 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
+  m_PrefabInstance: {fileID: 5602851609151819200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5996947133014280190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3083,5 +3115,10 @@ BoxCollider2D:
 --- !u!4 &1904124148801044728 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7878350319992209165, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
+  m_PrefabInstance: {fileID: 8590980282432094197}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &5002424084966731537 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
   m_PrefabInstance: {fileID: 8590980282432094197}
   m_PrefabAsset: {fileID: 0}
