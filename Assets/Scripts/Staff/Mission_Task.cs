@@ -1,8 +1,9 @@
 using UnityEngine;
-
+using TMPro;
 public class Mission_Task : MonoBehaviour
 {
     public GameObject[] EnemyTanks;
+    public TextMeshProUGUI aliveTanksText;
     private int aliveTanks;
 
     private void CheckEnemyTanks()
@@ -23,9 +24,14 @@ public class Mission_Task : MonoBehaviour
             }
         }
     }
+    void Awake()
+    {
+        if (aliveTanksText == null)
+            aliveTanksText = GetComponent<TextMeshProUGUI>();
+    }
     void Update()
     {
         CheckEnemyTanks();
-        Debug.Log("Alive Enemy Tanks: " + aliveTanks);
+        aliveTanksText.text = "Active enemy tanks: " + aliveTanks + "/" + EnemyTanks.Length;
     }
 }

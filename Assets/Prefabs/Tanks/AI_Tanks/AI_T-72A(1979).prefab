@@ -264,6 +264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
+  defensiveAI: 0
+  defensiveFireDistance: 7
+  defensiveRetreatDistance: 3
   Point: {fileID: 0}
   aimDistance: 15
   stoppingDistance: 15
@@ -672,7 +675,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
-  aiTurret: {fileID: 0}
+  aiTurret: {fileID: 9034836171466900264}
 --- !u!1 &1786860982589483819
 GameObject:
   m_ObjectHideFlags: 0
@@ -758,7 +761,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
-  aiTurret: {fileID: 0}
+  aiTurret: {fileID: 9034836171466900264}
 --- !u!1 &2159708885946284346
 GameObject:
   m_ObjectHideFlags: 0
@@ -1254,6 +1257,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 0}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
 GameObject:
@@ -1340,6 +1344,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 0}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
 GameObject:
@@ -1426,6 +1431,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 0}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
 GameObject:
@@ -1677,7 +1683,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 0}
+  tankScript: {fileID: 3111381914497688785}
   isLeft: 1
 --- !u!1 &7239388423725970938
 GameObject:
@@ -1773,7 +1779,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 0}
+  tankScript: {fileID: 3111381914497688785}
   isLeft: 0
 --- !u!1 &7727018572576971463
 GameObject:
@@ -1962,7 +1968,7 @@ MonoBehaviour:
   maxHealth: 200
   health: 200
   IsDestroyed: 0
-  tankScript: {fileID: 0}
+  tankScript: {fileID: 3111381914497688785}
 --- !u!1 &8355417439279647005
 GameObject:
   m_ObjectHideFlags: 0

@@ -2716,6 +2716,12 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 2024950380}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_text
+      value: '0.0.9
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 5940197438500880533, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
