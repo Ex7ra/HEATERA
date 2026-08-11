@@ -40,7 +40,11 @@ public class AI_Logic : MonoBehaviour
     private Vector2 retreatPoint;
     private TankDamageReceiver health;
     private float fireModeTimer;
-    public float fireModeChangeTime = 5f;
+
+    [Header("AI Fire Mode")]
+    public float minFireModeChangeTime = 3f;
+    public float maxFireModeChangeTime = 8f;
+
     public FireMode currentFireMode;
     void Start()
     {
@@ -61,6 +65,8 @@ public class AI_Logic : MonoBehaviour
             Debug.Log("I am on " + tag + " team");
         }
         retreatPoint = (Vector2)transform.position - (Vector2)transform.up * retreatDistance;
+        ChooseFireMode();
+        fireModeTimer = Random.Range(minFireModeChangeTime, maxFireModeChangeTime);
     }
     void FindEnemy()
     {
@@ -157,6 +163,7 @@ public class AI_Logic : MonoBehaviour
             DisableAI();
             return;
         }
+        UpdateFireMode();
         targetTimer -= Time.deltaTime;
         if(targetTimer <= 0)
         {
@@ -367,9 +374,28 @@ public class AI_Logic : MonoBehaviour
 
     void ChooseFireMode()
     {
-        currentFireMode = (FireMode)Random.Range(0, System.Enum.GetValues(typeof(FireMode)).Length);
-    }
+        FireMode[] modes = (FireMode[])System.Enum.GetValues(typeof(FireMode));
 
+        currentFireMode = modes[Random.Range(0, modes.Length)];
+
+        Debug.Log("AI chose fire mode: " + currentFireMode);
+    }
+    void UpdateFireMode()
+    {
+        fireModeTimer -= Time.deltaTime;
+
+        if (fireModeTimer <= 0f)
+        {
+            ChooseFireMode();
+
+            if (turretLogic != null)
+            {
+                turretLogic.TrySwitchMode(currentFireMode);
+            }
+
+            fireModeTimer = Random.Range(minFireModeChangeTime, maxFireModeChangeTime);
+        }
+    }
     void AimingTheTurret(float distance)
     {
         Debug.DrawRay(firePoint.position, -turret.right  * distance, Color.yellow);
