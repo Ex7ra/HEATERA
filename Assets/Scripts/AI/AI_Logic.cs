@@ -39,6 +39,9 @@ public class AI_Logic : MonoBehaviour
     private bool retreating = false;
     private Vector2 retreatPoint;
     private TankDamageReceiver health;
+    private float fireModeTimer;
+    public float fireModeChangeTime = 5f;
+    public FireMode currentFireMode;
     void Start()
     {
         modernMovementLogic = GetComponent<AI_Movement_ModernClutch>();//finds the movement script 
@@ -87,6 +90,7 @@ public class AI_Logic : MonoBehaviour
             }
         }
     }
+    
    
     Vector2 GetCombatPosition()
     {
@@ -312,7 +316,10 @@ public class AI_Logic : MonoBehaviour
         if(distance > 0.5f)
         {
             float speedAmount = Mathf.Clamp01(0.1f - angleError / 60f);//This slows the tank when turning
-
+            float distanceToCombat = targetDistance - combatDistance; // Distance from desired combat position
+            float distanceSpeed = Mathf.InverseLerp(0f, 5f, distanceToCombat);// Start slowing down when 5m away from combat distance
+            distanceSpeed = Mathf.Clamp01(distanceSpeed);// Don't allow negative speed
+            speedAmount *= distanceSpeed;  // Combine turning speed and distance speed
             if(driveForward)
             {
                 moveInput = speedAmount;
@@ -357,7 +364,11 @@ public class AI_Logic : MonoBehaviour
                 
         }
     }
-    
+
+    void ChooseFireMode()
+    {
+        currentFireMode = (FireMode)Random.Range(0, System.Enum.GetValues(typeof(FireMode)).Length);
+    }
 
     void AimingTheTurret(float distance)
     {

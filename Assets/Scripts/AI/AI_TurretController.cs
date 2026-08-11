@@ -65,12 +65,6 @@ public class AI_TurretController : MonoBehaviour
 
     private Camera mainCam;//converts mouse position to world position
 
-    public enum FireMode//this is the list of fire modes and the options in that list
-    {
-        HullOnly,
-        TurretOnly
-    }
-
     public  FireMode activeMode = FireMode.HullOnly;
     public float switchTime = 1.2f;
     private bool isSwitchingMode = false; // this makes switching modes take some time to actualy switch
@@ -80,9 +74,6 @@ public class AI_TurretController : MonoBehaviour
     public TextMeshProUGUI shellText;//shows current shell type
     public TextMeshProUGUI reloadingText;//shows reloading time
 
-    private int shellLayer;
-    private int hullLayer;//those 3 are used to control what collides with what
-    private int turretLayer;
     //AI logic
     private Vector3 aimWorldPosition;
     private bool hasAimTarget = false;
@@ -98,13 +89,6 @@ public class AI_TurretController : MonoBehaviour
     }
     void Start()
     {
-        
-
-        shellLayer  = LayerMask.NameToLayer("Shell");//converts layer names to layer numbers so we can use them in the code
-        hullLayer   = LayerMask.NameToLayer("TankHull");
-        turretLayer = LayerMask.NameToLayer("TankTurret");
-
-        ApplyLayerRules();//sets collision logic
         UpdateModeUI();
         UpdateShellUI();//UI texts
     }
@@ -188,19 +172,6 @@ public class AI_TurretController : MonoBehaviour
         return true;
     }
 
-    void ApplyLayerRules()//colision logic for shells
-    {
-        if (activeMode == FireMode.HullOnly)
-        {
-            Physics2D.IgnoreLayerCollision(shellLayer, hullLayer, false);
-            Physics2D.IgnoreLayerCollision(shellLayer, turretLayer, true);
-        }
-        else
-        {
-            Physics2D.IgnoreLayerCollision(shellLayer, turretLayer, false);
-            Physics2D.IgnoreLayerCollision(shellLayer, hullLayer, true);
-        }
-    }
 
     void UpdateModeUI()
     {
@@ -278,6 +249,11 @@ public class AI_TurretController : MonoBehaviour
         {
             Vector2 fireDirection = firePoint.up;
             rb.linearVelocity = fireDirection * shell.speed;
+            Shell shellScript = obj.GetComponent<Shell>();
+            if (shellScript != null)
+            {
+                shellScript.Initialize(fireDirection, activeMode);
+            }
         }
 
         StopCoroutine("RecoilCannon"); 
@@ -322,7 +298,6 @@ public class AI_TurretController : MonoBehaviour
         }
 
         activeMode = targetMode;
-        ApplyLayerRules();
         UpdateModeUI();
 
         isSwitchingMode = false;

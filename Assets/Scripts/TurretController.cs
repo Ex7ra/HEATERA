@@ -66,13 +66,8 @@ public class TurretNormal : MonoBehaviour
 
     private Camera mainCam;//converts mouse position to world position
 
-    public enum FireMode//this is the list of fire modes and the options in that list
-    {
-        HullOnly,
-        TurretOnly
-    }
    
-    public static FireMode ActiveMode = FireMode.HullOnly;
+    public FireMode activeMode = FireMode.HullOnly;
     public float switchTime = 1.2f;
     private bool isSwitchingMode = false; // this makes switching modes take some time to actualy switch
 
@@ -81,19 +76,11 @@ public class TurretNormal : MonoBehaviour
     public TextMeshProUGUI shellText;//shows current shell type
     public TextMeshProUGUI reloadingText;//shows reloading time
 
-    private int shellLayer;
-    private int hullLayer;//those 3 are used to control what collides with what
-    private int turretLayer;
 
     void Start()
     {
         mainCam = Camera.main;//get the main camera
 
-        shellLayer  = LayerMask.NameToLayer("Shell");//converts layer names to layer numbers so we can use them in the code
-        hullLayer   = LayerMask.NameToLayer("TankHull");
-        turretLayer = LayerMask.NameToLayer("TankTurret");
-
-        ApplyLayerRules();//sets collision logic
         UpdateModeUI();
         UpdateShellUI();//UI texts
         
@@ -183,29 +170,17 @@ public class TurretNormal : MonoBehaviour
         if (Input.GetMouseButtonDown(2) && !isSwitchingMode)//middle mouse button input for switching fire modes
         {
            StartCoroutine(SwitchFireMode());
-            Debug.Log("Fire Mode → " + ActiveMode);
+            Debug.Log("Fire Mode → " + activeMode);
         }
     }
 
-    void ApplyLayerRules()//colision logic for shells
-    {
-        if (ActiveMode == FireMode.HullOnly)
-        {
-            Physics2D.IgnoreLayerCollision(shellLayer, hullLayer, false);
-            Physics2D.IgnoreLayerCollision(shellLayer, turretLayer, true);
-        }
-        else
-        {
-            Physics2D.IgnoreLayerCollision(shellLayer, turretLayer, false);
-            Physics2D.IgnoreLayerCollision(shellLayer, hullLayer, true);
-        }
-    }
+   
 
     void UpdateModeUI()
     {
         if (modeText == null) return;
 
-        modeText.text = (ActiveMode == FireMode.HullOnly)// this is a ternary operator, its a shorter way of writing an if statement that assigns a value based on a condition
+        modeText.text = (activeMode == FireMode.HullOnly)// this is a ternary operator, its a shorter way of writing an if statement that assigns a value based on a condition
             ? "MODE: HULL"
             : "MODE: TURRET";
     }
@@ -282,7 +257,11 @@ public class TurretNormal : MonoBehaviour
     {
         Vector2 fireDirection = firePoint.up;
         rb.linearVelocity = fireDirection * shell.speed;
-        obj.GetComponent<Shell>().Initialize(fireDirection);
+        Shell shellScript = obj.GetComponent<Shell>();
+        if (shellScript != null)
+        {
+            shellScript.Initialize(fireDirection, activeMode);
+        }
     }
 
     StopCoroutine("RecoilCannon"); 
@@ -323,11 +302,10 @@ public class TurretNormal : MonoBehaviour
                 modeText.text = "Switching: " + timer.ToString("F1");
             yield return null;
         }
-        ActiveMode = (ActiveMode == FireMode.HullOnly)
+        activeMode = (activeMode == FireMode.HullOnly)
         ? FireMode.TurretOnly
         : FireMode.HullOnly;
 
-        ApplyLayerRules();
         UpdateModeUI();
         isSwitchingMode = false;
         

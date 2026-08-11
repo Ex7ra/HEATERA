@@ -17,9 +17,12 @@ public class Shell : MonoBehaviour
         HEAT,
         HE
     }
+   
 
     [Header("Shell Type")]
     public ShellType shellType;
+    [Header("Fire Mode")]
+    public FireMode fireMode;
 
     [Header("Explosion")]
     public float explosionRadius;
@@ -82,9 +85,10 @@ public class Shell : MonoBehaviour
         remainingPenetration = penetrationMm;
         remainingDamage = damage;
     }
-    public void Initialize(Vector2 direction)
+    public void Initialize(Vector2 direction, FireMode mode)
     {
         shellDirection = direction.normalized;
+        fireMode = mode;
     }
     void Update()
     {
@@ -142,7 +146,7 @@ public class Shell : MonoBehaviour
 
         if(layer == lowerObstacle)
         {
-            if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly)
+            if(fireMode == FireMode.HullOnly)
             {
                 shellDead = true;
                 Destroy(gameObject);
@@ -158,18 +162,7 @@ public class Shell : MonoBehaviour
         
         if(armor != null)// If armour was hit, perform penetration calculations
 
-        {   // Ignore armour that belongs to the wrong fire mode (hull or turret)
-            if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly && hit.collider.gameObject.layer != hullLayer)
-            {
-                return;
-            }
-            // Ignore armour that belongs to the wrong fire mode (hull or turret)
-            if(TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly && hit.collider.gameObject.layer != turretLayer)
-            {
-                return;
-            }
-            
-
+        {  
             float plateNormal;// Stores the direction angle of the armour surface
             float incoming;// Stores the direction from which the shell approaches the armour
             float impact;// Stores the angle at which the shell hits the armour
@@ -282,17 +275,15 @@ public class Shell : MonoBehaviour
     }
     bool IsValidTarget(GameObject obj)
     {
-        if(TurretNormal.ActiveMode == TurretNormal.FireMode.HullOnly)
+        if (fireMode == FireMode.HullOnly)
         {
             return obj.layer == hullLayer;
         }
 
-
-        if(TurretNormal.ActiveMode == TurretNormal.FireMode.TurretOnly)
+        if (fireMode == FireMode.TurretOnly)
         {
             return obj.layer == turretLayer;
         }
-        
 
         return true;
     }

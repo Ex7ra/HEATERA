@@ -279,6 +279,8 @@ MonoBehaviour:
   waypointDistance: 2
   pathUpdateRate: 2
   retreatDistance: 4
+  fireModeChangeTime: 5
+  currentFireMode: 0
 --- !u!114 &7090756563302975470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2379,7 +2381,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   turret: {fileID: 0}
-  aiTurret: {fileID: 0}
+  aiTurret: {fileID: 9034836171466900264}
 --- !u!1001 &3730742920650088222
 PrefabInstance:
   m_ObjectHideFlags: 0
