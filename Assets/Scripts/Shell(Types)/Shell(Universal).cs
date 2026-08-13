@@ -146,16 +146,25 @@ public class Shell : MonoBehaviour
 
         if(layer == lowerObstacle)
         {
-            if(fireMode == FireMode.HullOnly)
+            brack_able_obstacles obstacle = hit.collider.GetComponent<brack_able_obstacles>();
+
+            if(obstacle != null)
             {
+                obstacle.TakeDamage(Mathf.RoundToInt(remainingDamage));
+
+                Debug.Log("Low obstacle damaged by shell!");
+
                 shellDead = true;
                 Destroy(gameObject);
-                print("Low Obstacle was hit!");
                 return;
             }
 
+            // If its a LowObstacle but doesn't have the breakable script
+            shellDead = true;
+            Destroy(gameObject);
+
+            print("Low Obstacle was hit!");
             return;
-            
         }
         if(!IsValidTarget(hit.collider.gameObject))// Ignore objects that are not part of the current firing mode
         return;

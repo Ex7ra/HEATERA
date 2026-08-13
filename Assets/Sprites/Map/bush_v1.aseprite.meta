@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2f45ddd876a2dcd458019593ad778dd3
+guid: 6c4e17f0d6c5ccd4592031646f94d145
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,7 +78,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -93,7 +93,7 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 4
     spritePadding: 0
     generateModelPrefab: 1
     generateAnimationClips: 1
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639221680877678710
+  platformSettingsDirtyTick: 0
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: house_v1
+  - name: bush_v1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -135,11 +135,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 300
-      height: 500
-    spriteID: cbe69f40e6d3daa489045149c323b301
+      x: 4
+      y: 4
+      width: 48
+      height: 49
+    spriteID: 1641a96e200fdcd408013f981d2ce1bf
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,57 +153,33 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 3339647646
+      value0: 3128808352
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: house_v1
+    name: bush_v1
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: house_v1
+    - name: bush_v1
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 0
+        x: 2
         y: 0
-        width: 300
-        height: 500
-      spriteId: cbe69f40e6d3daa489045149c323b301
+        width: 48
+        height: 49
+      spriteId: 1641a96e200fdcd408013f981d2ce1bf
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
     parentIndex: -1
   tileSets: []
-  platformSettings:
-  - name: DefaultTexturePlatform
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
-  - name: Standalone
-    overridden: 0
-    ignorePlatformSupport: 0
-    maxTextureSize: 16384
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 0
-    compressionQuality: 50
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    androidETC2FallbackOverride: 0
+  platformSettings: []
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 300, y: 500}
-  previousTextureSize: {x: 512, y: 512}
+  canvasSize: {x: 50, y: 50}
+  previousTextureSize: {x: 64, y: 64}
