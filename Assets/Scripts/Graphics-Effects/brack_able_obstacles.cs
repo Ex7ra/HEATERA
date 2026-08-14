@@ -33,7 +33,10 @@ public class brack_able_obstacles : MonoBehaviour
         if (destroyed)
             return;
 
-        if (collision.gameObject.layer == LayerMask.NameToLayer("TankHull"))
+        TankController_ModernClutch tank = 
+            collision.gameObject.GetComponent<TankController_ModernClutch>();
+
+        if (tank != null)
         {
             float speed = collision.relativeVelocity.magnitude;
 
@@ -45,20 +48,21 @@ public class brack_able_obstacles : MonoBehaviour
         }
     }
 
+
     void Destroyed()
     {
         destroyed = true;
 
-        // Stop being an obstacle
-        if (obstacleCollider != null)
+        
+        if (obstacleCollider != null)// Stop being obstacle
             obstacleCollider.enabled = false;
 
-        // Hide normal sprite
-        if (normalSprite != null)
+        
+        if (normalSprite != null)// hide normal Sprite
             normalSprite.enabled = false;
 
-        // Show destroyed sprite
-        if (destroyedSprite != null)
+        
+        if (destroyedSprite != null)//show destroyed sprite
             destroyedSprite.enabled = true;
 
         Debug.Log("Obstacle destroyed!");

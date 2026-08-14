@@ -61,6 +61,7 @@ public class Shell : MonoBehaviour
         turretLayer = LayerMask.NameToLayer("TankTurret");
         upperObstacle = LayerMask.NameToLayer("HighObstacle");
         lowerObstacle = LayerMask.NameToLayer("LowObstacle");
+        
 
         switch(shellType)
         {
