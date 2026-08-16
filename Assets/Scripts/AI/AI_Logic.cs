@@ -6,9 +6,10 @@ using JetBrains.Annotations;
 
 public class AI_Logic : MonoBehaviour
 {
+    public bool activeAI = false;
+    [SerializeField] private LevelIntro levelIntro;
     [Header("AI Behaviour")]
     public bool defensiveAI = false;
-
     public float defensiveFireDistance = 7f;
     public float defensiveRetreatDistance = 3f;
     private LayerMask TankHull;
@@ -53,6 +54,7 @@ public class AI_Logic : MonoBehaviour
         turretLogic = GetComponentInChildren<AI_TurretController>();//InChildren because its in children gameObject
         seeker = GetComponent<Seeker>();
         health = GetComponent<TankDamageReceiver>();
+        levelIntro = FindObjectOfType<LevelIntro>();
 
         InvokeRepeating(nameof(UpdatePath),0f,pathUpdateRate);//updates the path my every number which is set in "pathUpdateRate" because targets move
         if(gameObject.tag != "Blue")
@@ -158,6 +160,14 @@ public class AI_Logic : MonoBehaviour
         
     void Update()
     {
+        if (!LevelIntro.gameplayStarted)
+        {
+            activeAI = false;
+            Stop();
+            return;
+        }
+        activeAI = true;
+
         if (health != null && health.IsDestroyed)
         {
             DisableAI();

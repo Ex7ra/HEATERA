@@ -147,6 +147,8 @@ public class Shell : MonoBehaviour
 
         if(layer == lowerObstacle)
         {
+            if(fireMode == FireMode.TurretOnly)
+                return;
             brack_able_obstacles obstacle = hit.collider.GetComponent<brack_able_obstacles>();
 
             if(obstacle != null)

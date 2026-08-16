@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ebecb020c4a784c882a186455d3eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::brack_able_obstacles
-  health: 5
+  health: 2
   normalSprite: {fileID: 8596070524199810115}
   destroyedSprite: {fileID: 3864095302595379550}
   obstacleCollider: {fileID: 2583254009626241562}

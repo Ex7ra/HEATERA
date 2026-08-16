@@ -5,7 +5,7 @@ public class brack_able_obstacles : MonoBehaviour
     public int health = 20;
     public SpriteRenderer normalSprite;
     public SpriteRenderer destroyedSprite;
-    public CircleCollider2D obstacleCollider;
+    public Collider2D obstacleCollider;
     private bool destroyed = false;
     void Start()
     {
@@ -64,6 +64,12 @@ public class brack_able_obstacles : MonoBehaviour
         
         if (destroyedSprite != null)//show destroyed sprite
             destroyedSprite.enabled = true;
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if(rb != null && rb.linearVelocity.magnitude > 0f)
+        {
+            rb.linearVelocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
 
         Debug.Log("Obstacle destroyed!");
     }

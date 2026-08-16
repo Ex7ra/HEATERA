@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &3938521196077775535
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1620546172450713384, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1903914654457161873, guid: 1d2d2930d99370546bd30bb48b803b64, type: 3}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.3369222
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.8879905
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3476207345217045200, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294607240887764599, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2813269210524104899, guid: f5cbcb49dbb69db4090894df692bddeb, type: 3}
+    - target: {fileID: 5511982732422603955, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_Name
+      value: Car_blue_Obstacle Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 5603449938878886136, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_LinearDamping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8254194773578775664, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: m_Name
+      value: Car_blue_Destroyed
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}

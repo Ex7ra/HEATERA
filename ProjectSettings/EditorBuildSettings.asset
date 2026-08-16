@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_1_NATO.unity
     guid: b91fb9f95bc87b44db279955a2ac287c
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 0c1cb394c74ce4d43b721a1ff6573561
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

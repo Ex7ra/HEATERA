@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CameraFollow2D : MonoBehaviour
 {
+    public bool followEnabled = true;
     public Transform target;            
     public float followSmoothTime = 0.15f; 
     public float zoomSpeed = 5f;       
@@ -25,6 +26,8 @@ public class CameraFollow2D : MonoBehaviour
 
     void LateUpdate()
     {
+        if (!followEnabled)
+            return;
         if (target == null) return;
 
         Vector3 targetPos = new Vector3(target.position.x + aimOffset.x, target.position.y + aimOffset.y, transform.position.z);

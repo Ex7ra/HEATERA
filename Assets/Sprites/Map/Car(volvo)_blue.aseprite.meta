@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0bc828095b862254692a369b392c4671
+guid: 1d2d2930d99370546bd30bb48b803b64
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Car(volvo)_grey
+  - name: Car(volvo)_blue
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 4
       width: 39
       height: 98
-    spriteID: d04c69443ebf132459194a8771711316
+    spriteID: 9b95b94cb7748a044a6d9fe6be7030d8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 141805387
+      value0: 1916309038
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Car(volvo)_grey
+    name: Car(volvo)_blue
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Car(volvo)_grey
+    - name: Car(volvo)_blue
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 1
         width: 39
         height: 98
-      spriteId: d04c69443ebf132459194a8771711316
+      spriteId: 9b95b94cb7748a044a6d9fe6be7030d8
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

@@ -31,6 +31,7 @@ public class MenuPanel
 
 public class MainMenu : MonoBehaviour
 {
+    public static string sceneToLoad;
     [Header("Panels")]
     public List<MenuPanel> panels = new List<MenuPanel>();
 
@@ -84,7 +85,8 @@ public class MainMenu : MonoBehaviour
 
     public void GoToPoygonScene()
     {
-        SceneManager.LoadSceneAsync(1);
+        sceneToLoad = "SampleScene";
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void QuitTheGame()
@@ -95,7 +97,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayLevel(string sceneName)
     {
-        SceneManager.LoadSceneAsync(sceneName);
+        sceneToLoad = sceneName;
+        SceneManager.LoadScene("LoadingScene");
     }
 
     public void OpenPanel(string id)
