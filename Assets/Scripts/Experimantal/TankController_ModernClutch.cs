@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TankController_ModernClutch : MonoBehaviour, ITankMovement
+public class TankController_ModernClutch : MonoBehaviour
 {
     float currentSpeed;
     float currentTurn;
@@ -12,9 +12,6 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
     public void DisableMovement() => movementEnabled = false;
     public void EnableMovement() => movementEnabled = true;
 
-    public void DestroyLeftTrack() => leftTrackHealth = 0f;
-    public void DestroyRightTrack() => rightTrackHealth = 0f;
-    public void EngineDestroyed() => engineHealth = 0f;
 
     [Header("Acceleration")]
     public float acceleration = 10f;
@@ -33,10 +30,10 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
     public float turnDeceleration = 300f;
 
     [Header("Health")]
-    public float engineHealth = 1f;
-    public float leftTrackHealth = 1f;
-    public float rightTrackHealth = 1f;
-    public float driverhealth = 1f;
+    public TankModule leftTrack;
+    public TankModule engine;
+    public TankModule rightTrack;
+    public TankModule driver;
 
     Rigidbody2D rb;
 
@@ -62,8 +59,9 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
 
     void FixedUpdate()
     {
+        
         Vector2 centerOffset = hullCenter != null ? (Vector2)(hullCenter.position - transform.position) : Vector2.zero;
-        if (!movementEnabled || engineHealth <= 0f || leftTrackHealth <= 0f || rightTrackHealth <= 0f || driverhealth <= 0f)
+        if (!movementEnabled || engine.IsDestroyed || leftTrack.IsDestroyed || rightTrack.IsDestroyed || driver.IsDestroyed)
         {
             
             rb.linearVelocity = Vector2.zero;
@@ -73,7 +71,7 @@ public class TankController_ModernClutch : MonoBehaviour, ITankMovement
 
         Vector2 forward = transform.up;
 
-        bool canMove = leftTrackHealth > 0f && rightTrackHealth > 0f;
+        bool canMove = !leftTrack.IsDestroyed && !rightTrack.IsDestroyed;
 
         if (!canMove)
         {

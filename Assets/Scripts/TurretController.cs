@@ -195,35 +195,34 @@ public class TurretNormal : MonoBehaviour
    
     void RotateTurret()
     {
-    Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);//converts mouse position to world position so we can rotate the turret towards it
-    mouseWorld.z = 0f;
+        Vector3 mouseWorld = mainCam.ScreenToWorldPoint(Input.mousePosition);//converts mouse position to world position so we can rotate the turret towards it
+        mouseWorld.z = 0f;
 
-    Vector3 dir = mouseWorld - transform.position;//direction from turret to mouse position
-    float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - defaultRotationOffset;//converts direction to angle in degrees
+        Vector3 dir = mouseWorld - transform.position;//direction from turret to mouse position
+        float targetAngle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - defaultRotationOffset;//converts direction to angle in degrees
 
-    float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);//for smooth rotation
-    transform.rotation = Quaternion.Euler(0, 0, turretZ);
+        float turretZ = Mathf.MoveTowardsAngle(transform.eulerAngles.z, targetAngle, rotationSpeed * rotationMultiplier * Time.deltaTime);//for smooth rotation
+        transform.rotation = Quaternion.Euler(0, 0, turretZ);
 
-  
    }
 
     
     void HandleShooting()
-{
-    
-    if (!IsGunOperational())//stops everything if the gun is destroyed
-        return;
-
-    if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0 )
-        return;
-
-    if (Input.GetMouseButtonDown(0))
     {
-        Shoot();
-        totalShells--;
-        StartCoroutine(Reload());
+        
+        if (!IsGunOperational())//stops everything if the gun is destroyed
+            return;
+
+        if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0 )
+            return;
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+            totalShells--;
+            StartCoroutine(Reload());
+        }
     }
-}
    bool IsGunOperational()
     {
         if (cannonModule == null || gunBreechModule == null)

@@ -85,6 +85,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 7201753425952145902}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &39136584352574786
 GameObject:
@@ -515,6 +516,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 7201753425952145902}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &2864687053256310921
 GameObject:
@@ -924,9 +926,9 @@ MonoBehaviour:
   muzzleFlashPrefab: {fileID: 7150051762728916891, guid: 3d9755be8b6c1814495bf3d1ff9c5812, type: 3}
   smokePrefab: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
   smokeSpawn: {fileID: 5180316516541415154}
-  smokeCount: 8
-  forwardSpread: 0.8
-  sideSpread: 0.5
+  smokeCount: 20
+  forwardSpread: 1
+  sideSpread: 2
   cannon: {fileID: 6523871284579092925}
   currentShell: 0
   cannonModule: {fileID: 2830023169156915447}
@@ -949,6 +951,7 @@ MonoBehaviour:
     reloadTime: 5
   switchShellTime: 6
   totalShells: 50
+  activeMode: 0
   switchTime: 0.5
   modeText: {fileID: 0}
   shellText: {fileID: 0}
@@ -1318,6 +1321,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 7201753425952145902}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &4513396869818979386
 GameObject:
@@ -2141,6 +2145,7 @@ GameObject:
   - component: {fileID: 7201753425952145902}
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
+  - component: {fileID: 1319302264746337467}
   m_Layer: 0
   m_Name: Leopard1A5
   m_TagString: Blue
@@ -2212,10 +2217,10 @@ MonoBehaviour:
   turnSpeed: 35
   turnAcceleration: 15
   turnDeceleration: 50
-  engineHealth: 1
-  leftTrackHealth: 1
-  rightTrackHealth: 1
-  driverhealth: 1
+  leftTrack: {fileID: 3031159774094269961}
+  engine: {fileID: 7410213195510213801}
+  rightTrack: {fileID: 25277489607710588}
+  driver: {fileID: 2713030991854696133}
 --- !u!114 &6872905978666851161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2248,6 +2253,19 @@ MonoBehaviour:
   modeOfCursor: 0
   highlightSprites: []
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+--- !u!114 &1319302264746337467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004404656569007100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e35f6b1b761fc14a873279956b73f40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TankReparing
+  module: []
 --- !u!1 &6035141549219697847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2744,6 +2762,7 @@ MonoBehaviour:
   health: 100
   IsDestroyed: 0
   TankScript: {fileID: 7201753425952145902}
+  TankScript_ClutchBraking: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &6735477625196377846
 GameObject:
@@ -3064,8 +3083,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3b713e55eff9b409638bf6df72c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineModule
-  maxHealth: 100
-  health: 100
+  maxHealth: 200
+  health: 200
   IsDestroyed: 0
   tankScript: {fileID: 7201753425952145902}
 --- !u!1 &8051844752291588048

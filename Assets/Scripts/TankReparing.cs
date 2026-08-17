@@ -2,45 +2,51 @@ using UnityEngine;
 using System.Collections;
 public class TankReparing : MonoBehaviour
 {
+    
+    public TankModule[] module;
+    
 
-    public TankModule module;
-   
     void Start()
     {
-        
+        module = GetComponentsInChildren<TankModule>();
+        Debug.Log("Modules found: " + module.Length);
     }
-
     
     void Update()
     {
-        float healthPercent = (float)module.health / module.maxHealth;
-        if(healthPercent == 0.00f)
+        foreach(TankModule currentModule in module)
         {
-            Debug.Log("PRESS R TO REPAIR: " + module.name);
-            if (Input.GetKeyDown(KeyCode.R))
+            float healthPercent = currentModule.health / currentModule.maxHealth;
+            if (healthPercent <= 0.00f)
             {
-                StartCoroutine(RepairModule());
+                Debug.Log("PRESS R TO REPAIR: " + currentModule.name);
+                if (Input.GetKeyDown(KeyCode.R))
+                {
+                    StartCoroutine(RepairModule(currentModule));
+                }
             }
         }
+       
     }
 
-    public IEnumerator RepairModule()
+    public IEnumerator RepairModule(TankModule currentModule)
     {
       
-        float repairTime = module.maxHealth / 6f;
+        float repairTime = currentModule.maxHealth / 15f;
         float time = 0f;
         while (time < repairTime)
         {
             time += Time.deltaTime;
             float t = Mathf.Clamp01(time / repairTime);
-
+            print("Repairing " + currentModule.name + " " + (t * 100f).ToString("F2") + "%");
             yield return null;
         }
         if(time >= repairTime)
         {
-            module.health = module.maxHealth;
-            module.IsDestroyed = false;
-            Debug.Log(module.name + " REPAIRED");
+            currentModule.health = currentModule.maxHealth;
+            currentModule.IsDestroyed = false;
+            Debug.Log(currentModule.name + " REPAIRED");
+            
         }
         
     }

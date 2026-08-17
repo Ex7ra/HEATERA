@@ -160,12 +160,13 @@ public class AI_Logic : MonoBehaviour
         
     void Update()
     {
-        if (!LevelIntro.gameplayStarted)
+        if (levelIntro != null && !LevelIntro.gameplayStarted)
         {
             activeAI = false;
             Stop();
             return;
         }
+       
         activeAI = true;
 
         if (health != null && health.IsDestroyed)
