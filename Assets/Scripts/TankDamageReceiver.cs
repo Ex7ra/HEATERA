@@ -13,6 +13,7 @@ public class TankDamageReceiver : MonoBehaviour
     void Awake()
     {
         tank = GetComponent<ITankMovement>();
+        
     }
 
     public void OnPenetration(Vector2 hitPoint, Vector2 direction, float damage)

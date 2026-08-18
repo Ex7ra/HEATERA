@@ -264,13 +264,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
+  activeAI: 0
+  levelIntro: {fileID: 0}
   defensiveAI: 0
   defensiveFireDistance: 7
   defensiveRetreatDistance: 3
   Point: {fileID: 0}
   aimDistance: 15
   stoppingDistance: 15
-  combatDistance: 7
+  combatDistance: 3
   obstacleDistance: 5
   turret: {fileID: 2347736625338921677}
   firePoint: {fileID: 2782012161826022414}
@@ -279,7 +281,8 @@ MonoBehaviour:
   waypointDistance: 2
   pathUpdateRate: 2
   retreatDistance: 4
-  fireModeChangeTime: 5
+  minFireModeChangeTime: 3
+  maxFireModeChangeTime: 8
   currentFireMode: 0
 --- !u!114 &7090756563302975470
 MonoBehaviour:
