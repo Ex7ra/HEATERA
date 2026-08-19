@@ -468,6 +468,17 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &246972128 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7090756563302975470, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+  m_PrefabInstance: {fileID: 1239900478}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246972118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09dc11c57a729504aab2c0da08ca637e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ClutchBraking
 --- !u!114 &529483599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4216224979425689279, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
@@ -539,6 +550,10 @@ PrefabInstance:
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 192139621}
+    - target: {fileID: 2713030991854696133, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: ModernClutch
+      value: 
+      objectReference: {fileID: 556480842}
     - target: {fileID: 6004404656569007100, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_Name
       value: Leopard1A5
@@ -1158,6 +1173,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1339232470675259, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: tankScript
+      value: 
+      objectReference: {fileID: 246972128}
     - target: {fileID: 794302502981260688, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_TagString
       value: Red
@@ -1186,6 +1205,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 1504920908116121692, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: IsDestroyed
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1574627893474361983, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_TagString
       value: Red
@@ -1206,6 +1229,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 2250591484141115823, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: tankScript
+      value: 
+      objectReference: {fileID: 246972128}
     - target: {fileID: 2255757473621141151, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_TagString
       value: Red
@@ -1302,6 +1329,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 6202425067558661685, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: tankScript
+      value: 
+      objectReference: {fileID: 246972128}
     - target: {fileID: 6415884916154638877, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_TagString
       value: Red
@@ -1387,7 +1418,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 901242648115391366, guid: 9af365aca873699468faa21b52eaf439, type: 3}
-      insertIndex: 2
+      insertIndex: 4
       addedObject: {fileID: 246972124}
   m_SourcePrefab: {fileID: 100100000, guid: 9af365aca873699468faa21b52eaf439, type: 3}
 --- !u!114 &1264721305 stripped
@@ -2215,6 +2246,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2713030991854696133, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: TankScript
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2713030991854696133, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: ModernClutch
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2830023169156915447, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}

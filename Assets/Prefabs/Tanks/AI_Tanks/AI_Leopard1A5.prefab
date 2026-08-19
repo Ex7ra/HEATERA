@@ -84,7 +84,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &39136584352574786
 GameObject:
@@ -514,7 +519,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &2864687053256310921
 GameObject:
@@ -1318,7 +1328,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &4513396869818979386
 GameObject:
@@ -2144,6 +2159,7 @@ GameObject:
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
   - component: {fileID: 4364576118424481591}
+  - component: {fileID: 6550023486342786243}
   m_Layer: 0
   m_Name: AI_Leopard1A5
   m_TagString: Blue
@@ -2207,6 +2223,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
+  activeAI: 0
+  levelIntro: {fileID: 0}
   defensiveAI: 0
   defensiveFireDistance: 7
   defensiveRetreatDistance: 3
@@ -2222,6 +2240,9 @@ MonoBehaviour:
   waypointDistance: 2
   pathUpdateRate: 2
   retreatDistance: 4
+  minFireModeChangeTime: 3
+  maxFireModeChangeTime: 8
+  currentFireMode: 0
 --- !u!114 &4896147627276437742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2307,6 +2328,18 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &6550023486342786243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6004404656569007100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!1 &6035141549219697847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2803,7 +2836,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
 --- !u!1 &6735477625196377846
 GameObject:

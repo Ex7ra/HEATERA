@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 8125834457196610407}
   - component: {fileID: 3451913827272088109}
   - component: {fileID: 7766124567063853377}
+  - component: {fileID: 561320358223111966}
   m_Layer: 0
   m_Name: T-72A(1979)
   m_TagString: Untagged
@@ -290,6 +291,18 @@ MonoBehaviour:
   - {fileID: 1504920908116121692}
   - {fileID: 2244950435614826753}
   - {fileID: 5876500411917294795}
+--- !u!114 &561320358223111966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901242648115391366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!1 &1079134925591382475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1178,6 +1191,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
 GameObject:
@@ -1263,6 +1282,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
 GameObject:
@@ -1348,6 +1373,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
 GameObject:
@@ -2617,6 +2648,12 @@ MonoBehaviour:
   defaultRotationOffset: -180
   recoilDistance: 0.3
   recoilSpeed: 5
+  muzzleFlashPrefab: {fileID: 0}
+  smokePrefab: {fileID: 0}
+  smokeSpawn: {fileID: 0}
+  smokeCount: 8
+  forwardSpread: 0.8
+  sideSpread: 0.5
   cannon: {fileID: 6815009689082699795}
   currentShell: 0
   cannonModule: {fileID: 7642594949559301448}
@@ -2639,6 +2676,7 @@ MonoBehaviour:
     reloadTime: 7.5
   switchShellTime: 10
   totalShells: 44
+  activeMode: 0
   switchTime: 1
   modeText: {fileID: 0}
   shellText: {fileID: 0}

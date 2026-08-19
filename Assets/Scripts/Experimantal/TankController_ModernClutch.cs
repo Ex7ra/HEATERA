@@ -6,6 +6,7 @@ public class TankController_ModernClutch : MonoBehaviour
     float currentSpeed;
     float currentTurn;
     private bool movementEnabled = true;
+    public LevelIntro Intro;
 
     public float CurrentSpeed { get; private set; }
 
@@ -55,6 +56,12 @@ public class TankController_ModernClutch : MonoBehaviour
     {
         moveInput = Input.GetAxisRaw("Vertical");
         turnInput = Input.GetAxisRaw("Horizontal");
+        if (Intro != null && !LevelIntro.gameplayStarted)
+        {
+            movementEnabled = false;
+            return;
+        }
+        movementEnabled = true;
     }
 
     void FixedUpdate()

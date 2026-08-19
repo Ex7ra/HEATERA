@@ -5,6 +5,9 @@ public class LevelIntro : MonoBehaviour
 {
     public Camera mainCamera;
     public CameraFollow2D cameraFollow;
+    public Canvas UICanvas;
+    public GameObject IntroPanels;
+
     [Header("Enemy Camera Positions")]
     public Transform[] introEnemyPositions;
 
@@ -18,6 +21,8 @@ public class LevelIntro : MonoBehaviour
     void Start()
     {
         StartCoroutine(PlayIntro());
+        UICanvas.gameObject.SetActive(false);
+        IntroPanels.gameObject.SetActive(true);
     }
 
     IEnumerator PlayIntro()
@@ -37,6 +42,8 @@ public class LevelIntro : MonoBehaviour
 
         cameraFollow.followEnabled = true;
         gameplayStarted = true;
+        IntroPanels.gameObject.SetActive(false);
+        UICanvas.gameObject.SetActive(true);
         Debug.Log("INTRO FINISHED");
     }
 

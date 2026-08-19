@@ -33,9 +33,8 @@ public class brack_able_obstacles : MonoBehaviour
         if (destroyed)
             return;
 
-        TankController_ModernClutch tank = 
-            collision.gameObject.GetComponent<TankController_ModernClutch>();
-
+        //TankController_ModernClutch tank = collision.gameObject.GetComponent<TankController_ModernClutch>();
+        Tank tank = collision.gameObject.GetComponent<Tank>();
         if (tank != null)
         {
             float speed = collision.relativeVelocity.magnitude;

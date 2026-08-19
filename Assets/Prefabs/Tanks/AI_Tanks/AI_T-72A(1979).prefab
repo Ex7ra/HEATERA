@@ -196,11 +196,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7675312050437625035}
   - component: {fileID: 8125834457196610407}
-  - component: {fileID: 3111381914497688785}
   - component: {fileID: 7090756563302975470}
+  - component: {fileID: 3111381914497688785}
   - component: {fileID: 7766124567063853377}
   - component: {fileID: 8021507164029201199}
   - component: {fileID: -4610701469438896278}
+  - component: {fileID: -528898762024878363}
   m_Layer: 0
   m_Name: AI_T-72A(1979)
   m_TagString: Red
@@ -252,38 +253,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &3111381914497688785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901242648115391366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
-  activeAI: 0
-  levelIntro: {fileID: 0}
-  defensiveAI: 0
-  defensiveFireDistance: 7
-  defensiveRetreatDistance: 3
-  Point: {fileID: 0}
-  aimDistance: 15
-  stoppingDistance: 15
-  combatDistance: 3
-  obstacleDistance: 5
-  turret: {fileID: 2347736625338921677}
-  firePoint: {fileID: 2782012161826022414}
-  targetUpdateRate: 1
-  Enemy: {fileID: 0}
-  waypointDistance: 2
-  pathUpdateRate: 2
-  retreatDistance: 4
-  minFireModeChangeTime: 3
-  maxFireModeChangeTime: 8
-  currentFireMode: 0
 --- !u!114 &7090756563302975470
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -311,6 +280,38 @@ MonoBehaviour:
   spriteFacesRight: 0
   moveInput: 0
   turnInput: 0
+--- !u!114 &3111381914497688785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901242648115391366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 992cc1c5e01c3b84aa854c0a21ffb9a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
+  activeAI: 0
+  levelIntro: {fileID: 0}
+  defensiveAI: 0
+  defensiveFireDistance: 7
+  defensiveRetreatDistance: 3
+  Point: {fileID: 0}
+  aimDistance: 15
+  stoppingDistance: 7
+  combatDistance: 3
+  obstacleDistance: 5
+  turret: {fileID: 2347736625338921677}
+  firePoint: {fileID: 2782012161826022414}
+  targetUpdateRate: 1
+  Enemy: {fileID: 0}
+  waypointDistance: 2
+  pathUpdateRate: 2
+  retreatDistance: 4
+  minFireModeChangeTime: 3
+  maxFireModeChangeTime: 8
+  currentFireMode: 0
 --- !u!114 &7766124567063853377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +374,18 @@ MonoBehaviour:
   - {fileID: 9193033097523453220}
   - {fileID: 113478210512343034}
   hoverColor: {r: 1, g: 0.43762684, b: 0.3726415, a: 1}
+--- !u!114 &-528898762024878363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901242648115391366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!1 &1079134925591382475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1261,8 +1274,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
-  TankScript_ClutchBraking: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &4045574836925389942
 GameObject:
@@ -1348,8 +1365,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
-  TankScript_ClutchBraking: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5374458084762423155
 GameObject:
@@ -1435,8 +1456,12 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  TankScript: {fileID: 0}
-  TankScript_ClutchBraking: {fileID: 0}
+  ModernClutch: {fileID: 0}
+  ClutchBraking: {fileID: 0}
+  Turret: {fileID: 0}
+  AI_ClutchBreaking: {fileID: 0}
+  AI_ModernClutch: {fileID: 0}
+  AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
 --- !u!1 &5738483093169306320
 GameObject:
@@ -1688,7 +1713,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 3111381914497688785}
+  tankScript: {fileID: 7090756563302975470}
   isLeft: 1
 --- !u!1 &7239388423725970938
 GameObject:
@@ -1784,7 +1809,7 @@ MonoBehaviour:
   maxHealth: 100
   health: 100
   IsDestroyed: 0
-  tankScript: {fileID: 3111381914497688785}
+  tankScript: {fileID: 7090756563302975470}
   isLeft: 0
 --- !u!1 &7727018572576971463
 GameObject:
@@ -1973,7 +1998,7 @@ MonoBehaviour:
   maxHealth: 200
   health: 200
   IsDestroyed: 0
-  tankScript: {fileID: 3111381914497688785}
+  tankScript: {fileID: 7090756563302975470}
 --- !u!1 &8355417439279647005
 GameObject:
   m_ObjectHideFlags: 0
