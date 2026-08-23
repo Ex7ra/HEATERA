@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class UIMenus : MonoBehaviour
 {
-    
+
     public GameObject pauseMenu;
+   
     void Start()
     {
         pauseMenu.SetActive(false);
+        
     }
     void Update()
     {
         OpenPauseMenu();
+        
     }
     void OpenPauseMenu()
     {
@@ -26,10 +29,15 @@ public class PauseMenu : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1;
     }
-    public void ExitToMenu()
+    public void RestartLevel()
     {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+    public void ExitToMenu()
+    { 
         SceneManager.LoadSceneAsync(0);
         Time.timeScale = 1;
     }
-   
+
 }

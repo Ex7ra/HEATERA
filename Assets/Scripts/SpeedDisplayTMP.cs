@@ -4,14 +4,14 @@ using TMPro;
 public class SpeedDisplayTMP : MonoBehaviour
 {
     public MonoBehaviour tankScript; 
-    private ITankMovement tank;
+    private Tank tank;
 
     public TextMeshProUGUI speedText;
     public bool showKmh = true;
 
     void Awake()
     {
-        tank = tankScript as ITankMovement;
+        tank = tankScript as Tank;
 
         if (speedText == null)
             speedText = GetComponent<TextMeshProUGUI>();

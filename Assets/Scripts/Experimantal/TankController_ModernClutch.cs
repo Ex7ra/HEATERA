@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TankController_ModernClutch : MonoBehaviour
+public class TankController_ModernClutch : MonoBehaviour, Tank
 {
     float currentSpeed;
     float currentTurn;
