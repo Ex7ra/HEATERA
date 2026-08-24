@@ -69,7 +69,7 @@ public class brack_able_obstacles : MonoBehaviour
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
-
+       
         Debug.Log("Obstacle destroyed!");
     }
 }
