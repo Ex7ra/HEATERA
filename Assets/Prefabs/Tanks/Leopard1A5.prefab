@@ -2157,7 +2157,6 @@ GameObject:
   - component: {fileID: 7201753425952145902}
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
-  - component: {fileID: 5718626992723749818}
   - component: {fileID: 1319302264746337467}
   m_Layer: 0
   m_Name: Leopard1A5
@@ -2195,7 +2194,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -2267,18 +2266,6 @@ MonoBehaviour:
   modeOfCursor: 0
   highlightSprites: []
   hoverColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
---- !u!114 &5718626992723749818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6004404656569007100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!114 &1319302264746337467
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2159,7 +2159,6 @@ GameObject:
   - component: {fileID: 6872905978666851161}
   - component: {fileID: 2603146018879313176}
   - component: {fileID: 4364576118424481591}
-  - component: {fileID: 6550023486342786243}
   m_Layer: 0
   m_Name: AI_Leopard1A5
   m_TagString: Blue
@@ -2196,7 +2195,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -2328,18 +2327,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &6550023486342786243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6004404656569007100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!1 &6035141549219697847
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement
+public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement, Tank
 {
     private bool movementEnabled = true;
     public float CurrentSpeed { get; private set; }

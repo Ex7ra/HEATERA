@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 
 public enum PanelDirection
 {
@@ -31,6 +32,7 @@ public class MenuPanel
 
 public class MainMenu : MonoBehaviour
 {
+    public TextMeshProUGUI missionsCompletedText;
     public static string sceneToLoad;
     [Header("Panels")]
     public List<MenuPanel> panels = new List<MenuPanel>();
@@ -47,6 +49,9 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
+        int completed = GameProgress.Instance.GetCompletedMissionCount();
+
+        missionsCompletedText.text = "" + completed;
         foreach (var p in panels)
         {
             if (p.rectTransform == null)

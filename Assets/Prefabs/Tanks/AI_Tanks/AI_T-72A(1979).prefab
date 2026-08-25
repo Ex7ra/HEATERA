@@ -201,7 +201,6 @@ GameObject:
   - component: {fileID: 7766124567063853377}
   - component: {fileID: 8021507164029201199}
   - component: {fileID: -4610701469438896278}
-  - component: {fileID: -528898762024878363}
   m_Layer: 0
   m_Name: AI_T-72A(1979)
   m_TagString: Red
@@ -238,7 +237,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 500
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 1
@@ -374,18 +373,6 @@ MonoBehaviour:
   - {fileID: 9193033097523453220}
   - {fileID: 113478210512343034}
   hoverColor: {r: 1, g: 0.43762684, b: 0.3726415, a: 1}
---- !u!114 &-528898762024878363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901242648115391366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fd37c6644a842b4ea2d2443e3de6715, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Tank
 --- !u!1 &1079134925591382475
 GameObject:
   m_ObjectHideFlags: 0

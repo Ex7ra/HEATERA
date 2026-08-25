@@ -5,6 +5,8 @@ public class UIMenus : MonoBehaviour
 {
 
     public GameObject pauseMenu;
+    public Mission_Task task;
+
    
     void Start()
     {
@@ -18,10 +20,16 @@ public class UIMenus : MonoBehaviour
     }
     void OpenPauseMenu()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(task.MissionFinished == false){
+            if(Input.GetKeyDown(KeyCode.Escape))
+            {
+                pauseMenu.SetActive(!pauseMenu.activeSelf);
+                Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
+            }
+        }
+        else
         {
-            pauseMenu.SetActive(!pauseMenu.activeSelf);
-            Time.timeScale = pauseMenu.activeSelf ? 0 : 1;
+            return;
         }
     }
     public void ResumeGame()
@@ -39,5 +47,6 @@ public class UIMenus : MonoBehaviour
         SceneManager.LoadSceneAsync(0);
         Time.timeScale = 1;
     }
+    
 
 }

@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine.UI;
 public class Mission_Task : MonoBehaviour
 {
+    public Canvas canvas;
+    public MissionManager missionManager;
     public GameObject[] EnemyTanks;
     public TextMeshProUGUI aliveTanksText;
     public  GameObject VictoryPanel;
@@ -36,11 +38,13 @@ public class Mission_Task : MonoBehaviour
             }
             
         }
-        if (aliveTanks == 0)
+        if (aliveTanks == 0 && !MissionFinished)//WIN
         {
             VictoryPanel.SetActive(true);
             ShowPanel(VictoryPanel, victoryColour);
             MissionFinished = true;
+            missionManager.CompleteMission();
+            StopGameplay();
         }
     }
     void Awake()
@@ -58,11 +62,12 @@ public class Mission_Task : MonoBehaviour
     {
         CheckEnemyTanks();
         aliveTanksText.text = "Active enemy tanks: " + aliveTanks + "/" + EnemyTanks.Length;
-        if (PlayerTank == null || PlayerTank.IsDestroyed )
+        if (PlayerTank == null || PlayerTank.IsDestroyed )//DEFEAT
         {
             DefeatPanel.SetActive(true);
             ShowPanel(DefeatPanel, defeatColour);
             MissionFinished = true;
+            StopGameplay();
         }
 
         if(MissionFinished == true)
@@ -114,5 +119,10 @@ public class Mission_Task : MonoBehaviour
                 yield return null;
             }
         }
+    }
+    void StopGameplay()
+    {
+        canvas.gameObject.SetActive(false);
+
     }
 }
