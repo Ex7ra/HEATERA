@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 694cbd161440fac499cc8e5dddfa1e18
+guid: ea0b24b71f024ae4da780dd068277b5c
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -78,9 +78,9 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 4
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
@@ -93,16 +93,16 @@ ScriptedImporter:
     defaultPivotSpace: 0
     defaultPivotAlignment: 7
     customPivotPosition: {x: 0.5, y: 0.5}
-    mosaicPadding: 0
+    mosaicPadding: 4
     spritePadding: 0
-    generateModelPrefab: 0
+    generateModelPrefab: 1
     generateAnimationClips: 1
     addSortingGroup: 1
     addShadowCasters: 0
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639233712098707325
+  platformSettingsDirtyTick: 639233550476377003
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: TankHealthBar_v3
+  - name: ShellsUI_defualt
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -135,11 +135,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 0
-      y: 0
-      width: 98
-      height: 98
-    spriteID: f35eb90603bed8441b4feb062742e88b
+      x: 4
+      y: 4
+      width: 180
+      height: 60
+    spriteID: 05099fdfee4d74a4c8fb76cd63b5e89a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 149064147
+      value0: 1141747685
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: TankHealthBar_v3
+    name: ShellsUI_defualt
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: TankHealthBar_v3
+    - name: ShellsUI_defualt
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 1
-        y: 1
-        width: 98
-        height: 98
-      spriteId: f35eb90603bed8441b4feb062742e88b
+        x: 0
+        y: 0
+        width: 180
+        height: 60
+      spriteId: 05099fdfee4d74a4c8fb76cd63b5e89a
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -205,5 +205,5 @@ ScriptedImporter:
   generatePhysicsShape: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 100, y: 100}
-  previousTextureSize: {x: 128, y: 128}
+  canvasSize: {x: 180, y: 60}
+  previousTextureSize: {x: 256, y: 128}

@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using TMPro;
+using UnityEngine.UI;
 
 
 public class TurretNormal : MonoBehaviour
@@ -21,8 +22,6 @@ public class TurretNormal : MonoBehaviour
     public Transform smokeSpawn;
     public int smokeCount = 8;
 
-    public float forwardSpread = 0.8f;
-    public float sideSpread = 0.5f;     
     public enum ShellType//Note: enum is the list(in this case the list of shell types) and the values are the options in that list
     {
         [Header(" SHELL TYPES")]
@@ -76,14 +75,22 @@ public class TurretNormal : MonoBehaviour
     public TextMeshProUGUI shellText;//shows current shell type
     public TextMeshProUGUI reloadingText;//shows reloading time
 
+    [Header("Shell UI")]
+    public Image shellImage;
 
+    public Sprite defaultShell;
+    public Sprite APSelected;
+    public Sprite HEATSelected;
+    public Sprite HESelected;
+
+    public float shellFlashSpeed = 0.1f;
     void Start()
     {
         mainCam = Camera.main;//get the main camera
 
         UpdateModeUI();
         UpdateShellUI();//UI texts
-        
+        SetShellSelectedSprite(currentShell);
     }
 
     void Update()
@@ -133,26 +140,39 @@ public class TurretNormal : MonoBehaviour
 
     IEnumerator SwitchShell(ShellType type)//COROUTINE IMPORTANT CONCEPT:coroutine = function that runs over time
     {
-    isSwitchingShell = true;
+        isSwitchingShell = true;
 
-    float timer = switchShellTime;
+        float timer = switchShellTime;
+        float flashTimer = 0f;
+        bool selected = false;
+        while (timer > 0f)//this system have countdown timer for swithcing shells
+        {
+            timer -= Time.deltaTime;
+            flashTimer -= Time.deltaTime;
 
-    while (timer > 0f)//this system have countdown timer for swithcing shells
-    {
-        timer -= Time.deltaTime;
+            if (shellText != null)
+                shellText.text = "Switching: " + timer.ToString("F1");
+                
+            if (flashTimer <= 0f)// Changes between default and selected sprite
+            {
+                selected = !selected;
+                flashTimer = shellFlashSpeed;
 
-        if (shellText != null)
-            shellText.text = "Switching: " + timer.ToString("F1");
+                if (selected)
+                    SetShellSelectedSprite(type);
+                else
+                    SetShellDefaultSprite();
+            }
+            yield return null; 
+        }
 
-        yield return null; 
-    }
+        currentShell = type;//Switch actualy happens here after the timer is done
+        SetShellSelectedSprite(type);
+        UpdateShellUI();
 
-    currentShell = type;//Switch actualy happens here after the timer is done
-    UpdateShellUI();
+        Debug.Log("Loaded Shell → " + currentShell);
 
-    Debug.Log("Loaded Shell → " + currentShell);
-
-    isSwitchingShell = false;
+        isSwitchingShell = false;
     }
 
     ShellData GetCurrentShell()
@@ -184,14 +204,40 @@ public class TurretNormal : MonoBehaviour
             ? "MODE: HULL"
             : "MODE: TURRET";
     }
-
+    
     void UpdateShellUI()
     {
         if (shellText == null) return;
 
         shellText.text = "AMMO: " + currentShell.ToString();
     }
+    void SetShellSelectedSprite(ShellType type)
+    {
+        if (shellImage == null)
+            return;
 
+        switch (type)
+        {
+            case ShellType.AP:
+                shellImage.sprite = APSelected;
+                break;
+
+            case ShellType.HEAT:
+                shellImage.sprite = HEATSelected;
+                break;
+
+            case ShellType.HE:
+                shellImage.sprite = HESelected;
+                break;
+        }
+    }
+    void SetShellDefaultSprite()
+    {
+        if (shellImage == null)
+            return;
+
+        shellImage.sprite = defaultShell;
+    }
    
     void RotateTurret()
     {

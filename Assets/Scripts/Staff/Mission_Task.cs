@@ -40,11 +40,11 @@ public class Mission_Task : MonoBehaviour
         }
         if (aliveTanks == 0 && !MissionFinished)//WIN
         {
+            StopGameplay();
             VictoryPanel.SetActive(true);
             ShowPanel(VictoryPanel, victoryColour);
             MissionFinished = true;
             missionManager.CompleteMission();
-            StopGameplay();
         }
     }
     void Awake()
@@ -123,6 +123,5 @@ public class Mission_Task : MonoBehaviour
     void StopGameplay()
     {
         canvas.gameObject.SetActive(false);
-
     }
 }

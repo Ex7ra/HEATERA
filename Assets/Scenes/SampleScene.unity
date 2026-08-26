@@ -607,10 +607,6 @@ PrefabInstance:
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 192139621}
-    - target: {fileID: 2713030991854696133, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
-      propertyPath: ModernClutch
-      value: 
-      objectReference: {fileID: 556480842}
     - target: {fileID: 6004404656569007100, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_Name
       value: Leopard1A5
