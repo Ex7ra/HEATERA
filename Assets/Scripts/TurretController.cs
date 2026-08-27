@@ -74,6 +74,10 @@ public class TurretNormal : MonoBehaviour
     public TextMeshProUGUI modeText;//shows current mode
     public TextMeshProUGUI shellText;//shows current shell type
     public TextMeshProUGUI reloadingText;//shows reloading time
+    [Header("FireMode UI")]
+    public Image FireModePanel;
+    public Sprite HullSelected;
+    public Sprite TurretSelected;
 
     [Header("Shell UI")]
     public Image shellImage;
@@ -201,8 +205,22 @@ public class TurretNormal : MonoBehaviour
         if (modeText == null) return;
 
         modeText.text = (activeMode == FireMode.HullOnly)// this is a ternary operator, its a shorter way of writing an if statement that assigns a value based on a condition
-            ? "MODE: HULL"
+            ? "MODE: HULL" 
             : "MODE: TURRET";
+    }
+    void SetSelectedFireModeSprite()
+    {
+        if (FireModePanel == null)
+            return;
+
+        if(activeMode == FireMode.HullOnly)
+        {
+            FireModePanel.sprite = HullSelected;
+        }
+        else
+        {
+            FireModePanel.sprite = TurretSelected;
+        }
     }
     
     void UpdateShellUI()
@@ -352,6 +370,7 @@ public class TurretNormal : MonoBehaviour
         : FireMode.HullOnly;
 
         UpdateModeUI();
+        SetSelectedFireModeSprite();
         isSwitchingMode = false;
         
     }

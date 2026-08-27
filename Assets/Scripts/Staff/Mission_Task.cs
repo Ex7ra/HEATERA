@@ -17,7 +17,12 @@ public class Mission_Task : MonoBehaviour
     public Color defeatColour = new Color(255f / 255f, 0f / 255f, 10f / 255f);
     public Color victoryColour = new Color(0f / 255f, 58f / 255f, 255f / 255);
     private int aliveTanks;
+    public GameObject[] AllyTanks;
+    [Header("Players Components")]
     public TankDamageReceiver PlayerTank;
+    public TankController_ModernClutch PlayerHull;
+    public TurretNormal PlayerTurret;
+    [Header("Something")]
     public bool MissionFinished = false;
     public GameObject EndingMenuPanel;
 
@@ -54,6 +59,7 @@ public class Mission_Task : MonoBehaviour
     }
     void Start()
     {
+        
         VictoryPanel.SetActive(false);
         DefeatPanel.SetActive(false);
         EndingMenuPanel.SetActive(false);
@@ -123,5 +129,10 @@ public class Mission_Task : MonoBehaviour
     void StopGameplay()
     {
         canvas.gameObject.SetActive(false);
+        if(PlayerHull == null && PlayerTurret == null)
+            return;
+        PlayerHull.enabled = false;
+        PlayerTurret.enabled = false;
+      
     }
 }

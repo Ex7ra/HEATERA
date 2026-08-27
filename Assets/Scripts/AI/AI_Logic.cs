@@ -5,8 +5,9 @@ using JetBrains.Annotations;
 //Gives "Seeker" and "Path" these calculate a safe route around obstacles
 
 public class AI_Logic : MonoBehaviour
-{
+{   
     public bool activeAI = false;
+    public Mission_Task TaskManager;
     [SerializeField] private LevelIntro levelIntro;
     [Header("AI Behaviour")]
     public bool defensiveAI = false;
@@ -41,7 +42,8 @@ public class AI_Logic : MonoBehaviour
     private Vector2 retreatPoint;
     private TankDamageReceiver health;
     private float fireModeTimer;
-
+    
+    
     [Header("AI Fire Mode")]
     public float minFireModeChangeTime = 3f;
     public float maxFireModeChangeTime = 8f;
@@ -49,6 +51,7 @@ public class AI_Logic : MonoBehaviour
     public FireMode currentFireMode;
     void Start()
     {
+        
         modernMovementLogic = GetComponent<AI_Movement_ModernClutch>();//finds the movement script 
         oldMovementLogic = GetComponent<AI_Movement_ClutchBraking>();
         turretLogic = GetComponentInChildren<AI_TurretController>();//InChildren because its in children gameObject
@@ -140,7 +143,7 @@ public class AI_Logic : MonoBehaviour
             currentWaypoint = 0;// start from the begining
         }
     }
-    private void DisableAI()
+    public void DisableAI()
     {
         CancelInvoke(nameof(UpdatePath));
 
@@ -162,18 +165,16 @@ public class AI_Logic : MonoBehaviour
     {
         if (levelIntro != null && !LevelIntro.gameplayStarted)
         {
-            activeAI = false;
             Stop();
             return;
         }
-       
-        activeAI = true;
 
-        if (health != null && health.IsDestroyed)
+        if ((health != null && health.IsDestroyed) || (TaskManager != null && TaskManager.MissionFinished))
         {
             DisableAI();
             return;
         }
+
         UpdateFireMode();
         targetTimer -= Time.deltaTime;
         if(targetTimer <= 0)

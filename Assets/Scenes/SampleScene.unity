@@ -1315,6 +1315,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3111381914497688785, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: TaskManager
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3111381914497688785, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: aimDistance
       value: 15
       objectReference: {fileID: 0}
@@ -2683,6 +2687,18 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 1742498088}
+    - target: {fileID: 2093536552117684023, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: DefeatPanel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093536552117684023, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: VictoryPanel
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2093536552117684023, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: EndingMenuPanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2257283300170540223, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
@@ -2707,6 +2723,10 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 1832361191}
+    - target: {fileID: 2495131432036789636, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: tankScript
+      value: 
+      objectReference: {fileID: 556480842}
     - target: {fileID: 2653820286772493435, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
@@ -2781,6 +2801,34 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: b355bff9726df98498a5bf4b6f45f5dd, type: 2}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0.4901961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8361089092643307455, guid: b355bff9726df98498a5bf4b6f45f5dd, type: 2}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278255485
+      objectReference: {fileID: 0}
+    - target: {fileID: 5640830444814352366, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5940197438500880533, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
@@ -2797,10 +2845,18 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 529483599}
+    - target: {fileID: 7070307332009533825, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: task
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7476136995103122146, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 556480844}
+    - target: {fileID: 7501480207348057680, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8031852076559860560, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
@@ -2809,6 +2865,10 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 899597177}
+    - target: {fileID: 8349343350574606085, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8439040381170697691, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2857,8 +2917,13 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 2024950380}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 2093536552117684023, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 1630091792192317282, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+    - {fileID: 3430990494798079119, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+    - {fileID: 1981837263263469973, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+    - {fileID: 672333770420397451, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}

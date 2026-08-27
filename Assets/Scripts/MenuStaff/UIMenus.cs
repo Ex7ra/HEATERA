@@ -11,16 +11,14 @@ public class UIMenus : MonoBehaviour
     void Start()
     {
         pauseMenu.SetActive(false);
-        
     }
     void Update()
     {
         OpenPauseMenu();
-        
     }
     void OpenPauseMenu()
     {
-        if(task.MissionFinished == false){
+        if(task == null || task.MissionFinished == false ){
             if(Input.GetKeyDown(KeyCode.Escape))
             {
                 pauseMenu.SetActive(!pauseMenu.activeSelf);
