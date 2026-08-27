@@ -425,6 +425,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9625b7b501660f14d8b3f7eac81351c0, type: 3}
+--- !u!114 &134460454 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1652879835948762287, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!4 &186217290 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2347736625338921677, guid: 9af365aca873699468faa21b52eaf439, type: 3}
@@ -536,6 +547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09dc11c57a729504aab2c0da08ca637e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Movement_ClutchBraking
+--- !u!1 &386465653 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1962732638543209859, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &529483599 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4216224979425689279, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
@@ -555,6 +571,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1319302264746337467, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: repairUI
+      value: 
+      objectReference: {fileID: 386465653}
+    - target: {fileID: 1319302264746337467, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: repairText
+      value: 
+      objectReference: {fileID: 725550034}
+    - target: {fileID: 1319302264746337467, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: progressText
+      value: 
+      objectReference: {fileID: 134460454}
     - target: {fileID: 2455730249517436563, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.04193425
@@ -723,6 +751,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1129036785}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &725550034 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5898383041772149235, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &749046883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2714,18 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 786270578}
+    - target: {fileID: 982081612945397330, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 374.7304
+      objectReference: {fileID: 0}
+    - target: {fileID: 982081612945397330, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -373.56448
+      objectReference: {fileID: 0}
+    - target: {fileID: 982081612945397330, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -219
+      objectReference: {fileID: 0}
     - target: {fileID: 1611792039650915201, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tankScript
       value: 
@@ -2698,6 +2749,22 @@ PrefabInstance:
     - target: {fileID: 2093536552117684023, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: EndingMenuPanel
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103494583860246495, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103494583860246495, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103494583860246495, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103494583860246495, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
       objectReference: {fileID: 0}
     - target: {fileID: 2257283300170540223, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
@@ -2845,6 +2912,22 @@ PrefabInstance:
       propertyPath: module
       value: 
       objectReference: {fileID: 529483599}
+    - target: {fileID: 6909055573778063956, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontSize
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909055573778063956, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909055573778063956, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6909055573778063956, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7070307332009533825, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: task
       value: 
@@ -2856,6 +2939,18 @@ PrefabInstance:
     - target: {fileID: 7501480207348057680, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884050216894192603, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 374.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884050216894192603, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -373.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 7884050216894192603, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -313.56058
       objectReference: {fileID: 0}
     - target: {fileID: 8031852076559860560, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
