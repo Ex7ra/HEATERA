@@ -6,6 +6,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEngine.EventSystems;
 
 public enum PanelDirection
 {
@@ -28,6 +29,8 @@ public class MenuPanel
     [NonSerialized] public bool isOpen;
     [NonSerialized] public Coroutine runningAnimation;
     [NonSerialized] public CanvasGroup canvasGroup;
+    [NonSerialized] public GameObject SelectedButton;
+    [NonSerialized] public Sprite normalButtonSprite;
 }
 
 public class MainMenu : MonoBehaviour
@@ -87,7 +90,45 @@ public class MainMenu : MonoBehaviour
         if (videoPlayer != null)
             videoPlayer.SetDirectAudioVolume(0, volume);
     }
+    public void OpenLevel(string id)
+    {
+        
+            if (!panelLookup.TryGetValue(id, out var panel))
+        {
+            Debug.LogWarning($"MainMenu: no panel registered with id '{id}'.");
+            return;
+        }
 
+        if (panel.closeOthersOnOpen)
+        {
+            foreach (var other in panels)
+            {
+                if (other != panel && other.isOpen)
+                    ClosePanelInternal(other);
+            }
+        }
+
+        if (panel.isOpen) return;
+
+        panel.isOpen = true;
+
+        panel.SelectedButton = EventSystem.current.currentSelectedGameObject;
+
+        Button button = panel.SelectedButton.GetComponent<Button>();
+
+        if (button != null)
+        {
+            panel.normalButtonSprite = button.image.sprite;
+            button.image.sprite = button.spriteState.selectedSprite;
+        }
+
+        if (panel.runningAnimation != null)
+            StopCoroutine(panel.runningAnimation);
+
+        panel.rectTransform.gameObject.SetActive(true);
+        panel.runningAnimation = StartCoroutine(AnimatePanel(panel, true));
+       
+    }
     public void GoToPoygonScene()
     {
         sceneToLoad = "SampleScene";
@@ -150,6 +191,16 @@ public class MainMenu : MonoBehaviour
         if (!panel.isOpen) return;
 
         panel.isOpen = false;
+
+        if (panel.SelectedButton != null)
+        {
+            Button button = panel.SelectedButton.GetComponent<Button>();
+
+            if (button != null)
+            {
+                button.image.sprite = panel.normalButtonSprite;
+            }
+        }
 
         if (panel.runningAnimation != null)
             StopCoroutine(panel.runningAnimation);
