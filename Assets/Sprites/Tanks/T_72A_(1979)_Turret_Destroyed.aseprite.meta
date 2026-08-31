@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: T_72A_(1979)_Turret_Destroyed
     originalName: 
-    pivot: {x: 0.1791045, y: -1.5798318}
+    pivot: {x: 0.45, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 

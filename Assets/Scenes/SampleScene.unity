@@ -1111,6 +1111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ef52b8b406c7847a8b97a56fbd85c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GunBreechModule
+--- !u!212 &904543981 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 113478210512343034, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+  m_PrefabInstance: {fileID: 1239900478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &935094688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1485,6 +1490,30 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Red
       objectReference: {fileID: 0}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: hullRenderer
+      value: 
+      objectReference: {fileID: 1249003439}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: HullDestroyed
+      value: 
+      objectReference: {fileID: -3348690873702103423, guid: f7d27fd2fb402ed4cbf1d3ccaf76fd62, type: 3}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: TurretDestoyed
+      value: 
+      objectReference: {fileID: 1687879591445120423, guid: 908c5fad5d27a8c47a93d64e8efea757, type: 3}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: cannonRenderer
+      value: 
+      objectReference: {fileID: 904543981}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: turretRenderer
+      value: 
+      objectReference: {fileID: 1488540636}
+    - target: {fileID: 7766124567063853377, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: CannonDestroyed
+      value: 
+      objectReference: {fileID: -3642858273163873807, guid: b9e2bbaf9d9e3d548bdd5d6fde535d04, type: 3}
     - target: {fileID: 8284906505418368239, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_TagString
       value: Red
@@ -1517,6 +1546,11 @@ PrefabInstance:
       insertIndex: 4
       addedObject: {fileID: 246972124}
   m_SourcePrefab: {fileID: 100100000, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+--- !u!212 &1249003439 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 5002424084966731537, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+  m_PrefabInstance: {fileID: 1239900478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1264721305 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8105637155299554319, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
@@ -1765,6 +1799,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 91f40f8fd05cbbc41b44f4c82775d715, type: 3}
+--- !u!212 &1488540636 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 9193033097523453220, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+  m_PrefabInstance: {fileID: 1239900478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1511614678
 GameObject:
   m_ObjectHideFlags: 0

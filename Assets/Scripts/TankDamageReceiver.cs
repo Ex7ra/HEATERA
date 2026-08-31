@@ -3,8 +3,18 @@ using Pathfinding;
 
 public class TankDamageReceiver : MonoBehaviour
 {
+   
     private ITankMovement tank;
+    [Header("Sprite Renderers")]
+    public SpriteRenderer hullRenderer;
+    public SpriteRenderer turretRenderer;
+    public SpriteRenderer cannonRenderer;
 
+    
+    [Header("DestroyedSpirtes")]
+    public Sprite HullDestroyed;
+    public Sprite TurretDestoyed;
+    public Sprite CannonDestroyed;
     [Header("Crew")]
     public TankModule[] crew;
 
@@ -13,8 +23,8 @@ public class TankDamageReceiver : MonoBehaviour
     void Awake()
     {
         tank = GetComponent<ITankMovement>();
-        
     }
+   
 
     public void OnPenetration(Vector2 hitPoint, Vector2 direction, float damage)
     {
@@ -59,7 +69,7 @@ public class TankDamageReceiver : MonoBehaviour
         }
     }
 
-    private void DestroyTank()
+    public void DestroyTank()
     {
         if (IsDestroyed)
             return;
@@ -73,6 +83,7 @@ public class TankDamageReceiver : MonoBehaviour
             tank.DisableMovement();
         }
 
+        ChangeSpritesToDestroyed();
         int obstacleLayer = LayerMask.NameToLayer("Obstacle");
 
         foreach (Transform child in GetComponentsInChildren<Transform>(true))
@@ -85,5 +96,11 @@ public class TankDamageReceiver : MonoBehaviour
         {
             AstarPath.active.Scan();
         }
+    }
+    void ChangeSpritesToDestroyed()
+    {
+        hullRenderer.sprite = HullDestroyed;
+        turretRenderer.sprite = TurretDestoyed;
+        cannonRenderer.sprite = CannonDestroyed;
     }
 }
