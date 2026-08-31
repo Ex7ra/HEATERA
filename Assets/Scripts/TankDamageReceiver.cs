@@ -92,10 +92,16 @@ public class TankDamageReceiver : MonoBehaviour
             child.gameObject.tag = "Destroyed Vechicle";
         }
 
-        if (AstarPath.active != null)
-        {
-            AstarPath.active.Scan();
-        }
+       UpdatePathfinding();
+    }
+    private void UpdatePathfinding()
+    {
+        if (AstarPath.active == null)
+            return;
+
+        Bounds bounds = new Bounds(transform.position,new Vector3(3f, 3f, 1f));
+        GraphUpdateObject guo = new GraphUpdateObject(bounds);
+        AstarPath.active.UpdateGraphs(guo);
     }
     void ChangeSpritesToDestroyed()
     {

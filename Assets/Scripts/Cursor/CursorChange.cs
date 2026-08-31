@@ -10,9 +10,10 @@ public class ChangeCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     [SerializeField] private Color hoverColor = Color.yellow;
 
     private Color[] originalColors;
-
+    private TankDamageReceiver tankDamageReceiver;
     private void Awake()
     {
+        tankDamageReceiver = GetComponentInParent<TankDamageReceiver>();
         originalColors = new Color[highlightSprites.Length];
 
         for (int i = 0; i < highlightSprites.Length; i++)
@@ -20,7 +21,18 @@ public class ChangeCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             originalColors[i] = highlightSprites[i].color;
         }
     }
+    void Update()
+    {
+        if (tankDamageReceiver.IsDestroyed)
+        {
+            for (int i = 0; i < highlightSprites.Length; i++)
+            {
+                highlightSprites[i].color = originalColors[i];
+            }
 
+            enabled = false;
+        }
+    }
     public void OnPointerEnter(PointerEventData eventData)
     {
         CursorControllerComplex.Instance.SetToMode(modeOfCursor);
