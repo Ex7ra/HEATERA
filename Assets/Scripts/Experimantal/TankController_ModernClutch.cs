@@ -72,18 +72,26 @@ public class TankController_ModernClutch : MonoBehaviour, Tank
         Vector2 centerOffset = hullCenter != null ? (Vector2)(hullCenter.position - transform.position) : Vector2.zero;
         if (!movementEnabled || engine.IsDestroyed || leftTrack.IsDestroyed || rightTrack.IsDestroyed || driver.IsDestroyed)
         {
-            
+            currentSpeed = 0f;
+            currentTurn = 0f;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;
         }
-
+        Vector2 forwardBeforeMovement = transform.up;
+        float actualForwardSpeed = Vector2.Dot(rb.linearVelocity, forwardBeforeMovement);
+        if (Mathf.Abs(actualForwardSpeed) < Mathf.Abs(currentSpeed) - 0.5f)
+        {
+            currentSpeed = actualForwardSpeed;
+        }
         Vector2 forward = transform.up;
 
         bool canMove = !leftTrack.IsDestroyed && !rightTrack.IsDestroyed;
 
         if (!canMove)
         {
+            currentSpeed = 0f;
+            currentTurn = 0f;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;

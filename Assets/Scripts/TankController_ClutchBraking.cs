@@ -168,7 +168,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         //Checks whether each track’s target speed differs from normal movement speed, meaning the tank is currently steering
         bool leftIsSteering  = !Mathf.Approximately(targetLeft,  sharedBase);
         bool rightIsSteering = !Mathf.Approximately(targetRight, sharedBase);
-       if (previousTurnInput != 0f && turnInput == 0f && moveInput != 0f)
+        if (previousTurnInput != 0f && turnInput == 0f && moveInput != 0f)
         {
            float averageSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
 
@@ -186,6 +186,13 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         rightIsSteering ? turnAcceleration : acceleration,
         rightIsSteering ? turnDeceleration : deceleration);
         }
+        float actualForwardSpeed = Vector2.Dot(rb.linearVelocity, forward);
+        float intendedSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
+        if (Mathf.Abs(actualForwardSpeed) < Mathf.Abs(intendedSpeed) - 0.5f)
+        {
+            currentLeftSpeed = actualForwardSpeed;
+            currentRightSpeed = actualForwardSpeed;
+        }
         //Combines left and right track speeds into a single clamped movement speed and applies it to move the tank forward in its facing direction
         float combinedSpeed = (currentLeftSpeed + currentRightSpeed) * 0.5f;
         combinedSpeed = Mathf.Clamp(combinedSpeed, -ReverseSpeedMs, ForwardSpeedMs);
@@ -196,7 +203,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         angularVelocityRad = Mathf.Clamp(angularVelocityRad, -maxAngularVelocityRad, maxAngularVelocityRad);
         rb.angularVelocity = angularVelocityRad * Mathf.Rad2Deg;
 
-        CurrentSpeed = Mathf.Abs(combinedSpeed);//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
+        CurrentSpeed = rb.linearVelocity.magnitude;//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
         previousTurnInput = turnInput;
     }
     //Gradually adjusts current speed toward target speed using acceleration or deceleration while preventing overshooting

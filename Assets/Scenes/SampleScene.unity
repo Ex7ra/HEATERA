@@ -583,6 +583,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 798906826}
     - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: shellImage
+      value: 
+      objectReference: {fileID: 2116721757}
+    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: FireModePanel
+      value: 
+      objectReference: {fileID: 1647743309}
+    - target: {fileID: 2643635324928508430, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 192139621}
@@ -1222,11 +1230,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7675312050437625035, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.34
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7675312050437625035, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.12
+      value: 8.7
       objectReference: {fileID: 0}
     - target: {fileID: 7675312050437625035, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1600,6 +1608,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
+--- !u!114 &1647743309 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8727561182786089195, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1 &1668770883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: AstarPathfindingProject::AstarPath
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAABYIeyVmiCJfgIAADwFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1zmzAQ/SsenWsPYDuY3lriOD0k8cTt5MJFQYvRWEiMJGI7Gf/3rgQY6p5Yvf16+7Tii3Bpasit0hvN2ZNiQL5PiLPJt8ngfIQT3Su545/Qx7xxZksXRH3MK7VcIR66NKMqsJrnP+ReuOAAwUbyQulqzfaQKmMNwgUVBtCllXXZEqGvCTnhZ5q4lDNaUeysT7SSYHJBMwdpQY9C49ldlMyTxXK+ngZ3fdosXi6DZbJcdKCrEM6SJIhWq/U0jHytRuaCVjUwN9hQMgz67mj5QIlDdzFuwFwJwU3HmNhz7RVJaW0anBcDGKeogKcZ4bEEvi9td7gmvxSFAdvJo+n5nmsUsq1KfqpW3YqaQ8vsg4rG9ZkHccu+rfr0X8A09O5Cq+qxb9yOZEueH17pOafGjvQfw/cD89ArdKTiQN8FvJUgn9VGq0YydFrduNTGQHQ/HK+zpSXkhwFvqd6ATT1I3gveX7ab4eLHP6WCV+/ONVu0wE4oL7jfEdB4Nb+QsN8g05VA1LH4Y+A33Y9XrXM8cG0suroppaP3rhrtQsnaa+amaWyqtAQPd6RrkFTY8xbL2Ns7vPGN2t54Hqh7VF3zzte/lZsUDw/xQXDj2qrj9bJMqY5PYMqXxgouYSDtHM+oU6qkbFdsrEmftmt0QfNR2r7h7N/VInHBFiu2mCdJFMdJANMgCoMkWRSsYHdFlK+I3z0ucU4qti3RTh68NTkUl7hn/b9mstG09uvOND1u+GelxgS5LNQu1wDypS1xZQ4au+C7ZGvGUaEdWMulv3DylRGh8gOw7Noz86OuT1bTbKiSkZp/KOuQjKT+75IRB1+Xeavhg8PRNe+LXcjlL1BLAwQUAAAICAAAWCHsNJbDaG0AAAB4AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDRM9IzNNdRUEovSizIKAaKGII4pZkpIHa0knlaiolFiomxpaWRubmlQaqugZGhgaWlSVpKWopZmlGyhVIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrqee1FmijvIaKXYWgBQSwECLQAUAAAICAAAWCHslZogiX4CAAA8BQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAWCHsNJbDaG0AAAB4AAAACQAkAAAAAAAAAAAAAADLAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAIMDAAAAAA==
+    dataString: UEsDBBQAAAgIAABYIezwUk3wcAIAADEFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVE1z2jAQ/SuMzoUxDhOgtxYI6YGECe3k4otirbEGWfJIMh/J8N+7K9vYpVyQ3n69fbvyF5PalZB6Y9dWio0RwL4PGJ3Zt0FnfIYz3xu9k5/Q+rxL4XNy4sHnjXtpEB9TmDMFeCvTH3qvyDlCsNIyM7ZYiT0sjPMO4YwrB2iyxlO0RuhrwM74N5xTyAVP8ZROn3iaR4MrHlPQHmznOh7N6Rc/TNuIUUS/ePbYBJIHXmer4TgOKSqdKl6UIKifXqaoLYqn4Kix18aH+kqNUtI1RJm/lEGIXZmDBVJCSI59B3IxXnOQ+9w3l1vsa5Y58I0oll+W0qJ8dVL209SaFtwdamJHrioq8xBNa/J11s1/DsNxMGfWFM9t4bojn8v08MYvKXe+p3ofXnbMx0GgE1cH/qHgPQf9YtbWVFqg0duKQisH8bK73npb5JAeOrymegdWZad4q3c7YurhGto/L5QsPsg0mtTATpmgd9gMsDiZX0g47I1rUiBKLP44+M33/QVrDE/SOo+mpktN9D5MZcmVrYJm1E3lF8ZqCHBDugTNlb9sMY2/n+GdrVf2zvLE6Sk1xRtb+0LuQgLc+UfRnWlrTrdhudycNuDy18orqaEjTYYX1GlhtK5XrK9JG7arbMbTXti+kuLf1WLTTExmYvKAz2w6nUcwjOJxNJ9PMpGJxyxOZyzsntTYJ1fbmmgjD05Nd8k17ln7hRmsLS/DugvLT2v5WZie5FJnZpdaAP1aZ7gRB4tF8FWKlZAo0A68lzrMm30lTJn0ACK5JUpCp6uztzzpsiSslEfjCUnYInxSEkbwbZe3Fo4STlS8TXZl179QSwMEFAAACAgAAFgh7DSWw2htAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTXUVBKL0osyCgGihiCOKWZKSB2tJJ5WoqJRYqJsaWlkbm5pUGqroGRoYGlpUlaSlqKWZpRsoVSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAAFgh7PBSTfBwAgAAMQUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAFgh7DSWw2htAAAAeAAAAAkAJAAAAAAAAAAAAAAAvQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAAB1AwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -2311,6 +2330,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3b713e55eff9b409638bf6df72c4de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EngineModule
+--- !u!114 &2116721757 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5144221353161652674, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
+  m_PrefabInstance: {fileID: 8938553587104389673}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
 --- !u!1001 &4218783003461391039
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2472,7 +2502,7 @@ PrefabInstance:
     - target: {fileID: 1611792039650915201, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tankScript
       value: 
-      objectReference: {fileID: 556480842}
+      objectReference: {fileID: 0}
     - target: {fileID: 1920562725823645949, guid: 7d7a62382d91dd04ba47fc9315fb51f4, type: 3}
       propertyPath: tank
       value: 
@@ -2779,11 +2809,11 @@ SceneRoots:
   - {fileID: 201962951}
   - {fileID: 1129036785}
   - {fileID: 4218783003461391039}
+  - {fileID: 546431252}
   - {fileID: 1443895309}
   - {fileID: 1824536105}
   - {fileID: 830563430}
   - {fileID: 1239900478}
-  - {fileID: 546431252}
   - {fileID: 935094689}
   - {fileID: 1786479409}
   - {fileID: 1054705959}

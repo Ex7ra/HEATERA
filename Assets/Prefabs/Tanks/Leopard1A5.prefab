@@ -965,14 +965,14 @@ MonoBehaviour:
   shellText: {fileID: 0}
   reloadingText: {fileID: 0}
   FireModePanel: {fileID: 0}
-  HullSelected: {fileID: 0}
-  TurretSelected: {fileID: 0}
+  HullSelected: {fileID: -4192630670097622533, guid: c667bd35e66ea254cb6240fba09bb245, type: 3}
+  TurretSelected: {fileID: -2591075272493923248, guid: 5888a8ba9fbf6ab439ff4e985c7602de, type: 3}
   shellImage: {fileID: 0}
   defaultShell: {fileID: 1840945703775980617, guid: ea0b24b71f024ae4da780dd068277b5c, type: 3}
   APSelected: {fileID: 7100919866879302757, guid: 9acc780d2d15c6e4fafc8bcbf317ea9b, type: 3}
   HEATSelected: {fileID: 5266034369365993604, guid: 5d0dfbe1026f31846b51c50b69c2557e, type: 3}
   HESelected: {fileID: 730602772613050282, guid: bc18c85c855043b4791fe262f51a1c9c, type: 3}
-  shellFlashSpeed: 0.1
+  shellFlashSpeed: 0.5
 --- !u!1 &3662766029911026151
 GameObject:
   m_ObjectHideFlags: 0

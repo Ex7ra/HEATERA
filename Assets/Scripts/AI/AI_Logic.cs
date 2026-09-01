@@ -431,35 +431,28 @@ public class AI_Logic : MonoBehaviour
     
     void ShootTheTarget(float distance)
     {
-        if(Enemy == null)
+        if (Enemy == null)
             return;
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(firePoint.position, -turret.right, distance);
-
-        if (hits == null || hits.Length == 0)
+        RaycastHit2D hit = Physics2D.Raycast(firePoint.position,-turret.right,distance);
+        if (hit.collider == null)
             return;
 
-        foreach (RaycastHit2D hit in hits)
+        Transform hitTank = hit.collider.transform.root;
+
+        if (hitTank == transform.root)
+            return;
+
+        if (hitTank.CompareTag(Enemy.tag))
         {
-            if (hit.collider == null)
-                continue;
+            Debug.Log("Enemy is clear! Shooting: " + hitTank.name);
 
-            Transform tank = hit.collider.transform.root;
-
-            if(tank == transform)
-                continue;//for ignoring it self
-
-            if(!hit.collider.CompareTag(Enemy.tag))
-            {
-                continue;
-            }
-            Debug.Log("Enemy tank on sight: " + tank.name);
             turretLogic.TryShoot();
-            return;
-            
-            
         }
-        
+        else
+        {
+            Debug.Log("Shot blocked by: " + hit.collider.name);
+        }
     }
     void ChooseAimPoint()
     {
