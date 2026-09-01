@@ -635,6 +635,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 8443250795738826501}
+  changedSprite: {fileID: 3620122702064332090, guid: 8d076b99041191143a084ffd8145ed0a, type: 3}
 --- !u!1 &3241745708721898878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1540,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.066666, y: 1.111111, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 1153242361500300243}
+  changedSprite: {fileID: 4221229489168229429, guid: 53834d2cbdffbd04982de4f1457f5862, type: 3}
 --- !u!1 &4875315838041814982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +1836,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 2240979769275723958}
+  changedSprite: {fileID: 181094971888642455, guid: cae7a6d1c2c0f4a439a9b73c3a61ded1, type: 3}
 --- !u!1 &5640806545693474048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2223,6 +2229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AI_Logic
   activeAI: 0
+  TaskManager: {fileID: 0}
   levelIntro: {fileID: 0}
   defensiveAI: 0
   defensiveFireDistance: 7
@@ -2279,6 +2286,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38251d36519957e4580baf47c89ff861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankDamageReceiver
+  hullRenderer: {fileID: 79617723958908454}
+  turretRenderer: {fileID: 7167991484479265581}
+  cannonRenderer: {fileID: 399011390708131412}
+  HullDestroyed: {fileID: 4221229489168229429, guid: 53834d2cbdffbd04982de4f1457f5862, type: 3}
+  TurretDestoyed: {fileID: 3620122702064332090, guid: 8d076b99041191143a084ffd8145ed0a, type: 3}
+  CannonDestroyed: {fileID: 181094971888642455, guid: cae7a6d1c2c0f4a439a9b73c3a61ded1, type: 3}
   crew:
   - {fileID: 2713030991854696133}
   - {fileID: 4344260465684676580}

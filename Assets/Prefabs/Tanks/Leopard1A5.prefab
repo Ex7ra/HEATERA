@@ -635,6 +635,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 8443250795738826501}
+  changedSprite: {fileID: 3620122702064332090, guid: 8d076b99041191143a084ffd8145ed0a, type: 3}
 --- !u!1 &3241745708721898878
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,8 +937,6 @@ MonoBehaviour:
   smokePrefab: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
   smokeSpawn: {fileID: 5180316516541415154}
   smokeCount: 20
-  forwardSpread: 1
-  sideSpread: 2
   cannon: {fileID: 6523871284579092925}
   currentShell: 0
   cannonModule: {fileID: 2830023169156915447}
@@ -964,6 +964,9 @@ MonoBehaviour:
   modeText: {fileID: 0}
   shellText: {fileID: 0}
   reloadingText: {fileID: 0}
+  FireModePanel: {fileID: 0}
+  HullSelected: {fileID: 0}
+  TurretSelected: {fileID: 0}
   shellImage: {fileID: 0}
   defaultShell: {fileID: 1840945703775980617, guid: ea0b24b71f024ae4da780dd068277b5c, type: 3}
   APSelected: {fileID: 7100919866879302757, guid: 9acc780d2d15c6e4fafc8bcbf317ea9b, type: 3}
@@ -1462,11 +1465,11 @@ Transform:
   m_GameObject: {fileID: 4822292790935598175}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.26888865, y: 2.3500004, z: 0}
+  m_LocalPosition: {x: -0.06286671, y: -0.057600044, z: 0}
   m_LocalScale: {x: 1.0666664, y: 1.1111108, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 764870889278007936}
+  m_Father: {fileID: 6780797082890287567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &1153242361500300243
 SpriteRenderer:
@@ -1544,6 +1547,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.066666, y: 1.111111, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 1153242361500300243}
+  changedSprite: {fileID: 4221229489168229429, guid: 53834d2cbdffbd04982de4f1457f5862, type: 3}
 --- !u!1 &4875315838041814982
 GameObject:
   m_ObjectHideFlags: 0
@@ -1838,6 +1843,8 @@ MonoBehaviour:
   shadowLocalScale: {x: 1.06, y: 1.16, z: 0}
   rotateWithTarget: 1
   extraRotationDegrees: 0
+  normalSprite: {fileID: 2240979769275723958}
+  changedSprite: {fileID: 181094971888642455, guid: cae7a6d1c2c0f4a439a9b73c3a61ded1, type: 3}
 --- !u!1 &5640806545693474048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2252,6 +2259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38251d36519957e4580baf47c89ff861, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankDamageReceiver
+  hullRenderer: {fileID: 79617723958908454}
+  turretRenderer: {fileID: 7167991484479265581}
+  cannonRenderer: {fileID: 399011390708131412}
+  HullDestroyed: {fileID: 4221229489168229429, guid: 53834d2cbdffbd04982de4f1457f5862, type: 3}
+  TurretDestoyed: {fileID: 3620122702064332090, guid: 8d076b99041191143a084ffd8145ed0a, type: 3}
+  CannonDestroyed: {fileID: 181094971888642455, guid: cae7a6d1c2c0f4a439a9b73c3a61ded1, type: 3}
   crew:
   - {fileID: 2713030991854696133}
   - {fileID: 4344260465684676580}
@@ -2285,6 +2298,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankReparing
   module: []
+  repairUI: {fileID: 0}
+  repairText: {fileID: 0}
+  progressText: {fileID: 0}
 --- !u!1 &6035141549219697847
 GameObject:
   m_ObjectHideFlags: 0
@@ -2404,6 +2420,7 @@ Transform:
   m_Children:
   - {fileID: 7668067877464606606}
   - {fileID: 764870889278007936}
+  - {fileID: 5693046023235247162}
   m_Father: {fileID: 2455730249517436563}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &79617723958908454
@@ -2821,7 +2838,6 @@ Transform:
   - {fileID: 8377230695323129197}
   - {fileID: 2580401285436634296}
   - {fileID: 1288785309780199254}
-  - {fileID: 5693046023235247162}
   m_Father: {fileID: 6780797082890287567}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7086376567846099723
