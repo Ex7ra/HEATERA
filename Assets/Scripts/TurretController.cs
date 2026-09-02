@@ -13,7 +13,8 @@ public class TurretNormal : MonoBehaviour
 
     [Header("recoil Settings")]// recoil settings for the cannon
     public float recoilDistance = 0.3f;   
-    public float recoilSpeed = 5f;        
+    public float recoilSpeed = 5f;    
+    public CameraShake cameraShake;    
     
     [Header("Firing Effects")]
     public GameObject muzzleFlashPrefab;
@@ -88,10 +89,11 @@ public class TurretNormal : MonoBehaviour
     public Sprite HESelected;
 
     public float shellFlashSpeed = 0.1f;
+    public LevelIntro IntroManag;
     void Start()
     {
         mainCam = Camera.main;//get the main camera
-
+        IntroManag = FindObjectOfType<LevelIntro>();
         UpdateModeUI();
         UpdateShellUI();//UI texts
         SetShellSelectedSprite(currentShell);
@@ -99,6 +101,9 @@ public class TurretNormal : MonoBehaviour
 
     void Update()
     {
+        if (IntroManag != null && !LevelIntro.gameplayStarted)
+            return;
+            
         RotateTurret();
         HandleShooting();
         HandleModeSwitch();
@@ -326,7 +331,7 @@ public class TurretNormal : MonoBehaviour
             shellScript.Initialize(fireDirection, activeMode);
         }
     }
-
+    cameraShake.Shake();
     StopCoroutine("RecoilCannon"); 
     StartCoroutine(RecoilCannon());//plays recoil animation when shooting
 }

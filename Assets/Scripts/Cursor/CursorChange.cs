@@ -11,6 +11,8 @@ public class ChangeCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
 
     private Color[] originalColors;
     private TankDamageReceiver tankDamageReceiver;
+    private LevelIntro IntroManager;
+
     private void Awake()
     {
         tankDamageReceiver = GetComponentInParent<TankDamageReceiver>();
@@ -21,8 +23,22 @@ public class ChangeCursor : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
             originalColors[i] = highlightSprites[i].color;
         }
     }
+    void Start()
+    {
+        IntroManager = FindObjectOfType<LevelIntro>();
+    }
     void Update()
     {
+        if (IntroManager != null && !LevelIntro.gameplayStarted)
+        {
+            enabled = false;
+            return;
+        }
+        else
+        {
+            enabled = true;
+        }
+            
         if (tankDamageReceiver.IsDestroyed)
         {
             for (int i = 0; i < highlightSprites.Length; i++)

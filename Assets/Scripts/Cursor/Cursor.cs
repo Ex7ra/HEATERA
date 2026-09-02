@@ -9,7 +9,8 @@ public class CursorControllerComplex : MonoBehaviour
     [SerializeField] private Texture2D cursorTextureTarget;
   
     [SerializeField] private GameObject PauseMenu;
-
+    
+    private LevelIntro IntroManager;
     private void Awake()
     {
         if (Instance == null)
@@ -25,13 +26,33 @@ public class CursorControllerComplex : MonoBehaviour
     
     void Start()
     {
-        SetToMode(ModeOfCursor.Default);
+        IntroManager = FindObjectOfType<LevelIntro>();
+        
+        if (IntroManager != null && !LevelIntro.gameplayStarted)
+        {
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+        else
+        {
+            SetToMode(ModeOfCursor.Default);
+        }
     }
     void Update()
     {
+        
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+        }
+        if (IntroManager != null && !LevelIntro.gameplayStarted)
+        {
+            Cursor.visible = false;
+            return;
+        }
+        if (IntroManager != null && LevelIntro.gameplayStarted)
+        {
+            Cursor.visible = true;
+            SetToMode(ModeOfCursor.Default);
         }
         
     }
