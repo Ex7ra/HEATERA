@@ -39,16 +39,24 @@ public class CursorControllerComplex : MonoBehaviour
     }
     void Update()
     {
-        
         if (SceneManager.GetActiveScene().name == "MainMenu")
         {
+            Cursor.visible = true;
             Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            return;
         }
+
+        if (IntroManager == null)
+        {
+            IntroManager = FindObjectOfType<LevelIntro>();
+        }
+
         if (IntroManager != null && !LevelIntro.gameplayStarted)
         {
             Cursor.visible = false;
             return;
         }
+
         if (IntroManager != null && LevelIntro.gameplayStarted)
         {
             Cursor.visible = true;

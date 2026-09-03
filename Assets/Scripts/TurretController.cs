@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TurretNormal : MonoBehaviour
 {
+    
     public float rotationSpeed = 120f;//turret rotation speed(degrees per second)
 
     public Transform firePoint;//Fire point for spawning shells
@@ -79,6 +80,9 @@ public class TurretNormal : MonoBehaviour
     public Image FireModePanel;
     public Sprite HullSelected;
     public Sprite TurretSelected;
+    [Header("Sound")]
+    public AudioSource cannonAudioSource;
+    public AudioClip cannonFireSound;
 
     [Header("Shell UI")]
     public Image shellImage;
@@ -331,6 +335,7 @@ public class TurretNormal : MonoBehaviour
             shellScript.Initialize(fireDirection, activeMode);
         }
     }
+    cannonAudioSource.PlayOneShot(cannonFireSound);
     cameraShake.Shake();
     StopCoroutine("RecoilCannon"); 
     StartCoroutine(RecoilCannon());//plays recoil animation when shooting
