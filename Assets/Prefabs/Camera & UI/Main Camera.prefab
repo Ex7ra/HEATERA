@@ -414,6 +414,7 @@ GameObject:
   - component: {fileID: 4719338286454376079}
   - component: {fileID: 2810670067207643595}
   - component: {fileID: 7663377050277321961}
+  - component: {fileID: 261617695828510809}
   m_Layer: 0
   m_Name: ExitButtom
   m_TagString: Untagged
@@ -547,6 +548,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHighlight
   arrow: {fileID: 436801978262359654}
+--- !u!114 &261617695828510809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744354535816769613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19ab5f44411a894f9d0b1effceef2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
 --- !u!1 &1035740962772509710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3124,6 +3137,7 @@ GameObject:
   - component: {fileID: 3496304546583472567}
   - component: {fileID: 7153820557516737994}
   - component: {fileID: 7476136995103122146}
+  - component: {fileID: 1827203894121256219}
   - component: {fileID: 4978695268171544514}
   - component: {fileID: 7070307332009533825}
   - component: {fileID: 2093536552117684023}
@@ -3232,6 +3246,20 @@ MonoBehaviour:
   aimMaxOffset: 15
   aimSmoothMultiplier: 2
   deadZoneRadius: 1
+--- !u!114 &1827203894121256219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5108851763431379355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0920db1a3dd5f3947ab30ae08555f9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+  shakeDuration: 0.15
+  shakeStrength: 1000
 --- !u!114 &4978695268171544514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3613,6 +3641,7 @@ GameObject:
   - component: {fileID: 8563411631110363628}
   - component: {fileID: 6531344801073022209}
   - component: {fileID: 7067134452031281129}
+  - component: {fileID: 7312610937296022366}
   m_Layer: 0
   m_Name: Exit_Button
   m_TagString: Untagged
@@ -3746,6 +3775,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHighlight
   arrow: {fileID: 2978223608140341529}
+--- !u!114 &7312610937296022366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6039341986655937210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19ab5f44411a894f9d0b1effceef2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
 --- !u!1 &7159271413295020250
 GameObject:
   m_ObjectHideFlags: 0
@@ -3813,6 +3854,7 @@ GameObject:
   - component: {fileID: 1003786989415029919}
   - component: {fileID: 6019959847252042377}
   - component: {fileID: 4270846638688985176}
+  - component: {fileID: 3124229754340182329}
   m_Layer: 0
   m_Name: Resume_Button
   m_TagString: Untagged
@@ -3946,6 +3988,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHighlight
   arrow: {fileID: 3691643248287019919}
+--- !u!114 &3124229754340182329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7261286075486823126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19ab5f44411a894f9d0b1effceef2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
 --- !u!1 &7263286543680941982
 GameObject:
   m_ObjectHideFlags: 0
@@ -4312,6 +4366,7 @@ GameObject:
   - component: {fileID: 8607916227029083317}
   - component: {fileID: 3942099149811921012}
   - component: {fileID: 4138973072554449795}
+  - component: {fileID: 2518347054858919147}
   m_Layer: 0
   m_Name: RestartButtom
   m_TagString: Untagged
@@ -4445,6 +4500,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuButtonHighlight
   arrow: {fileID: 1376759187149705768}
+--- !u!114 &2518347054858919147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7698520203685209690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19ab5f44411a894f9d0b1effceef2f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIButtonAudio
 --- !u!1 &8050873448474239802
 GameObject:
   m_ObjectHideFlags: 0

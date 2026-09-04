@@ -314,33 +314,41 @@ public class TurretNormal : MonoBehaviour
     }
 
   void Shoot()
-{
-    ShellData shell = GetCurrentShell();
-    if (muzzleFlashPrefab != null)
     {
-        Instantiate(muzzleFlashPrefab,firePoint.position,firePoint.rotation);
-    }
-    
-    SpawnSmoke();
-    GameObject obj = Instantiate(shell.prefab, firePoint.position, firePoint.rotation);//spawns shell prefab at fire point position and rotation
-    Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();//moves shell forward
+        if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0)
+            return;
 
-    if (rb != null)
-    {
-        Vector2 fireDirection = firePoint.up;
-        rb.linearVelocity = fireDirection * shell.speed;
-        Shell shellScript = obj.GetComponent<Shell>();
-        if (shellScript != null)
+        ShellData shell = GetCurrentShell();
+
+        if (muzzleFlashPrefab != null)
         {
-            shellScript.Initialize(fireDirection, activeMode);
+            Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
         }
-    }
-    cannonAudioSource.PlayOneShot(cannonFireSound);
-    cameraShake.Shake();
-    StopCoroutine("RecoilCannon"); 
-    StartCoroutine(RecoilCannon());//plays recoil animation when shooting
-}
 
+        SpawnSmoke();
+
+        GameObject obj = Instantiate(shell.prefab,firePoint.position,firePoint.rotation);
+
+        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+
+        if (rb != null)
+        {
+            Vector2 fireDirection = firePoint.up;
+            rb.linearVelocity = fireDirection * shell.speed;
+
+            Shell shellScript = obj.GetComponent<Shell>();
+
+            if (shellScript != null)
+            {
+                shellScript.Initialize(fireDirection, activeMode);
+            }
+        }
+
+        
+
+        StopCoroutine("RecoilCannon");
+        StartCoroutine(RecoilCannon());
+    }
 
     IEnumerator Reload()
     {

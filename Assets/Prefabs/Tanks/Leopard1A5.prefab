@@ -933,6 +933,7 @@ MonoBehaviour:
   defaultRotationOffset: -180
   recoilDistance: 0.1
   recoilSpeed: 2
+  cameraShake: {fileID: 0}
   muzzleFlashPrefab: {fileID: 7150051762728916891, guid: 3d9755be8b6c1814495bf3d1ff9c5812, type: 3}
   smokePrefab: {fileID: 4687356486124974505, guid: 13d990e7b4cfb07418d16f56d1c2bec7, type: 3}
   smokeSpawn: {fileID: 5180316516541415154}
@@ -967,12 +968,15 @@ MonoBehaviour:
   FireModePanel: {fileID: 0}
   HullSelected: {fileID: -4192630670097622533, guid: c667bd35e66ea254cb6240fba09bb245, type: 3}
   TurretSelected: {fileID: -2591075272493923248, guid: 5888a8ba9fbf6ab439ff4e985c7602de, type: 3}
+  cannonAudioSource: {fileID: 0}
+  cannonFireSound: {fileID: 0}
   shellImage: {fileID: 0}
-  defaultShell: {fileID: 1840945703775980617, guid: ea0b24b71f024ae4da780dd068277b5c, type: 3}
-  APSelected: {fileID: 7100919866879302757, guid: 9acc780d2d15c6e4fafc8bcbf317ea9b, type: 3}
-  HEATSelected: {fileID: 5266034369365993604, guid: 5d0dfbe1026f31846b51c50b69c2557e, type: 3}
-  HESelected: {fileID: 730602772613050282, guid: bc18c85c855043b4791fe262f51a1c9c, type: 3}
+  defaultShell: {fileID: -8245709370428869140, guid: cc09d5cf0447b94419ecd682b90f87c2, type: 3}
+  APSelected: {fileID: -7778866114512774099, guid: b41985dfd54fa3947b1b7cb079c82bbf, type: 3}
+  HEATSelected: {fileID: 5901925285820035242, guid: 7bfc038e3c0df1f428eb7f9b3a2e8f4a, type: 3}
+  HESelected: {fileID: 6639144915553727149, guid: 75436609356a9554a81675f4b634a107, type: 3}
   shellFlashSpeed: 0.5
+  IntroManag: {fileID: 0}
 --- !u!1 &3662766029911026151
 GameObject:
   m_ObjectHideFlags: 0
