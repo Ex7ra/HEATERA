@@ -71,14 +71,12 @@ public class TankReparing : MonoBehaviour
             float t = Mathf.Clamp01(time / repairTime);
 
             repairText.text = "REPAIRING " + currentModule.name.ToUpper();
-            progressText.text = "Repairing: " +(t * 100f).ToString("F0") +"%";
+            progressText.text = "Repairing: " + (t * 100f).ToString("F0") + "%";
 
             yield return null;
         }
 
-        currentModule.health = currentModule.maxHealth;
-        currentModule.IsDestroyed = false;
-        Debug.Log(currentModule.name + " REPAIRED");
+        currentModule.Repair();
 
         isRepairing = false;
     }

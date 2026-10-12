@@ -64,6 +64,7 @@ public class TurretNormal : MonoBehaviour
 
     private bool isReloading = false;//blockes shooting while reloading
     public int totalShells = 30;//total shells copacity
+    public bool IsReloading => isReloading;
 
     private Camera mainCam;//converts mouse position to world position
 
@@ -312,48 +313,49 @@ public class TurretNormal : MonoBehaviour
         gunOperational = true;
         return true;
     }
-
-  void Shoot()
-    {
-        if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0)
-            return;
-
-        ShellData shell = GetCurrentShell();
-
-        if (muzzleFlashPrefab != null)
+    public event System.Action OnShoot;
+    void Shoot()
         {
-            Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
-        }
+            if (isReloading || isSwitchingMode || isSwitchingShell || totalShells <= 0)
+                return;
 
-        SpawnSmoke();
+            ShellData shell = GetCurrentShell();
 
-        GameObject obj = Instantiate(shell.prefab,firePoint.position,firePoint.rotation);
-
-        Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
-
-        if (rb != null)
-        {
-            Vector2 fireDirection = firePoint.up;
-            rb.linearVelocity = fireDirection * shell.speed;
-
-            Shell shellScript = obj.GetComponent<Shell>();
-
-            if (shellScript != null)
+            if (muzzleFlashPrefab != null)
             {
-                shellScript.Initialize(fireDirection, activeMode);
+                Instantiate(muzzleFlashPrefab, firePoint.position, firePoint.rotation);
             }
-        }
+
+            SpawnSmoke();
+
+            GameObject obj = Instantiate(shell.prefab,firePoint.position,firePoint.rotation);
+
+            Rigidbody2D rb = obj.GetComponent<Rigidbody2D>();
+
+            if (rb != null)
+            {
+                Vector2 fireDirection = firePoint.up;
+                rb.linearVelocity = fireDirection * shell.speed;
+
+                Shell shellScript = obj.GetComponent<Shell>();
+
+                if (shellScript != null)
+                {
+                    shellScript.Initialize(fireDirection, activeMode);
+                }
+            }
 
         
 
-        StopCoroutine("RecoilCannon");
-        StartCoroutine(RecoilCannon());
-    }
-
+            StopCoroutine("RecoilCannon");
+            StartCoroutine(RecoilCannon());
+            OnShoot?.Invoke();
+        }
+    public event System.Action OnReload;
     IEnumerator Reload()
     {
     isReloading = true;
-
+    OnReload?.Invoke();
     float timer = GetCurrentShell().reloadTime * reloadMultiplier;
 
         while (timer > 0f)

@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 587389033055383973, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
+      propertyPath: isSoftObstacle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1620546172450713384, guid: 5695d49120dd6e54fadf1194d0de2596, type: 3}
       propertyPath: m_Sprite
       value: 

@@ -271,6 +271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ebecb020c4a784c882a186455d3eff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::brack_able_obstacles
+  isSoftObstacle: 0
   health: 30
   normalSprite: {fileID: 3929084667440541565}
   destroyedSprite: {fileID: 7238769314186300454}

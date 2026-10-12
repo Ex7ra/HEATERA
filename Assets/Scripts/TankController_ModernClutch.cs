@@ -4,7 +4,7 @@ using UnityEngine;
 public class TankController_ModernClutch : MonoBehaviour, Tank
 {
     float currentSpeed;
-    float currentTurn;
+    public float CurrentTurn { get; private set; }
     private bool movementEnabled = true;
     public LevelIntro Intro;
 
@@ -73,13 +73,14 @@ public class TankController_ModernClutch : MonoBehaviour, Tank
         if (!movementEnabled || engine.IsDestroyed || leftTrack.IsDestroyed || rightTrack.IsDestroyed || driver.IsDestroyed)
         {
             currentSpeed = 0f;
-            currentTurn = 0f;
+            CurrentTurn = 0f;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;
         }
         Vector2 forwardBeforeMovement = transform.up;
         float actualForwardSpeed = Vector2.Dot(rb.linearVelocity, forwardBeforeMovement);
+
         if (Mathf.Abs(actualForwardSpeed) < Mathf.Abs(currentSpeed) - 0.5f)
         {
             currentSpeed = actualForwardSpeed;
@@ -91,36 +92,31 @@ public class TankController_ModernClutch : MonoBehaviour, Tank
         if (!canMove)
         {
             currentSpeed = 0f;
-            currentTurn = 0f;
+            CurrentTurn = 0f;
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
             return;
         }
 
-        float targetSpeed =
-        moveInput > 0 ? ForwardSpeedMs :
-        moveInput < 0 ? -ReverseSpeedMs : 0f;
-
-        
-        float speedRate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed)
-            ? acceleration
-            : deceleration;
+        float targetSpeed = moveInput > 0 ? ForwardSpeedMs : moveInput < 0 ? -ReverseSpeedMs : 0f;
+        float speedRate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed) ? acceleration : deceleration;
         currentSpeed = Mathf.MoveTowards(currentSpeed,targetSpeed,speedRate * Time.fixedDeltaTime);
-        
         float targetTurn = -turnInput * turnSpeed;
-        float turnRate = Mathf.Abs(targetTurn) > Mathf.Abs(currentTurn)
-            ? turnAcceleration
-            : turnDeceleration;
-        currentTurn = Mathf.MoveTowards(currentTurn, targetTurn, turnRate * Time.fixedDeltaTime);
 
-        float rotationDelta = currentTurn * Time.fixedDeltaTime;
+        float turnRate = Mathf.Abs(targetTurn) > Mathf.Abs(CurrentTurn) ? turnAcceleration : turnDeceleration;
+        CurrentTurn = Mathf.MoveTowards(CurrentTurn,targetTurn,turnRate * Time.fixedDeltaTime);
+        float rotationDelta = CurrentTurn * Time.fixedDeltaTime;
 
         transform.RotateAround(hullCenter.position, Vector3.forward, rotationDelta);
         rb.linearVelocity = forward * currentSpeed;
 
+        
        
         CurrentSpeed = Mathf.Abs(currentSpeed);
     }
-
+    public void KeepMomentum()
+    {
+        rb.linearVelocity = transform.up * currentSpeed;
+    }
     public float SpeedKmh => CurrentSpeed * 3.6f;
 }

@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_black_Obstacle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6407873957459151246, guid: 9625b7b501660f14d8b3f7eac81351c0, type: 3}
+      propertyPath: isSoftObstacle
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7238769314186300454, guid: 9625b7b501660f14d8b3f7eac81351c0, type: 3}
       propertyPath: m_Sprite
       value: 

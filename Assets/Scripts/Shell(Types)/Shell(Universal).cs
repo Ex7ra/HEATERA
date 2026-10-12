@@ -156,10 +156,16 @@ public class Shell : MonoBehaviour
                 obstacle.TakeDamage(Mathf.RoundToInt(remainingDamage));
 
                 Debug.Log("Low obstacle damaged by shell!");
-
+                if(obstacle.softObstacle == true)
+                {
+                    return;
+                }
+                else
+                {
                 shellDead = true;
                 Destroy(gameObject);
                 return;
+                }
             }
 
             // If its a LowObstacle but doesn't have the breakable script

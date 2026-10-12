@@ -203,6 +203,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement, Tank
         float rate   = slowing ? decel : accel;
         return current + Mathf.Sign(diff) * Mathf.Min(Mathf.Abs(diff), rate * Time.fixedDeltaTime);
     }
+    public float CurrentTurn => rb != null ? rb.angularVelocity : 0f;
 
     public float SpeedKmh => CurrentSpeed * 3.6f;
 }

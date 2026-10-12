@@ -1,11 +1,15 @@
 using UnityEngine;
+using System;
 
 public class TankModule : MonoBehaviour
 {
     public float maxHealth = 100f;
     public float health;
 
-    public bool IsDestroyed;
+    public event Action OnDestroyedEvent;
+    public event Action OnRepairedEvent;
+
+    public bool IsDestroyed { get; private set; }
 
     protected virtual void Awake()
     {
@@ -15,7 +19,8 @@ public class TankModule : MonoBehaviour
 
     public virtual void Damage(float dmg)
     {
-        if (IsDestroyed) return;
+        if (IsDestroyed)
+            return;
 
         health -= dmg;
 
@@ -23,13 +28,24 @@ public class TankModule : MonoBehaviour
         {
             health = 0f;
             IsDestroyed = true;
+
             OnDestroyed();
+            OnDestroyedEvent?.Invoke();
         }
+    }
+
+    public virtual void Repair()
+    {
+        health = maxHealth;
+        IsDestroyed = false;
+
+        OnRepairedEvent?.Invoke();
+
+        Debug.Log(name + " repaired");
     }
 
     protected virtual void OnDestroyed()
     {
         Debug.Log(name + " destroyed");
     }
-    
 }

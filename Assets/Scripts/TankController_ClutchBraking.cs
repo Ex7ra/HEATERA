@@ -2,7 +2,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]//prevents the script from working without a Rigidbody2D
 // Automatically adds a Rigidbody2D when this script is attached
-public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
+public class TankController_ClutchBraking : MonoBehaviour, Tank
 {
     private bool movementEnabled = true;//by default TRUE allows movement, if FALSE the tank will not move, used for when the tank is destroyed or immobilized
     public float CurrentSpeed { get; private set; }// "get" is so any script is allowed to read it, "private set" means only this script could change it 
@@ -15,18 +15,7 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
     {
         movementEnabled = true;
     }
-    public void DestroyLeftTrack()
-    {
-        leftTrackHealth = 0f;
-    }
-    public void DestroyRightTrack()// Sets track/engine health to 0, triggering movement shutdown in FixedUpdate()
-    {
-        rightTrackHealth = 0f;
-    }
-    public void EngineDestroyed()
-    {
-        engineHealth = 0f;
-    }
+    
     //These are tunable settings exposed to the Unity Inspector that control movement, turning, and health behaviour of the tank
     
     [Header("Speeds (km/h)")]
@@ -49,10 +38,11 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
     public Transform leftTrack;
     public Transform rightTrack;
 
-    [Header("Modules Health")]
-    public float engineHealth     = 1f;
-    public float leftTrackHealth  = 1f;
-    public float rightTrackHealth = 1f;
+    [Header("Health")]
+    public TankModule leftTrackModule;
+    public TankModule engine;
+    public TankModule rightTrackModule;
+    public TankModule driver;
 
     [Header("Forward Axis")]
     public bool spriteFacesRight = false;
@@ -90,22 +80,15 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
     void FixedUpdate()//runs at a fixed rate for physics calculations like Rigidbody movement
     {
         
-        if (!movementEnabled)//These conditions stop the tank immediately if movement is disabled, engine is destroyed, or a track is broken, by zeroing velocity and exiting the physics update early
+        if (!movementEnabled || engine == null || engine.IsDestroyed ||leftTrackModule == null || leftTrackModule.IsDestroyed || rightTrackModule == null || rightTrackModule.IsDestroyed || driver == null || driver.IsDestroyed)
         {
-            rb.linearVelocity  = Vector2.zero;//Vector2.zero stops all linear movement
+            currentLeftSpeed = 0f;
+            currentRightSpeed = 0f;
+            CurrentSpeed = 0f;
+            rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
-            return;//immediately exits the function and stops any further code in that method from running
-        }
-        if (engineHealth <= 0f)
-        {
-            rb.linearVelocity  = Vector2.zero;
-            rb.angularVelocity = 0f;
-            return;
-        }
-        if (leftTrackHealth <= 0f || rightTrackHealth <= 0f)
-        {
-            rb.linearVelocity  = Vector2.zero;
-            rb.angularVelocity = 0f;
+            previousTurnInput = 0f;
+
             return;
         }
         
@@ -217,6 +200,6 @@ public class TankController_ClutchBraking : MonoBehaviour, ITankMovement
         return current + Mathf.Sign(diff) * Mathf.Min(Mathf.Abs(diff), rate * Time.fixedDeltaTime);
     }
     
-    
+    public float CurrentTurn => rb != null ? rb.angularVelocity : 0f;
     public float SpeedKmh => CurrentSpeed * 3.6f;//Converts the tank’s current speed from meters per second into kilometers per hour for display or UI purposes
 }

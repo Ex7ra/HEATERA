@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class brack_able_obstacles : MonoBehaviour
 {
+    public bool softObstacle = false; //If true, shell which hits this obstacle will not be destroyed, but will continue its path. If false, shell will be destroyed on impact
     public int health = 20;
     public SpriteRenderer normalSprite;
     public SpriteRenderer destroyedSprite;
@@ -33,21 +34,30 @@ public class brack_able_obstacles : MonoBehaviour
         if (destroyed)
             return;
 
-        //TankController_ModernClutch tank = collision.gameObject.GetComponent<TankController_ModernClutch>();
         Tank tank = collision.gameObject.GetComponent<Tank>();
+
         if (tank != null)
         {
             float speed = collision.relativeVelocity.magnitude;
-
             Debug.Log("Tank hit obstacle at speed: " + speed);
-
             int collisionDamage = Mathf.RoundToInt(speed * 5f);
+
+            // If this is a soft obstacle, tell the tank to keep its momentum.
+            if (softObstacle)
+            {
+                TankController_ModernClutch tankController = collision.gameObject.GetComponent<TankController_ModernClutch>();
+
+                if (tankController != null)
+                {
+                    tankController.KeepMomentum();
+                }
+            }
 
             TakeDamage(collisionDamage);
         }
     }
 
-
+    
     void Destroyed()
     {
         destroyed = true;

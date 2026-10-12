@@ -5,14 +5,17 @@ public class EngineModule : TankModule
     public MonoBehaviour tankScript;
     private ITankMovement tank;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         tank = tankScript as ITankMovement;
     }
 
     protected override void OnDestroyed()
     {
         base.OnDestroyed();
+
         if (tank != null)
         {
             tank.EngineDestroyed();

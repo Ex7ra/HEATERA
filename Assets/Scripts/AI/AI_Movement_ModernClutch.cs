@@ -8,6 +8,7 @@ public class AI_Movement_ModernClutch : MonoBehaviour, ITankMovement, Tank
     private bool movementEnabled = true;
 
     public float CurrentSpeed { get; private set; }
+    public float CurrentTurn { get; private set; }
 
     public void DisableMovement() => movementEnabled = false;
     public void EnableMovement() => movementEnabled = true;
@@ -82,9 +83,7 @@ public class AI_Movement_ModernClutch : MonoBehaviour, ITankMovement, Tank
             return;
         }
 
-        float targetSpeed =
-        moveInput > 0 ? ForwardSpeedMs :
-        moveInput < 0 ? -ReverseSpeedMs : 0f;
+        float targetSpeed = moveInput > 0 ? ForwardSpeedMs : moveInput < 0 ? -ReverseSpeedMs : 0f;
 
         
         float speedRate = Mathf.Abs(targetSpeed) > Mathf.Abs(currentSpeed)
