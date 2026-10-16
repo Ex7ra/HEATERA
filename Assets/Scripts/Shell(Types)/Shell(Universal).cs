@@ -31,6 +31,12 @@ public class Shell : MonoBehaviour
     [Header("Angle Penetration Loss")]
     public AnimationCurve penetrationByAngle = new AnimationCurve(new Keyframe(0f, 1f),new Keyframe(30f, 0.9f),new Keyframe(45f, 0.75f),new Keyframe(60f, 0.55f),new Keyframe(75f, 0.35f),new Keyframe(85f, 0.2f));
 
+    [Header("Shell Audio Effects")]
+    public AudioSource ShellAudioSource;
+    public GameObject audioPrefab;
+    public AudioClip ricochetSound;
+    public AudioClip PenetrationSound;
+    public AudioClip ShellFlyingSound;
     private Rigidbody2D rb;// Cached reference to the shell's Rigidbody2D so we don't search for it repeatedly
 
     private Vector2 lastPosition;// Stores the shell's previous position so we can raycast along the distance travelled each frame
@@ -47,9 +53,7 @@ public class Shell : MonoBehaviour
     private int turretLayer;
     private int upperObstacle;
     private int lowerObstacle;
-
     private string combinedMessage = "";
-
     public GameObject hitTextPrefab;
     public float lifeTimeText = 1.5f;
 
@@ -80,11 +84,18 @@ public class Shell : MonoBehaviour
     }
     void Start()
     {
+
         startPos = transform.position;
         lastPosition = transform.position;
         shellDirection = rb.linearVelocity.normalized;
         remainingPenetration = penetrationMm;
         remainingDamage = damage;
+        if(ShellAudioSource != null)
+        {
+            ShellAudioSource.clip = ShellFlyingSound;
+            ShellAudioSource.loop = true;
+            ShellAudioSource.Play();
+        }
     }
     public void Initialize(Vector2 direction, FireMode mode)
     {

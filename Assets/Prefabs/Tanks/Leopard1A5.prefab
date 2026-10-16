@@ -481,11 +481,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 86a0644a742767d4cab3a4367b397841, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.3
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -737,8 +737,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.7981712
+  m_Pitch: 1.0990857
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -2711,12 +2711,14 @@ MonoBehaviour:
   hardBrakeAcceleration: 8
   turnStopThreshold: 1
   turnChangeTolerance: 0.1
-  audioSource: {fileID: 2861211321700733671}
+  firingAudioSource: {fileID: 2861211321700733671}
+  reloadAudioSource: {fileID: 0}
   movementAudioSource: {fileID: 7997586305344615963}
   engineAudioSource: {fileID: 4625340902010394844}
   turningAudioSource: {fileID: 6413681759253706494}
   ModuleAudioSource: {fileID: 4616734267206321065}
   firingSound: {fileID: 8300000, guid: 845a9ae7d11b91b4787c9e9eee4625f9, type: 3}
+  reloadSound: {fileID: 0}
   engineIdleSound: {fileID: 8300000, guid: 86a0644a742767d4cab3a4367b397841, type: 3}
   TankAccelerationSound: {fileID: 8300000, guid: 87b198bb8b91f204c9deb956d459b91c, type: 3}
   TankConstantSpeedSound: {fileID: 8300000, guid: fb71f8bc1f17dd140b1910f952b16f5e, type: 3}

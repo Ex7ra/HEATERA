@@ -4,9 +4,9 @@ using TMPro;
 using UnityEngine.UI;
 
 
-public class TurretNormal : MonoBehaviour
+public class TurretNormal : MonoBehaviour, TankTurret
 {
-    
+    public float CurrentTurretRotation => transform.eulerAngles.z;
     public float rotationSpeed = 120f;//turret rotation speed(degrees per second)
 
     public Transform firePoint;//Fire point for spawning shells

@@ -40,7 +40,7 @@ public class VehicleSoundEffects : MonoBehaviour
     private float previousSpeed;
 
     private Rigidbody2D rb;
-    private TurretNormal firing;
+    private TankTurret firing;
     private EngineModule engine;
 
     private bool wasDecelerating;
@@ -66,7 +66,16 @@ public class VehicleSoundEffects : MonoBehaviour
         //Modules
         rb = GetComponent<Rigidbody2D>();
 
-        firing = GetComponentInChildren<TurretNormal>();
+        foreach (MonoBehaviour component in GetComponentsInChildren<MonoBehaviour>(true))
+        {
+            if (component is TankTurret turret)
+            {
+                firing = turret;
+                break;
+
+            }
+        }
+        
 
         foreach (MonoBehaviour component in GetComponents<MonoBehaviour>())
         {

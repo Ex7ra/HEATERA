@@ -3,8 +3,9 @@ using System.Collections;
 using TMPro;
 
 
-public class AI_TurretController : MonoBehaviour
+public class AI_TurretController : MonoBehaviour, TankTurret
 {
+    public float CurrentTurretRotation => transform.eulerAngles.z;
     public float rotationSpeed = 120f;//turret rotation speed(degrees per second)
 
     public Transform firePoint;//Fire point for spawning shells
@@ -62,7 +63,7 @@ public class AI_TurretController : MonoBehaviour
 
     private bool isReloading = false;//blockes shooting while reloading
     public int totalShells = 30;//total shells copacity
-
+    public bool IsReloading => isReloading;
     private Camera mainCam;//converts mouse position to world position
 
     public  FireMode activeMode = FireMode.HullOnly;
@@ -233,7 +234,7 @@ public class AI_TurretController : MonoBehaviour
     gunOperational = true;
     return true;
   }
-
+    public event System.Action OnShoot;
     public void Shoot()
     {
         ShellData shell = GetCurrentShell();
@@ -258,8 +259,10 @@ public class AI_TurretController : MonoBehaviour
 
         StopCoroutine("RecoilCannon"); 
         StartCoroutine(RecoilCannon());//plays recoil animation when shooting
+        OnShoot?.Invoke();
     }
 
+    public event System.Action OnReload;
     IEnumerator Reload()
     {
     isReloading = true;
@@ -280,6 +283,7 @@ public class AI_TurretController : MonoBehaviour
         reloadingText.text = "Ready"; 
 
     isReloading = false;
+        OnReload?.Invoke();
     }
 
     IEnumerator SwitchFireMode(FireMode targetMode)
