@@ -212,6 +212,11 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  ShellAudioSource: {fileID: 0}
+  audioPrefab: {fileID: 6640160809194706927, guid: 2c2792098f4b87e4b93daf5a43a28a17, type: 3}
+  ricochetSound: {fileID: 0}
+  penetrationSound: {fileID: 8300000, guid: 87f0013ab2658ce429cdfea5c5edbcd8, type: 3}
+  ShellFlyingSound: {fileID: 0}
   hitTextPrefab: {fileID: 4136225386138781905, guid: 86b34b6c1569f7749bd1177ef54ad973, type: 3}
   lifeTimeText: 1.5
 --- !u!96 &1709136001011036246

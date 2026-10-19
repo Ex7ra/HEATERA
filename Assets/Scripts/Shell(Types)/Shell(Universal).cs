@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Linq;// Gives access to LINQ functions like OrderBy() for sorting arrays
+using System.Collections;
 
 
 [RequireComponent(typeof(Rigidbody2D))]// Makes sure this GameObject always has a Rigidbody2D component
@@ -35,7 +36,7 @@ public class Shell : MonoBehaviour
     public AudioSource ShellAudioSource;
     public GameObject audioPrefab;
     public AudioClip ricochetSound;
-    public AudioClip PenetrationSound;
+    public AudioClip penetrationSound;
     public AudioClip ShellFlyingSound;
     private Rigidbody2D rb;// Cached reference to the shell's Rigidbody2D so we don't search for it repeatedly
 
@@ -215,7 +216,7 @@ public class Shell : MonoBehaviour
 
             remainingPenetration -= effectiveArmor;// Remove the armour thickness from the shell's remaining penetration power
             Debug.Log("ARMOUR PENETRATED Remaining: " + remainingPenetration);
-
+            StartCoroutine(PlayPenetrationSound(penetrationSound));
             if(shellType == ShellType.HEAT)// HEAT creates its damage effect after penetration and does not continue like APFSDS.
             {
                 Explode();
@@ -253,10 +254,10 @@ public class Shell : MonoBehaviour
         if(shellType == ShellType.HE)
         {
             Explode();
-
             shellDead = true;
             Destroy(gameObject);
         }
+        
     }
 
     void Explode()
@@ -316,4 +317,18 @@ public class Shell : MonoBehaviour
 
         return true;
     }
+    IEnumerator PlayPenetrationSound(AudioClip clip)
+    {
+        GameObject audioObj = Instantiate(audioPrefab,transform.position,Quaternion.identity);
+        AudioSource audioSource = audioObj.GetComponent<AudioSource>();
+        if(audioSource != null)
+        {
+            audioSource.clip = penetrationSound;
+            audioSource.loop = false;
+            audioSource.Play();
+        }
+        yield return new WaitForSeconds(audioSource.clip.length);
+        Destroy(audioObj);
+    }
+    
 }
