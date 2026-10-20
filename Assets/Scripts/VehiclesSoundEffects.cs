@@ -116,6 +116,8 @@ public class VehicleSoundEffects : MonoBehaviour
 
     void PlayFiringSound()
     {
+        Debug.Log("PlayFiringSound() was called!");
+
         if (firingAudioSource != null && firingSound != null)
         {
             firingAudioSource.PlayOneShot(firingSound);
@@ -248,9 +250,7 @@ public class VehicleSoundEffects : MonoBehaviour
             movementAudioSource.volume = Mathf.Lerp(0.7f,1f,hardness );
             movementAudioSource.pitch = Mathf.Lerp(1f,1.15f,hardness);
 
-            float startTime =
-                TankAccelerationSound != null &&
-                accelerationSoundLimit > 0f ? Mathf.Clamp01(speed / accelerationSoundLimit) * TankAccelerationSound.length: 0f;
+            float startTime = TankAccelerationSound != null && accelerationSoundLimit > 0f ? Mathf.Clamp01(speed / accelerationSoundLimit) * TankAccelerationSound.length: 0f;
             PlayMovementClip(TankAccelerationSound,false,startTime);
         }
 
@@ -267,8 +267,7 @@ public class VehicleSoundEffects : MonoBehaviour
     
     void PlayMovementClip(AudioClip clip,bool loop,float startTime)
     {
-        if (
-            clip == null || movementAudioSource == null || movementAudioSource.clip == clip)
+        if (clip == null || movementAudioSource == null || movementAudioSource.clip == clip)
         {
             return;
         }

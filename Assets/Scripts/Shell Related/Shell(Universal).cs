@@ -57,6 +57,9 @@ public class Shell : MonoBehaviour
     private string combinedMessage = "";
     public GameObject hitTextPrefab;
     public float lifeTimeText = 1.5f;
+    private bool impactSoundPlayed = false;
+    public event System.Action OnPenetration;
+    public event System.Action OnRicochet;
 
     void Awake()
     {
@@ -204,19 +207,22 @@ public class Shell : MonoBehaviour
             float currentPenetration = remainingPenetration * penetrationByAngle.Evaluate(impact);
 
             Debug.Log($"ARMOUR {armor.name} | Pen {currentPenetration} | Armor {effectiveArmor}");// Display penetration and armour values for testing
-
+          
             if(ricochet || currentPenetration < effectiveArmor)// If the shell ricochets or lacks penetration, stop the projectile
             {
                 combinedMessage += "Ricochet\n";
+                SpawnAudioEffect(ricochetSound);
                 ShowCombinedText();
                 shellDead = true;
+                OnRicochet?.Invoke();
                 Destroy(gameObject);
                 return;
             }
 
             remainingPenetration -= effectiveArmor;// Remove the armour thickness from the shell's remaining penetration power
+            SpawnAudioEffect(penetrationSound);
             Debug.Log("ARMOUR PENETRATED Remaining: " + remainingPenetration);
-            StartCoroutine(PlayPenetrationSound(penetrationSound));
+          
             if(shellType == ShellType.HEAT)// HEAT creates its damage effect after penetration and does not continue like APFSDS.
             {
                 Explode();
@@ -317,18 +323,29 @@ public class Shell : MonoBehaviour
 
         return true;
     }
-    IEnumerator PlayPenetrationSound(AudioClip clip)
+
+    
+    void SpawnAudioEffect(AudioClip clip)
     {
+        if (audioPrefab == null || clip == null)
+            return;
+        if(impactSoundPlayed)
+            return;
+        
+        impactSoundPlayed = true;
+
         GameObject audioObj = Instantiate(audioPrefab,transform.position,Quaternion.identity);
-        AudioSource audioSource = audioObj.GetComponent<AudioSource>();
-        if(audioSource != null)
+        ImpactShellSounds impactSound = audioObj.GetComponent<ImpactShellSounds>();
+
+        if (impactSound != null)
         {
-            audioSource.clip = penetrationSound;
-            audioSource.loop = false;
-            audioSource.Play();
+            impactSound.PlayImpactSound(clip);
         }
-        yield return new WaitForSeconds(audioSource.clip.length);
-        Destroy(audioObj);
+        else
+        {
+            Destroy(audioObj);
+        }
     }
+
     
 }

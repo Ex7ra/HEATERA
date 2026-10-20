@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2193215663106674639}
   - component: {fileID: 7763447897362155021}
+  - component: {fileID: 6945542148630621589}
   m_Layer: 0
   m_Name: Audio Source For Shell
   m_TagString: Untagged
@@ -129,3 +130,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6945542148630621589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6640160809194706927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d1394bbfbc37c345a6e3798fc1f1e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImpactShellSouns
+  audioSource: {fileID: 7763447897362155021}
+  ricochetSound: {fileID: 8300000, guid: 87f0013ab2658ce429cdfea5c5edbcd8, type: 3}
+  penetrationSound: {fileID: 8300000, guid: 0d5ec9ffadbd93c46b669bb1f915d4ae, type: 3}
