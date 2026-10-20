@@ -35,8 +35,8 @@ public class Shell : MonoBehaviour
     [Header("Shell Audio Effects")]
     public AudioSource ShellAudioSource;
     public GameObject audioPrefab;
-    public AudioClip ricochetSound;
-    public AudioClip penetrationSound;
+    public AudioClip[] ricochetSound;
+    public AudioClip[] penetrationSound;
     public AudioClip ShellFlyingSound;
     private Rigidbody2D rb;// Cached reference to the shell's Rigidbody2D so we don't search for it repeatedly
 
@@ -211,7 +211,7 @@ public class Shell : MonoBehaviour
             if(ricochet || currentPenetration < effectiveArmor)// If the shell ricochets or lacks penetration, stop the projectile
             {
                 combinedMessage += "Ricochet\n";
-                SpawnAudioEffect(ricochetSound);
+                SpawnAudioEffect(ricochetSound[Random.Range(0, ricochetSound.Length)]);
                 ShowCombinedText();
                 shellDead = true;
                 OnRicochet?.Invoke();
@@ -220,7 +220,7 @@ public class Shell : MonoBehaviour
             }
 
             remainingPenetration -= effectiveArmor;// Remove the armour thickness from the shell's remaining penetration power
-            SpawnAudioEffect(penetrationSound);
+            SpawnAudioEffect(penetrationSound[Random.Range(0, penetrationSound.Length)]);
             Debug.Log("ARMOUR PENETRATED Remaining: " + remainingPenetration);
           
             if(shellType == ShellType.HEAT)// HEAT creates its damage effect after penetration and does not continue like APFSDS.
