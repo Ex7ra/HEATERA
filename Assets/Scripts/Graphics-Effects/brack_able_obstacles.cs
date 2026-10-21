@@ -20,9 +20,11 @@ public class brack_able_obstacles : MonoBehaviour
         if (destroyed)
             return;
 
+        //Debug.Log("Damage received: " + damage);
+        //Debug.Log("Health before damage: " + health);
         health -= damage;
 
-        Debug.Log("Obstacle damaged! HP: " + health);
+        //Debug.Log("Health after damage: " + health);
 
         if (health <= 0)
         {
@@ -39,10 +41,11 @@ public class brack_able_obstacles : MonoBehaviour
         if (tank != null)
         {
             float speed = collision.relativeVelocity.magnitude;
-            Debug.Log("Tank hit obstacle at speed: " + speed);
-            int collisionDamage = Mathf.RoundToInt(speed * 5f);
+            float turnSpeed = tank.CurrentTurn;
+            //Debug.Log("Tank hit obstacle at speed: " + speed + ", Turn Speed: " + turnSpeed);
+            int collisionDamage = Mathf.RoundToInt((turnSpeed + 5f) * speed * 5f);
 
-            // If this is a soft obstacle, tell the tank to keep its momentum.
+            // If this is a soft obstacle, tell the tank to keep its momentum
             if (softObstacle)
             {
                 TankController_ModernClutch tankController = collision.gameObject.GetComponent<TankController_ModernClutch>();
@@ -52,8 +55,8 @@ public class brack_able_obstacles : MonoBehaviour
                     tankController.KeepMomentum();
                 }
             }
-
-            TakeDamage(collisionDamage);
+            int damage = Mathf.Max(collisionDamage, 2); 
+            TakeDamage(damage);
         }
     }
 
