@@ -1,8 +1,10 @@
+using UnityEditor.Rendering;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class AI_Movement_ModernClutch : MonoBehaviour, ITankMovement, Tank
 {
+    public bool isAccelerating  {get; private set;}
     float currentSpeed;
     float currentTurn;
     private bool movementEnabled = true;

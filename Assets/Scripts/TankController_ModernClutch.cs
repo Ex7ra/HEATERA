@@ -4,6 +4,8 @@ using UnityEngine;
 public class TankController_ModernClutch : MonoBehaviour, Tank
 {
     float currentSpeed;
+    public bool isAccelerating {get; private set; }
+    private float previousSpeed;
     public float CurrentTurn { get; private set; }
     private bool movementEnabled = true;
     public LevelIntro Intro;
@@ -55,7 +57,8 @@ public class TankController_ModernClutch : MonoBehaviour, Tank
     }
 
     void Update()
-    {
+    {   
+        
         moveInput = Input.GetAxisRaw("Vertical");
         turnInput = Input.GetAxisRaw("Horizontal");
         if (Intro != null && !LevelIntro.gameplayStarted)
@@ -113,6 +116,8 @@ public class TankController_ModernClutch : MonoBehaviour, Tank
         
        
         CurrentSpeed = Mathf.Abs(currentSpeed);
+        isAccelerating = CurrentSpeed > previousSpeed && CurrentSpeed < 2.78f;
+        previousSpeed = CurrentSpeed;
     }
     public void KeepMomentum()
     {

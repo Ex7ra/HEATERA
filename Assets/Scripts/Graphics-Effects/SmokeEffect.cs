@@ -44,7 +44,7 @@ public class SmokeEffect : MonoBehaviour
             float progress = timer / lifeTime;
             // Move away from the barrel
             float currentSpeed = Mathf.Lerp(moveSpeed, 0.2f, progress);
-                transform.position += moveDirection * currentSpeed * Time.deltaTime;
+            transform.position += moveDirection * currentSpeed * Time.deltaTime;
 
             
 

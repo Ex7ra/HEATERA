@@ -5,6 +5,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement, Tank
 {
     private bool movementEnabled = true;
     public float CurrentSpeed { get; private set; }
+    public bool isAccelerating {get; private set; }
 
     public void DisableMovement()
     {

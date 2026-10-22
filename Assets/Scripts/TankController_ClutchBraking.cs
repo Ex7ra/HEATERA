@@ -6,7 +6,7 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
 {
     private bool movementEnabled = true;//by default TRUE allows movement, if FALSE the tank will not move, used for when the tank is destroyed or immobilized
     public float CurrentSpeed { get; private set; }// "get" is so any script is allowed to read it, "private set" means only this script could change it 
-
+    public bool isAccelerating {get; private set; }
     public void DisableMovement()//function/method, when its called tank stops moving
     {
         movementEnabled = false;
