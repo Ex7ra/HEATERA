@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.Rendering;
 public class EngineGasEffect : MonoBehaviour
 {
+    public int numberOfSmokes = 3;
     public float directionVariation = 10f;
     public float lifeTime = 1f;
     public GameObject smokePrefab;
@@ -39,21 +40,14 @@ public class EngineGasEffect : MonoBehaviour
     
     IEnumerator EngineGas()
     {
-        float timer = 0f;
-        while(timer < lifeTime)
+        while(tank.isAccelerating)
         {
-            timer += Time.deltaTime;
-            float progress = timer / lifeTime;
-            Instantiate(smokePrefab, transform.position, transform.rotation);
-            
-
-
-            Color c = startColor;
-            c.a = Mathf.Lerp(1f, 0f, progress);
-            sr.color = c;
-
+            for(int i = 0; i < numberOfSmokes; i++){
+            GameObject smoke = Instantiate(smokePrefab, transform.position, transform.rotation);
+           
+            }
             yield return new WaitForSeconds(Random.Range(0.15f, 0.45f));
         }
-        Destroy(smokePrefab);
+        isPlaying = false;
     }
 }

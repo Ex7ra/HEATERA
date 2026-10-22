@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2292623990143801909}
   - component: {fileID: 6769874756353790445}
+  - component: {fileID: 1060959414299785748}
   m_Layer: 0
-  m_Name: GasPrefab
+  m_Name: GasPrefabLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -91,3 +92,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1060959414299785748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3285111888882886930}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de2745b9e8a76345ab0ecdaca9adb91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasParticle
+  gasSprites:
+  - {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  - {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  - {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  - {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
+  lifeTime: 1
+  minSpeed: 0.5
+  maxSpeed: 2
+  direction: 1
