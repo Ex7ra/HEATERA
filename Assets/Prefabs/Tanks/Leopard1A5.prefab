@@ -2121,6 +2121,60 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TankArmor
   plateEffArmour: 60
   ricochetAngleDeg: 70
+--- !u!1 &5291737892812746784
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3466372246355370348}
+  - component: {fileID: 742313324793944464}
+  m_Layer: 0
+  m_Name: GasEffectRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3466372246355370348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291737892812746784}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.637, y: -1.106, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2455730249517436563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &742313324793944464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5291737892812746784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd636f623d1f23428f08032503a4f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasEffect
+  timeBeforeStartEngine: 2.3
+  numberOfSmokes: 3
+  directionVariation: 10
+  lifeTime: 2
+  smokePrefab: {fileID: 3285111888882886930, guid: 256b5a5507107a84cac51b78563a5d6d, type: 3}
+  engine: {fileID: 7410213195510213801}
+  smallGas: {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  mediumGas: {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  mediumLongGas: {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  largeGas: {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
 --- !u!1 &5617278828331726650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2578,6 +2632,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3466372246355370348}
+  - {fileID: 4256569861050055703}
   - {fileID: 4521684721952961025}
   - {fileID: 2698255030231926148}
   - {fileID: 8000517836919818112}
@@ -3230,6 +3286,60 @@ MonoBehaviour:
   AI_ModernClutch: {fileID: 0}
   AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 6872905978666851161}
+--- !u!1 &6677556916256549850
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4256569861050055703}
+  - component: {fileID: 449498940899015041}
+  m_Layer: 0
+  m_Name: GasEffectLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4256569861050055703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677556916256549850}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.654, y: -1.106, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2455730249517436563}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &449498940899015041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6677556916256549850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd636f623d1f23428f08032503a4f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasEffect
+  timeBeforeStartEngine: 2.3
+  numberOfSmokes: 3
+  directionVariation: 10
+  lifeTime: 2
+  smokePrefab: {fileID: 3285111888882886930, guid: 60006c8616738da408045537e989095c, type: 3}
+  engine: {fileID: 7410213195510213801}
+  smallGas: {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  mediumGas: {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  mediumLongGas: {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  largeGas: {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
 --- !u!1 &6735477625196377846
 GameObject:
   m_ObjectHideFlags: 0
@@ -4361,7 +4471,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1
   Loop: 0

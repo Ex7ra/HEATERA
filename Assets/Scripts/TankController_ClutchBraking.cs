@@ -7,6 +7,7 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
     private bool movementEnabled = true;//by default TRUE allows movement, if FALSE the tank will not move, used for when the tank is destroyed or immobilized
     public float CurrentSpeed { get; private set; }// "get" is so any script is allowed to read it, "private set" means only this script could change it 
     public bool isAccelerating {get; private set; }
+    private float previousSpeed;
     public void DisableMovement()//function/method, when its called tank stops moving
     {
         movementEnabled = false;
@@ -188,6 +189,8 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
 
         CurrentSpeed = rb.linearVelocity.magnitude;//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
         previousTurnInput = turnInput;
+        isAccelerating = CurrentSpeed > previousSpeed && CurrentSpeed < 2.78f;
+        previousSpeed = CurrentSpeed;
     }
     //Gradually adjusts current speed toward target speed using acceleration or deceleration while preventing overshooting
     
@@ -202,4 +205,5 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
     
     public float CurrentTurn => rb != null ? rb.angularVelocity : 0f;
     public float SpeedKmh => CurrentSpeed * 3.6f;//Converts the tank’s current speed from meters per second into kilometers per hour for display or UI purposes
+    
 }

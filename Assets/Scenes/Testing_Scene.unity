@@ -625,6 +625,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1339232470675259, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
+      propertyPath: health
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 1339232470675259, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
+      propertyPath: maxHealth
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 901242648115391366, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
       propertyPath: m_Name
       value: T-72A(1979)
@@ -703,7 +711,10 @@ PrefabInstance:
       objectReference: {fileID: 711960600}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7675312050437625035, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
+      insertIndex: 0
+      addedObject: {fileID: 1596591801}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
 --- !u!114 &1380082734 stripped
@@ -750,6 +761,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2f6c0cb2ea2aae45a38ef1ff35f58b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TurretTraverseModule
+--- !u!1 &1596591800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1596591801}
+  - component: {fileID: 1596591802}
+  m_Layer: 0
+  m_Name: GasEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1596591801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596591800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.841, y: -0.742, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 941131997}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1596591802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596591800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd636f623d1f23428f08032503a4f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasEffect
+  timeBeforeStartEngine: 4.8
+  numberOfSmokes: 10
+  directionVariation: 10
+  lifeTime: 1
+  smokePrefab: {fileID: 3285111888882886930, guid: 60006c8616738da408045537e989095c, type: 3}
+  engine: {fileID: 50138426}
+  smallGas: {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  mediumGas: {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  mediumLongGas: {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  largeGas: {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
 --- !u!114 &1634548816 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7642594949559301448, guid: b170d5ab283e09342bcc24a6c126c4c6, type: 3}
