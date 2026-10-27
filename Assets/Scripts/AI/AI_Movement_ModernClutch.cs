@@ -5,6 +5,7 @@ using UnityEngine;
 public class AI_Movement_ModernClutch : MonoBehaviour, ITankMovement, Tank
 {
     public bool isAccelerating  {get; private set;}
+    private float previousSpeed;
     float currentSpeed;
     float currentTurn;
     private bool movementEnabled = true;
@@ -105,8 +106,14 @@ public class AI_Movement_ModernClutch : MonoBehaviour, ITankMovement, Tank
         rb.linearVelocity = forward * currentSpeed;
 
        
+        
         CurrentSpeed = Mathf.Abs(currentSpeed);
+        isAccelerating = CurrentSpeed > previousSpeed && CurrentSpeed < 2.78f;
+        previousSpeed = CurrentSpeed;
     }
-
+    public void KeepMomentum()
+    {
+        rb.linearVelocity = transform.up * currentSpeed;
+    }
     public float SpeedKmh => CurrentSpeed * 3.6f;
 }

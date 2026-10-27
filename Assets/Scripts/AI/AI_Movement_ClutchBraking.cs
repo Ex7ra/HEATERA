@@ -6,7 +6,7 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement, Tank
     private bool movementEnabled = true;
     public float CurrentSpeed { get; private set; }
     public bool isAccelerating {get; private set; }
-
+    private float previousSpeed;
     public void DisableMovement()
     {
         movementEnabled = false;
@@ -191,9 +191,10 @@ public class AI_Movement_ClutchBraking : MonoBehaviour, ITankMovement, Tank
         angularVelocityRad = Mathf.Clamp(angularVelocityRad, -maxAngularVelocityRad, maxAngularVelocityRad);
         rb.angularVelocity = angularVelocityRad * Mathf.Rad2Deg;
 
-        CurrentSpeed = Mathf.Abs(combinedSpeed);
-
+        CurrentSpeed = rb.linearVelocity.magnitude;//Stores the absolute (non-negative) value of the tank’s speed, ignoring direction for UI or gameplay purposes
         previousTurnInput = turnInput;
+        isAccelerating = CurrentSpeed > previousSpeed && CurrentSpeed < 2.78f;
+        previousSpeed = CurrentSpeed;
     }
 
     float StepSpeed(float current, float target, float accel, float decel)

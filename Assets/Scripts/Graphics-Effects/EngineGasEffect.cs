@@ -39,7 +39,7 @@ public class EngineGasEffect : MonoBehaviour
     void Update()
     {
         
-        if(tank.isAccelerating == true && !isPlaying)
+        if(tank.isAccelerating == true && !isPlaying && !engine.IsDestroyed)
         {
             isPlaying = true;
             StartCoroutine(EngineGas());
@@ -59,7 +59,7 @@ public class EngineGasEffect : MonoBehaviour
     }
     IEnumerator EngineGas()
     {
-        while(tank.isAccelerating)
+        while(tank.isAccelerating && !engine.IsDestroyed )
         {
             for(int i = 0; i < numberOfSmokes; i++){
             GameObject smoke = Instantiate(smokePrefab, transform.position, transform.rotation);

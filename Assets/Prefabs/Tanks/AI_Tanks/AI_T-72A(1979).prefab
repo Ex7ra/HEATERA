@@ -223,6 +223,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3597494276587597058}
   - {fileID: 476277335968838357}
   - {fileID: 5019315782458027295}
   - {fileID: 1553991732971917715}
@@ -1820,6 +1821,60 @@ MonoBehaviour:
   AI_ModernClutch: {fileID: 0}
   AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
+--- !u!1 &4547294675607833714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3597494276587597058}
+  - component: {fileID: 1378004405451991929}
+  m_Layer: 0
+  m_Name: GasEffect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3597494276587597058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547294675607833714}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.841, y: -0.742, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7675312050437625035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1378004405451991929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4547294675607833714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd636f623d1f23428f08032503a4f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasEffect
+  timeBeforeStartEngine: 4.8
+  numberOfSmokes: 10
+  directionVariation: 10
+  lifeTime: 1
+  smokePrefab: {fileID: 3285111888882886930, guid: 60006c8616738da408045537e989095c, type: 3}
+  engine: {fileID: 1339232470675259}
+  smallGas: {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  mediumGas: {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  mediumLongGas: {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  largeGas: {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
 --- !u!1 &5051472767428893998
 GameObject:
   m_ObjectHideFlags: 0
