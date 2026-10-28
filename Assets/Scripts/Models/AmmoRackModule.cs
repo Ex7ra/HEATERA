@@ -3,9 +3,12 @@ using UnityEngine;
 public class AmmoRackModule : TankModule
 {
     private TankDamageReceiver tankDamageReceiver;
-    void Awake()
+    
+    protected override void Awake()
     {
+        base.Awake();
         tankDamageReceiver = GetComponentInParent<TankDamageReceiver>();
+        
     }
     protected override void OnDestroyed()
     {

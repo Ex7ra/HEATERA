@@ -4705,6 +4705,14 @@ PrefabInstance:
       propertyPath: tankScript
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2437114236073940592, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2437114236073940592, guid: 9af365aca873699468faa21b52eaf439, type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3774551072236096636, guid: 9af365aca873699468faa21b52eaf439, type: 3}
       propertyPath: m_Volume
       value: 0

@@ -1,3 +1,4 @@
+
 using UnityEngine;
 
 public class TrackModule : TankModule
@@ -7,8 +8,10 @@ public class TrackModule : TankModule
 
     public bool isLeft;
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         tank = tankScript as ITankMovement;
     }
 

@@ -3,6 +3,7 @@ using System;
 
 public class TankModule : MonoBehaviour
 {
+    private ModuleDamageVisual damageVisual;
     public float maxHealth = 100f;
     public float health;
 
@@ -13,10 +14,12 @@ public class TankModule : MonoBehaviour
 
     protected virtual void Awake()
     {
+        damageVisual = GetComponent<ModuleDamageVisual>();
         health = maxHealth;
         IsDestroyed = false;
     }
 
+    
     public virtual void Damage(float dmg)
     {
         if (IsDestroyed)
@@ -29,10 +32,16 @@ public class TankModule : MonoBehaviour
             health = 0f;
             IsDestroyed = true;
 
+            damageVisual?.ShowDamage(true);
             OnDestroyed();
             OnDestroyedEvent?.Invoke();
         }
+        else
+        {
+            damageVisual?.ShowDamage(false);
+        }
     }
+
 
     public virtual void Repair()
     {
