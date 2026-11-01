@@ -57,15 +57,15 @@ public class VehicleSoundEffects : MonoBehaviour
 
     private Tank tankController;
     private float previousTurn;
-
-
+    private UIMenus uiMenus;
+    private bool soundsPaused = false;
     void Start()
     {
         //Modules
         engine = GetComponentInChildren<EngineModule>();
         //Modules
         rb = GetComponent<Rigidbody2D>();
-
+        uiMenus = FindFirstObjectByType<UIMenus>();
         foreach (MonoBehaviour component in GetComponentsInChildren<MonoBehaviour>(true))
         {
             if (component is TankTurret turret)
@@ -90,7 +90,15 @@ public class VehicleSoundEffects : MonoBehaviour
         {
             previousTurn = tankController.CurrentTurn;
         }
-
+        if(uiMenus != null)
+        {
+            uiMenus.OnPause += PauseAllSounds;
+            uiMenus.OnResume += ResumeAllSounds;
+        }
+        else
+        {
+            Debug.LogWarning("UIMenus was not found!");
+        }
         if (firing != null)
         {
             firing.OnShoot += PlayFiringSound;
@@ -188,6 +196,8 @@ public class VehicleSoundEffects : MonoBehaviour
     }
     void Update()
     {
+        if (soundsPaused)
+            return;
         if (rb == null)
         {
             return;
@@ -203,6 +213,8 @@ public class VehicleSoundEffects : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if (soundsPaused)
+            return;
         UpdateTurningSound();
     }
 
@@ -365,5 +377,28 @@ public class VehicleSoundEffects : MonoBehaviour
         turningAudioSource.clip = clip;
         turningAudioSource.loop = loop;
         turningAudioSource.Play();
+    }
+    public void PauseAllSounds()
+    {
+        soundsPaused = true;
+
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>();
+
+        foreach (AudioSource source in audioSources)
+        {
+            source.Pause();
+        }
+    }
+
+    public void ResumeAllSounds()
+    {
+        soundsPaused = false;
+
+        AudioSource[] audioSources = GetComponentsInChildren<AudioSource>();
+
+        foreach (AudioSource source in audioSources)
+        {
+            source.UnPause();
+        }
     }
 }
