@@ -1,9 +1,16 @@
+
 using UnityEngine;
 
 public class CannonModule : TankModule
 {
     public TurretNormal turret;
-    public  AI_TurretController aiTurret;
+    public AI_TurretController aiTurret;
+
+    [Header("Sprites")]
+    public SpriteRenderer cannonRenderer;
+    public SpriteRenderer cannonShadowRenderer;
+    public Sprite cannonDestroyedSprite;
+    public Sprite cannonNormalSprite;
 
     public override void Damage(float dmg)
     {
@@ -11,16 +18,11 @@ public class CannonModule : TankModule
 
         if (!IsDestroyed)
         {
-            if(turret != null)
-            {
+            if (turret != null)
                 turret.accuracyMultiplier = 0.5f;
-            }
-            if(aiTurret != null)
-            {
-                aiTurret.accuracyMultiplier = 0.5f;  
-            }
-            
-     
+
+            if (aiTurret != null)
+                aiTurret.accuracyMultiplier = 0.5f;
         }
     }
 
@@ -28,12 +30,31 @@ public class CannonModule : TankModule
     {
         base.OnDestroyed();
 
-        if(turret != null){
-        turret.gunOperational = false;
-        }
-        if(aiTurret != null){
-        aiTurret.gunOperational = false;
-        }
-        Debug.Log("Cannon Ruptured → Firing Locked");
+        if (turret != null)
+            turret.gunOperational = false;
+
+        if (aiTurret != null)
+            aiTurret.gunOperational = false;
+
+        
+        cannonRenderer.sprite = cannonDestroyedSprite;
+        cannonShadowRenderer.sprite = cannonDestroyedSprite;
+
+    }
+
+    protected override void OnRepaired()
+    {
+        base.OnRepaired();
+
+        if (turret != null)
+            turret.gunOperational = true;
+
+        if (aiTurret != null)
+            aiTurret.gunOperational = true;
+
+        
+        cannonRenderer.sprite = cannonNormalSprite;
+        cannonShadowRenderer.sprite = cannonNormalSprite;
+
     }
 }

@@ -47,7 +47,7 @@ public class TankModule : MonoBehaviour
     {
         health = maxHealth;
         IsDestroyed = false;
-
+        OnRepaired();
         OnRepairedEvent?.Invoke();
 
         Debug.Log(name + " repaired");
@@ -56,5 +56,9 @@ public class TankModule : MonoBehaviour
     protected virtual void OnDestroyed()
     {
         Debug.Log(name + " destroyed");
+    }
+    protected virtual void OnRepaired()
+    {
+        Debug.Log(name + " repaired");
     }
 }

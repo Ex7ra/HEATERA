@@ -394,7 +394,7 @@ MonoBehaviour:
   shellSpeed: 20
   shootAngleDegrees: 0
   spawnHeight: 0
-  shootMode: 1
+  shootMode: 0
   turretLayerName: TankTurret
   hullLayerName: TankHull
 --- !u!4 &201962951
@@ -1694,6 +1694,22 @@ PrefabInstance:
       propertyPath: reloadingText
       value: 
       objectReference: {fileID: 1018013487}
+    - target: {fileID: 2830023169156915447, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: cannonRenderer
+      value: 
+      objectReference: {fileID: 1034430695}
+    - target: {fileID: 2830023169156915447, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: cannonNormalSprite
+      value: 
+      objectReference: {fileID: 6105866753743248120, guid: e435259b9e97e6b47a345eaf7e1b6adc, type: 3}
+    - target: {fileID: 2830023169156915447, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: cannonShadowRenderer
+      value: 
+      objectReference: {fileID: 1892160747}
+    - target: {fileID: 2830023169156915447, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+      propertyPath: cannonDestroyedSprite
+      value: 
+      objectReference: {fileID: -4717989079536769387, guid: df2b1dc2a04c7a84d902fb84b6d5fe08, type: 3}
     - target: {fileID: 6004404656569007100, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
       propertyPath: m_Name
       value: Leopard1A5
@@ -3606,6 +3622,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0920db1a3dd5f3947ab30ae08555f9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+--- !u!212 &1034430695 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 399011390708131412, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+  m_PrefabInstance: {fileID: 546431252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1054705958
 GameObject:
   m_ObjectHideFlags: 0
@@ -107354,6 +107375,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 79e013658bfb70646a42ddd4e9974e54, type: 3}
+--- !u!212 &1892160747 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2240979769275723958, guid: 9350dbd8536b0f34ca79975d3d2fb2ae, type: 3}
+  m_PrefabInstance: {fileID: 546431252}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1911607674
 PrefabInstance:
   m_ObjectHideFlags: 0
