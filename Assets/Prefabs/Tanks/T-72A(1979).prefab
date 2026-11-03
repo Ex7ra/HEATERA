@@ -3145,6 +3145,10 @@ MonoBehaviour:
   health: 100
   turret: {fileID: 8310156144776247570}
   aiTurret: {fileID: 0}
+  cannonRenderer: {fileID: 113478210512343034}
+  cannonShadowRenderer: {fileID: 8727029952473811138}
+  cannonDestroyedSprite: {fileID: -6150493510165160227, guid: 134b94e4f1a01dd46b81e66c7fbca8b2, type: 3}
+  cannonNormalSprite: {fileID: 4168247984713980712, guid: a8894a6377be4164994d449c82b6752c, type: 3}
 --- !u!1001 &3730742920650088222
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3358,6 +3362,11 @@ MonoBehaviour:
   extraRotationDegrees: 0
   normalSprite: {fileID: 0}
   changedSprite: {fileID: 0}
+--- !u!212 &8727029952473811138 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3626916397498700004, guid: a8894a6377be4164994d449c82b6752c, type: 3}
+  m_PrefabInstance: {fileID: 5425085746758703142}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5602851609151819200
 PrefabInstance:
   m_ObjectHideFlags: 0

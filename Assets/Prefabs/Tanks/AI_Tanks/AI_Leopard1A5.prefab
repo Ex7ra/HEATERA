@@ -5621,6 +5621,10 @@ MonoBehaviour:
   health: 100
   turret: {fileID: 0}
   aiTurret: {fileID: 4136091547857896094}
+  cannonRenderer: {fileID: 399011390708131412}
+  cannonShadowRenderer: {fileID: 2240979769275723958}
+  cannonDestroyedSprite: {fileID: -4717989079536769387, guid: df2b1dc2a04c7a84d902fb84b6d5fe08, type: 3}
+  cannonNormalSprite: {fileID: 6105866753743248120, guid: e435259b9e97e6b47a345eaf7e1b6adc, type: 3}
 --- !u!120 &1147504915196553349
 LineRenderer:
   serializedVersion: 3

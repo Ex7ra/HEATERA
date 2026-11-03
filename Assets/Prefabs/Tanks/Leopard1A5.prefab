@@ -481,7 +481,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: 86a0644a742767d4cab3a4367b397841, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
@@ -4016,6 +4016,10 @@ MonoBehaviour:
   health: 100
   turret: {fileID: 2643635324928508430}
   aiTurret: {fileID: 0}
+  cannonRenderer: {fileID: 399011390708131412}
+  cannonShadowRenderer: {fileID: 2240979769275723958}
+  cannonDestroyedSprite: {fileID: -4717989079536769387, guid: df2b1dc2a04c7a84d902fb84b6d5fe08, type: 3}
+  cannonNormalSprite: {fileID: 6105866753743248120, guid: e435259b9e97e6b47a345eaf7e1b6adc, type: 3}
 --- !u!1 &8617103318863559936
 GameObject:
   m_ObjectHideFlags: 0

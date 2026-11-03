@@ -138,6 +138,9 @@ public class Shell : MonoBehaviour
             if(hit.collider.gameObject == gameObject)// Ignore the shell's own collider if the ray detects it
                 continue;
 
+            if (hit.collider.transform.root == transform.root)// Ignore the tank that fired the shell if the ray detects it
+                continue;
+                
             ProcessHit(hit);// Send this hit to the penetration and damage system
 
             if(shellDead)// Stop checking more hits if the shell has already been destroyed
