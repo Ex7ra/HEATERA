@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2721952851886984193}
   m_Layer: 6
   m_Name: BackPlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5388828019703120094}
   m_Layer: 7
   m_Name: BackPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -202,7 +202,7 @@ GameObject:
   - component: {fileID: 4394166776005839785}
   m_Layer: 0
   m_Name: T-72A(1979)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,10 +216,11 @@ Transform:
   m_GameObject: {fileID: 901242648115391366}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 48512415590667825}
   - {fileID: 6599809363800316158}
   - {fileID: 5792425736879678858}
   - {fileID: 7702427825286638445}
@@ -269,6 +270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b639208e520b73546a0c16c80f605681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TankController_ClutchBraking
+  Intro: {fileID: 0}
   forwardSpeedKmh: 60
   reverseSpeedKmh: 4
   acceleration: 0.8
@@ -368,7 +370,7 @@ GameObject:
   - component: {fileID: 1870755825237642887}
   m_Layer: 6
   m_Name: Armour(Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -405,7 +407,7 @@ GameObject:
   - component: {fileID: 7724951156326263078}
   m_Layer: 6
   m_Name: LeftSidePlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +499,7 @@ GameObject:
   - component: {fileID: 4737581016526617277}
   m_Layer: 0
   m_Name: EngineAudioSource
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -627,7 +629,7 @@ GameObject:
   - component: {fileID: 2437114236073940592}
   m_Layer: 6
   m_Name: Ammo Mod (Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -710,7 +712,7 @@ GameObject:
   - component: {fileID: 6853631558587666729}
   m_Layer: 7
   m_Name: GunBreach Mod
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -805,7 +807,7 @@ GameObject:
   - component: {fileID: 7870110183272122413}
   m_Layer: 7
   m_Name: TurretRotationMechanism
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -888,7 +890,7 @@ GameObject:
   - component: {fileID: 7673789749710426410}
   m_Layer: 7
   m_Name: Armour(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -929,7 +931,7 @@ GameObject:
   - component: {fileID: 1685719633743992380}
   m_Layer: 7
   m_Name: RightSidePlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1021,7 +1023,7 @@ GameObject:
   - component: {fileID: 6479530417223089573}
   m_Layer: 6
   m_Name: FrontPlate(Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1114,7 +1116,7 @@ GameObject:
   - component: {fileID: 2916411549491501050}
   m_Layer: 7
   m_Name: LeftBackPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1207,7 +1209,7 @@ GameObject:
   - component: {fileID: 2052327671874625042}
   m_Layer: 7
   m_Name: RightBackPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1300,7 +1302,7 @@ GameObject:
   - component: {fileID: 5876500411917294795}
   m_Layer: 7
   m_Name: Commander Crew
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1377,6 +1379,60 @@ MonoBehaviour:
   AI_ModernClutch: {fileID: 0}
   AI_Turret: {fileID: 0}
   damageReceiver: {fileID: 7766124567063853377}
+--- !u!1 &3838588195400482214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 48512415590667825}
+  - component: {fileID: 7826226708808802497}
+  m_Layer: 0
+  m_Name: GasEffect
+  m_TagString: Red
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &48512415590667825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838588195400482214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.841, y: -0.742, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7675312050437625035}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7826226708808802497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3838588195400482214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dd636f623d1f23428f08032503a4f43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EngineGasEffect
+  timeBeforeStartEngine: 4.8
+  numberOfSmokes: 10
+  directionVariation: 10
+  lifeTime: 1
+  smokePrefab: {fileID: 3285111888882886930, guid: 60006c8616738da408045537e989095c, type: 3}
+  engine: {fileID: 1339232470675259}
+  smallGas: {fileID: 6572276264187000542, guid: ece5f6256cf66184ca5a882c497e86df, type: 3}
+  mediumGas: {fileID: -381251056899927158, guid: f927562435b492f438bb86fc88775a12, type: 3}
+  mediumLongGas: {fileID: -8276167950903525046, guid: b1ee80111d9c14746bdaa629ba5cc984, type: 3}
+  largeGas: {fileID: 3294145834032798214, guid: 2d6d44e985875274db60af047c628a95, type: 3}
 --- !u!1 &4045574836925389942
 GameObject:
   m_ObjectHideFlags: 0
@@ -1390,7 +1446,7 @@ GameObject:
   - component: {fileID: 1504920908116121692}
   m_Layer: 6
   m_Name: Driver Crew
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1479,7 +1535,7 @@ GameObject:
   - component: {fileID: 4061118881284813026}
   m_Layer: 0
   m_Name: FiringAudioSource
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1609,7 +1665,7 @@ GameObject:
   - component: {fileID: 2244950435614826753}
   m_Layer: 7
   m_Name: Gunner Crew
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1697,7 +1753,7 @@ GameObject:
   - component: {fileID: 4400526147361050183}
   m_Layer: 7
   m_Name: Modules(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1732,7 +1788,7 @@ GameObject:
   - component: {fileID: 2782012161826022414}
   m_Layer: 7
   m_Name: FirePoint
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1765,7 +1821,7 @@ GameObject:
   - component: {fileID: 8718126209633182256}
   m_Layer: 7
   m_Name: CannonMusk(Turrret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1854,7 +1910,7 @@ GameObject:
   - component: {fileID: 4970333946038105477}
   m_Layer: 7
   m_Name: ModulsAudioSource
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1984,7 +2040,7 @@ GameObject:
   - component: {fileID: 2250591484141115823}
   m_Layer: 6
   m_Name: Left Track Mod
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2079,7 +2135,7 @@ GameObject:
   - component: {fileID: 6202425067558661685}
   m_Layer: 6
   m_Name: 'Right Track Mod '
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2174,7 +2230,7 @@ GameObject:
   - component: {fileID: 2367153966080060798}
   m_Layer: 7
   m_Name: LeftFrontPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2266,7 +2322,7 @@ GameObject:
   - component: {fileID: 5543202768463334499}
   m_Layer: 0
   m_Name: TurningAudioSource
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2396,7 +2452,7 @@ GameObject:
   - component: {fileID: 1339232470675259}
   m_Layer: 6
   m_Name: Engine
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2489,7 +2545,7 @@ GameObject:
   - component: {fileID: 3244125350165092931}
   m_Layer: 0
   m_Name: MovementAudioSource
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2619,7 +2675,7 @@ GameObject:
   - component: {fileID: 520463577299428348}
   m_Layer: 6
   m_Name: 'RightSidePlate(Hull) '
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2712,7 +2768,7 @@ GameObject:
   - component: {fileID: 5836867833724471866}
   m_Layer: 7
   m_Name: LeftSidePlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2805,7 +2861,7 @@ GameObject:
   - component: {fileID: 1175402131562244023}
   m_Layer: 7
   m_Name: RightFrontPlate(Turret)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2896,7 +2952,7 @@ GameObject:
   - component: {fileID: 8342589872977836788}
   m_Layer: 6
   m_Name: Modules(Hull)
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2933,7 +2989,7 @@ GameObject:
   - component: {fileID: 8102619445209578633}
   m_Layer: 0
   m_Name: Relouding
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3063,7 +3119,7 @@ GameObject:
   - component: {fileID: 7642594949559301448}
   m_Layer: 7
   m_Name: CannonModule
-  m_TagString: Untagged
+  m_TagString: Red
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3165,6 +3221,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: a8894a6377be4164994d449c82b6752c, type: 3}
+      propertyPath: m_TagString
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: a8894a6377be4164994d449c82b6752c, type: 3}
       propertyPath: m_SortingOrder
       value: 3
@@ -3256,6 +3316,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: a8894a6377be4164994d449c82b6752c, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: a8894a6377be4164994d449c82b6752c, type: 3}
+      propertyPath: m_TagString
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: a8894a6377be4164994d449c82b6752c, type: 3}
       propertyPath: m_Color.a
@@ -3382,6 +3446,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
+      propertyPath: m_TagString
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
       propertyPath: m_SortingOrder
@@ -3547,6 +3615,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
+      propertyPath: m_TagString
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
       propertyPath: m_Color.a
       value: 0.3137255
@@ -3668,6 +3740,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
+      propertyPath: m_TagString
+      value: Red
+      objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 12e7b655c6ffe0a40b3a5f16a068f59c, type: 3}
       propertyPath: m_Color.a
       value: 0.3137255
@@ -3788,6 +3864,10 @@ PrefabInstance:
     - target: {fileID: -2253911629886400664, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -2253911629886400664, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
+      propertyPath: m_TagString
+      value: Red
       objectReference: {fileID: 0}
     - target: {fileID: 3626916397498700004, guid: 7af32c39e35e3774d92f5b06c139437f, type: 3}
       propertyPath: m_SortingOrder

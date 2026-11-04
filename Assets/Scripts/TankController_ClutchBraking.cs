@@ -4,18 +4,13 @@ using UnityEngine;
 // Automatically adds a Rigidbody2D when this script is attached
 public class TankController_ClutchBraking : MonoBehaviour, Tank
 {
+    public LevelIntro Intro;
     private bool movementEnabled = true;//by default TRUE allows movement, if FALSE the tank will not move, used for when the tank is destroyed or immobilized
     public float CurrentSpeed { get; private set; }// "get" is so any script is allowed to read it, "private set" means only this script could change it 
     public bool isAccelerating {get; private set; }
     private float previousSpeed;
-    public void DisableMovement()//function/method, when its called tank stops moving
-    {
-        movementEnabled = false;
-    }
-    public void EnableMovement()//funcation/method, turnes movement back by setting "movementEnbaled = true" 
-    {
-        movementEnabled = true;
-    }
+    public void DisableMovement() => movementEnabled = false;
+    public void EnableMovement() => movementEnabled = true;
     
     //These are tunable settings exposed to the Unity Inspector that control movement, turning, and health behaviour of the tank
     
@@ -76,6 +71,12 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
     {
         moveInput = Input.GetAxisRaw("Vertical");//"Vertical" and "Horizontal" are predefined Unity input axes that are already mapped to WASD and arrow keys in the Input Manager
         turnInput = Input.GetAxisRaw("Horizontal");//Reads realtime keyboard input for forward/backward and turning control of the tank
+        if (Intro != null && !LevelIntro.gameplayStarted)
+        {
+            movementEnabled = false;
+            return;
+        }
+        movementEnabled = true;
     }
 
     void FixedUpdate()//runs at a fixed rate for physics calculations like Rigidbody movement

@@ -20,7 +20,8 @@ public class Mission_Task : MonoBehaviour
     public GameObject[] AllyTanks;
     [Header("Players Components")]
     public TankDamageReceiver PlayerTank;
-    public TankController_ModernClutch PlayerHull;
+    public MonoBehaviour PlayerHull;
+    private Tank playerHull;
     public TurretNormal PlayerTurret;
     [Header("Something")]
     public bool MissionFinished = false;
@@ -54,6 +55,7 @@ public class Mission_Task : MonoBehaviour
     }
     void Awake()
     {
+        playerHull = PlayerHull as Tank;
         if (aliveTanksText == null)
             aliveTanksText = GetComponent<TextMeshProUGUI>();
     }
@@ -129,10 +131,11 @@ public class Mission_Task : MonoBehaviour
     void StopGameplay()
     {
         canvas.gameObject.SetActive(false);
-        if(PlayerHull == null && PlayerTurret == null)
-            return;
-        PlayerHull.enabled = false;
-        PlayerTurret.enabled = false;
-      
+
+        if (playerHull != null)
+            playerHull.DisableMovement();
+
+        if (PlayerTurret != null)
+            PlayerTurret.enabled = false;
     }
 }
