@@ -71,24 +71,23 @@ public class TankController_ClutchBraking : MonoBehaviour, Tank
     {
         moveInput = Input.GetAxisRaw("Vertical");//"Vertical" and "Horizontal" are predefined Unity input axes that are already mapped to WASD and arrow keys in the Input Manager
         turnInput = Input.GetAxisRaw("Horizontal");//Reads realtime keyboard input for forward/backward and turning control of the tank
-        if (Intro != null && !LevelIntro.gameplayStarted)
-        {
-            movementEnabled = false;
-            return;
-        }
-        movementEnabled = true;
+       
     }
 
     void FixedUpdate()//runs at a fixed rate for physics calculations like Rigidbody movement
     {
         
-        if (!movementEnabled || engine == null || engine.IsDestroyed ||leftTrackModule == null || leftTrackModule.IsDestroyed || rightTrackModule == null || rightTrackModule.IsDestroyed || driver == null || driver.IsDestroyed)
+        if(!movementEnabled || (Intro != null && !LevelIntro.gameplayStarted) || engine == null || 
+        engine.IsDestroyed || leftTrackModule == null || leftTrackModule.IsDestroyed || rightTrackModule == null || 
+        rightTrackModule.IsDestroyed || driver == null || driver.IsDestroyed)
         {
             currentLeftSpeed = 0f;
             currentRightSpeed = 0f;
             CurrentSpeed = 0f;
+
             rb.linearVelocity = Vector2.zero;
             rb.angularVelocity = 0f;
+
             previousTurnInput = 0f;
 
             return;
